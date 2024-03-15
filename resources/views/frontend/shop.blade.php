@@ -95,8 +95,8 @@
                                 <div class="product-thumnail">
                                     <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                                         title="{{ $item->name }}">
-                                        <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                                alt="{{ $item->name }}"></figure>
+                                        <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
+                                                loading="lazy"></figure>
                                     </a>
                                 </div>
                                 <div class="product-info">
@@ -262,8 +262,8 @@
                                     <div class="thumbnnail">
                                         <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                                             title="{{ $item->name }}">
-                                            <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                                    alt="{{ $item->name }}"></figure>
+                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
+                                                    loading="lazy"></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">

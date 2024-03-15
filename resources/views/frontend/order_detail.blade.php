@@ -77,8 +77,8 @@
                             @foreach ($products as $item)
                                 <tr>
                                     <td scope="row">
-                                        <img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                            class="img-fluid" alt="">
+                                        <img src="{{ $item->featured_image }}" class="img-fluid" alt="{{ $item->name }}"
+                                            loading="lazy">
                                     </td>
                                     <td>
                                         <div class="product-name"><a

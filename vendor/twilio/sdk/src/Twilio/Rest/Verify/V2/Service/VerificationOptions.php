@@ -34,6 +34,8 @@ abstract class VerificationOptions
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
      * @param string $deviceIp Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @param string $riskCheck
+     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
      * @return CreateVerificationOptions Options builder
      */
     public static function create(
@@ -50,7 +52,9 @@ abstract class VerificationOptions
         string $appHash = Values::NONE,
         string $templateSid = Values::NONE,
         string $templateCustomSubstitutions = Values::NONE,
-        string $deviceIp = Values::NONE
+        string $deviceIp = Values::NONE,
+        string $riskCheck = Values::NONE,
+        string $tags = Values::NONE
 
     ): CreateVerificationOptions
     {
@@ -67,7 +71,9 @@ abstract class VerificationOptions
             $appHash,
             $templateSid,
             $templateCustomSubstitutions,
-            $deviceIp
+            $deviceIp,
+            $riskCheck,
+            $tags
         );
     }
 
@@ -91,6 +97,8 @@ class CreateVerificationOptions extends Options
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
      * @param string $deviceIp Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @param string $riskCheck
+     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
      */
     public function __construct(
         
@@ -106,7 +114,9 @@ class CreateVerificationOptions extends Options
         string $appHash = Values::NONE,
         string $templateSid = Values::NONE,
         string $templateCustomSubstitutions = Values::NONE,
-        string $deviceIp = Values::NONE
+        string $deviceIp = Values::NONE,
+        string $riskCheck = Values::NONE,
+        string $tags = Values::NONE
 
     ) {
         $this->options['customFriendlyName'] = $customFriendlyName;
@@ -122,6 +132,8 @@ class CreateVerificationOptions extends Options
         $this->options['templateSid'] = $templateSid;
         $this->options['templateCustomSubstitutions'] = $templateCustomSubstitutions;
         $this->options['deviceIp'] = $deviceIp;
+        $this->options['riskCheck'] = $riskCheck;
+        $this->options['tags'] = $tags;
     }
 
     /**
@@ -277,6 +289,28 @@ class CreateVerificationOptions extends Options
     public function setDeviceIp(string $deviceIp): self
     {
         $this->options['deviceIp'] = $deviceIp;
+        return $this;
+    }
+
+    /**
+     * @param string $riskCheck
+     * @return $this Fluent Builder
+     */
+    public function setRiskCheck(string $riskCheck): self
+    {
+        $this->options['riskCheck'] = $riskCheck;
+        return $this;
+    }
+
+    /**
+     * A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
+     *
+     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
+     * @return $this Fluent Builder
+     */
+    public function setTags(string $tags): self
+    {
+        $this->options['tags'] = $tags;
         return $this;
     }
 

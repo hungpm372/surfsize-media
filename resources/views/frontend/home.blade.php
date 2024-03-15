@@ -29,8 +29,10 @@
                     <div class="product-thumnail">
                         <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                             title="{{ $item->name }}">
-                            <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}" width="800"
-                                    height="800" alt="{{ $item->name }}"></figure>
+                            <figure>
+                                <img src="{{ $item->featured_image }}" width="800" height="800"
+                                    alt="{{ $item->name }}" loading="lazy">
+                            </figure>
                         </a>
                         <div class="group-flash">
                             <span class="flash-item sale-label">sale</span>
@@ -90,10 +92,10 @@
                                                 <div class="product-thumnail">
                                                     <a href="{{ route('product_detail', ['slug' => $latestProducts[$i]->slug, 'code' => $latestProducts[$i]->code]) }}"
                                                         title="{{ $latestProducts[$i]->name }}">
-                                                        <figure><img
-                                                                src="{{ asset('storage/products/' . $latestProducts[$i]->featured_image) }}"
+                                                        <figure>
+                                                            <img src="{{ $latestProducts[$i]->featured_image }}"
                                                                 width="800" height="800"
-                                                                alt="{{ $latestProducts[$i]->name }}">
+                                                                alt="{{ $latestProducts[$i]->name }}" loading="lazy">
                                                         </figure>
                                                     </a>
                                                     <div class="group-flash">
@@ -163,8 +165,8 @@
                                             <a href="{{ route('product_detail', ['slug' => $product->slug, 'code' => $product->code]) }}"
                                                 title="{{ $product->name }}">
                                                 <figure><img
-                                                        src="{{ asset('storage/products/' . $product->featured_image) }}"
-                                                        width="800" height="800" alt="{{ $product->name }}">
+                                                        src="{{ $product->featured_image }}"
+                                                        width="800" height="800" alt="{{ $product->name }}" loading="lazy">
                                                 </figure>
                                             </a>
                                             <div class="group-flash">

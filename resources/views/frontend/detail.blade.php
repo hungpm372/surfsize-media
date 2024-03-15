@@ -78,13 +78,12 @@
                 <div class="detail-media">
                     <div class="product-gallery">
                         <ul class="slides">
-                            <li data-thumb="{{ asset('storage/products/' . $product->featured_image) }}">
-                                <img src="{{ asset('storage/products/' . $product->featured_image) }}"
-                                    alt="product thumbnail" />
+                            <li data-thumb="{{ $product->featured_image }}" class="xyz">
+                                <img src="{{ $product->featured_image }}" alt="{{ $product->name }}" loading="lazy" />
                             </li>
                             @foreach ($product->productImages as $item)
-                                <li data-thumb="{{ asset('storage/products/' . $item->name) }}">
-                                    <img src="{{ asset('storage/products/' . $item->name) }}" alt="product thumbnail" />
+                                <li data-thumb="{{ $item->name }}">
+                                    <img src="{{ $item->name }}" alt="{{ $product->name }}" loading="lazy" />
                                 </li>
                             @endforeach
 
@@ -362,8 +361,8 @@
                                     <div class="thumbnnail">
                                         <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                                             title="{{ $item->name }}">
-                                            <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                                    alt="{{ $item->name }}">
+                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
+                                                    loading="lazy">
                                             </figure>
                                         </a>
                                     </div>
@@ -411,8 +410,8 @@
                                 <div class="product-thumnail">
                                     <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                                         title="{{ $item->name }}">
-                                        <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                                width="214" height="214" alt="{{ $item->name }}">
+                                        <figure><img src="{{ $item->featured_image }}" width="214" height="214"
+                                                alt="{{ $item->name }}" loading="lazy">
                                         </figure>
                                     </a>
                                     <div class="group-flash">
@@ -461,22 +460,21 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('.see-more').on('click', function() {
-                $('#see-more').click()
-                $('html, body').animate({
-                    scrollTop: $('#see-more').offset().top - 80
-                });
+            $(".see-more").on("click", function() {
+                $("#see-more").click(), $("html, body").animate({
+                    scrollTop: $("#see-more").offset().top - 80
+                })
+            }), $(".toggle-description").click(function() {
+                var e = $(".product-description");
+                e.toggleClass("expanded");
+                var t = e.hasClass("expanded");
+                $(this).text(t ? "Thu gọn" : "Xem th\xeam").parent().toggleClass("active")
             })
-
-            $('.toggle-description').click(function() {
-                var $description = $('.product-description');
-                $description.toggleClass('expanded');
-                var check = $description.hasClass('expanded')
-                $(this).text(check ? 'Thu gọn' : 'Xem thêm').parent().toggleClass('active');
-            });
         });
     </script>
 
     <script src="{{ asset('frontend/js/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('frontend/js/add-to-cart.js') }}"></script>
+    <script src="{{ asset('frontend/js/zoom.js') }}"></script>
+    <script></script>
 @endsection

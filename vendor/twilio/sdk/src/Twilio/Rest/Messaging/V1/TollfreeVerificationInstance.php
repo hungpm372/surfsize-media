@@ -58,6 +58,9 @@ use Twilio\Deserialize;
  * @property string|null $url
  * @property string|null $rejectionReason
  * @property int|null $errorCode
+ * @property \DateTime|null $editExpiration
+ * @property bool|null $editAllowed
+ * @property array[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
  */
@@ -108,6 +111,9 @@ class TollfreeVerificationInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
             'rejectionReason' => Values::array_get($payload, 'rejection_reason'),
             'errorCode' => Values::array_get($payload, 'error_code'),
+            'editExpiration' => Deserialize::dateTime(Values::array_get($payload, 'edit_expiration')),
+            'editAllowed' => Values::array_get($payload, 'edit_allowed'),
+            'rejectionReasons' => Values::array_get($payload, 'rejection_reasons'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
             'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
         ];
@@ -131,6 +137,18 @@ class TollfreeVerificationInstance extends InstanceResource
         }
 
         return $this->context;
+    }
+
+    /**
+     * Delete the TollfreeVerificationInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        return $this->proxy()->delete();
     }
 
     /**

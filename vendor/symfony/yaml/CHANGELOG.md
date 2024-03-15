@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+7.0
+---
+
+ * Remove the `!php/const:` tag, use `!php/const` instead (without the colon)
+
+6.3
+---
+
+ * Add support to dump int keys as strings by using the `Yaml::DUMP_NUMERIC_KEY_AS_STRING` flag
+
 6.2
 ---
 

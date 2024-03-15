@@ -132,7 +132,6 @@ Route::middleware(['auth', 'auth.admin'])->prefix('/admin')->name('admin.')->gro
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard/get-chart-data', [DashboardController::class, 'getChartData']);
 
-
     Route::resource('/categories', CategoryController::class);
     Route::post('/categories/delete', [CategoryController::class, 'delete'])->name('delete_category');
 

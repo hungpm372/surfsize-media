@@ -36,7 +36,7 @@ abstract class ParticipantOptions
      * @param bool $earlyMedia Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
      * @param int $maxParticipants The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
      * @param string $conferenceRecord Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
-     * @param string $conferenceTrim Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+     * @param string $conferenceTrim Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
      * @param string $conferenceStatusCallback The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
      * @param string $conferenceStatusCallbackMethod The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
      * @param string[] $conferenceStatusCallbackEvent The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
@@ -58,13 +58,15 @@ abstract class ParticipantOptions
      * @param string $callReason The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
      * @param string $recordingTrack The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
      * @param int $timeLimit The maximum duration of the call in seconds. Constraints depend on account and configuration.
-     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      * @param int $machineDetectionTimeout The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
      * @param int $machineDetectionSpeechThreshold The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
      * @param int $machineDetectionSpeechEndThreshold The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
      * @param int $machineDetectionSilenceTimeout The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
      * @param string $amdStatusCallback The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
      * @param string $amdStatusCallbackMethod The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+     * @param string $trim Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
      * @return CreateParticipantOptions Options builder
      */
     public static function create(
@@ -112,7 +114,9 @@ abstract class ParticipantOptions
         int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
         int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
-        string $amdStatusCallbackMethod = Values::NONE
+        string $amdStatusCallbackMethod = Values::NONE,
+        string $trim = Values::NONE,
+        string $callToken = Values::NONE
 
     ): CreateParticipantOptions
     {
@@ -160,7 +164,9 @@ abstract class ParticipantOptions
             $machineDetectionSpeechEndThreshold,
             $machineDetectionSilenceTimeout,
             $amdStatusCallback,
-            $amdStatusCallbackMethod
+            $amdStatusCallbackMethod,
+            $trim,
+            $callToken
         );
     }
 
@@ -255,7 +261,7 @@ class CreateParticipantOptions extends Options
      * @param bool $earlyMedia Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
      * @param int $maxParticipants The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
      * @param string $conferenceRecord Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
-     * @param string $conferenceTrim Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+     * @param string $conferenceTrim Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
      * @param string $conferenceStatusCallback The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
      * @param string $conferenceStatusCallbackMethod The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
      * @param string[] $conferenceStatusCallbackEvent The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
@@ -277,13 +283,15 @@ class CreateParticipantOptions extends Options
      * @param string $callReason The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
      * @param string $recordingTrack The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
      * @param int $timeLimit The maximum duration of the call in seconds. Constraints depend on account and configuration.
-     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      * @param int $machineDetectionTimeout The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
      * @param int $machineDetectionSpeechThreshold The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
      * @param int $machineDetectionSpeechEndThreshold The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
      * @param int $machineDetectionSilenceTimeout The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
      * @param string $amdStatusCallback The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
      * @param string $amdStatusCallbackMethod The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+     * @param string $trim Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
      */
     public function __construct(
         
@@ -330,7 +338,9 @@ class CreateParticipantOptions extends Options
         int $machineDetectionSpeechEndThreshold = Values::INT_NONE,
         int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
-        string $amdStatusCallbackMethod = Values::NONE
+        string $amdStatusCallbackMethod = Values::NONE,
+        string $trim = Values::NONE,
+        string $callToken = Values::NONE
 
     ) {
         $this->options['statusCallback'] = $statusCallback;
@@ -377,6 +387,8 @@ class CreateParticipantOptions extends Options
         $this->options['machineDetectionSilenceTimeout'] = $machineDetectionSilenceTimeout;
         $this->options['amdStatusCallback'] = $amdStatusCallback;
         $this->options['amdStatusCallbackMethod'] = $amdStatusCallbackMethod;
+        $this->options['trim'] = $trim;
+        $this->options['callToken'] = $callToken;
     }
 
     /**
@@ -560,9 +572,9 @@ class CreateParticipantOptions extends Options
     }
 
     /**
-     * Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+     * Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
      *
-     * @param string $conferenceTrim Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+     * @param string $conferenceTrim Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
      * @return $this Fluent Builder
      */
     public function setConferenceTrim(string $conferenceTrim): self
@@ -824,9 +836,9 @@ class CreateParticipantOptions extends Options
     }
 
     /**
-     * Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      *
-     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+     * @param string $machineDetection Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
      * @return $this Fluent Builder
      */
     public function setMachineDetection(string $machineDetection): self
@@ -904,6 +916,30 @@ class CreateParticipantOptions extends Options
     public function setAmdStatusCallbackMethod(string $amdStatusCallbackMethod): self
     {
         $this->options['amdStatusCallbackMethod'] = $amdStatusCallbackMethod;
+        return $this;
+    }
+
+    /**
+     * Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+     *
+     * @param string $trim Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+     * @return $this Fluent Builder
+     */
+    public function setTrim(string $trim): self
+    {
+        $this->options['trim'] = $trim;
+        return $this;
+    }
+
+    /**
+     * A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
+     *
+     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
+     * @return $this Fluent Builder
+     */
+    public function setCallToken(string $callToken): self
+    {
+        $this->options['callToken'] = $callToken;
         return $this;
     }
 

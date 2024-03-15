@@ -38,8 +38,7 @@
                 @forelse ($products as $item)
                     <li class="pr-cart-item">
                         <div class="product-image">
-                            <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                    alt="{{ $item['name'] }}">
+                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item['name'] }}" loading="lazy">
                             </figure>
                         </div>
                         <div class="product-name">
@@ -142,8 +141,8 @@
                             <div class="product-thumnail">
                                 <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
                                     title="{{ $item->name }}">
-                                    <figure><img src="{{ asset('storage/products/' . $item->featured_image) }}"
-                                            width="214" height="214" alt="{{ $item->name }}">
+                                    <figure><img src="{{ $item->featured_image }}" width="214" height="214"
+                                            alt="{{ $item->name }}" loading="lazy">
                                     </figure>
                                 </a>
                                 <div class="group-flash">
