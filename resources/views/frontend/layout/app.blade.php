@@ -27,6 +27,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/color-01.css') }}">
     @yield('css')
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQPM6WVTLQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BQPM6WVTLQ');
+    </script>
 </head>
 
 <body class="home-page home-01 ">
@@ -56,10 +67,74 @@
     <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('frontend/js/functions.js') }}"></script>
     <script>
-        $(document).ready(function(){var t=window.location.href.split("?")[0].replace("#","").replace(/\/$/,""),r=!1;$(".primary .menu-item").each(function(a){$(this).children().first().attr("href")==t&&($(this).addClass("home-icon"),r=!0)}),r||$(".primary .menu-item").first().addClass("home-icon");var a=$("#back-to-top-btn");$(window).on("scroll",function(){$(this).scrollTop()>100?a.css("transform","translate3d(0px, 0, 0)"):a.css("transform","translate3d(70px, 0, 0)")}),a.on("click",function(t){$("html, body").animate({scrollTop:0},500)})});
+        $(document).ready(function() {
+            var t = window.location.href.split("?")[0].replace("#", "").replace(/\/$/, ""),
+                r = !1;
+            $(".primary .menu-item").each(function(a) {
+                $(this).children().first().attr("href") == t && ($(this).addClass("home-icon"), r = !0)
+            }), r || $(".primary .menu-item").first().addClass("home-icon");
+            var a = $("#back-to-top-btn");
+            $(window).on("scroll", function() {
+                $(this).scrollTop() > 100 ? a.css("transform", "translate3d(0px, 0, 0)") : a.css(
+                    "transform", "translate3d(70px, 0, 0)")
+            }), a.on("click", function(t) {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 500)
+            })
+        });
     </script>
     <script>
-        $(document).ready(function(){var i=0;$('input[name="q"]').keyup(function(e){var s=$(this).val();if($(".search-result-box").html(""),""!=s){let t=RegExp(s,"i");i&&clearTimeout(i),i=setTimeout(function(){$.getJSON("/json/products.json",function(i){$.each(i,function(i,e){if(-1!=e.name.search(t)){$(".search-result-box").css({opacity:1,visibility:"visible"}).show();let s=e.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."),a=(e.price-e.discount).toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");$(".search-result-box").append('<li><a href="/product/'+e.slug+"-"+e.code+'"><div class="img-box"><img loading="lazy" src="'+e.featured_image+'" alt="'+e.name+'"></div><div class="info-box"><div class="info-title">'+e.name+'</div><div class="info-price">'+(0==e.discount?'<div class="price-sale">'+s+"đ</div>":'<div class="price-sale">'+a+'đ</div><div class="price-origins">'+s+"đ</div>")+"</div></div></a></li>")}})})},200)}else $(".search-result-box").css({opacity:0,visibility:"hidden"}).html("")}),$(document).on("click",".search-result-box li a",function(i){i.preventDefault();let e=$(this).attr("href");$(this).closest(".search-result-box").html(""),location.href=e}),$(document).mouseup(function(i){var e=$(".search-result-box");e.is(i.target)||0!==e.has(i.target).length||e.html("")})});
+        $(document).ready(function() {
+            var i = 0;
+            $('input[name="q"]').keyup(function(e) {
+                var s = $(this).val();
+                if ($(".search-result-box").html(""), "" != s) {
+                    let t = RegExp(s, "i");
+                    i && clearTimeout(i), i = setTimeout(function() {
+                        $.getJSON("/json/products.json", function(i) {
+                            $.each(i, function(i, e) {
+                                if (-1 != e.name.search(t)) {
+                                    $(".search-result-box").css({
+                                        opacity: 1,
+                                        visibility: "visible"
+                                    }).show();
+                                    let s = e.price.toString().replace(
+                                            /\B(?=(\d{3})+(?!\d))/g, "."),
+                                        a = (e.price - e.discount).toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                    $(".search-result-box").append(
+                                        '<li><a href="/product/' + e.slug +
+                                        "-" + e.code +
+                                        '"><div class="img-box"><img loading="lazy" src="' +
+                                        e.featured_image + '" alt="' + e.name +
+                                        '"></div><div class="info-box"><div class="info-title">' +
+                                        e.name +
+                                        '</div><div class="info-price">' + (0 ==
+                                            e.discount ?
+                                            '<div class="price-sale">' + s +
+                                            "đ</div>" :
+                                            '<div class="price-sale">' + a +
+                                            'đ</div><div class="price-origins">' +
+                                            s + "đ</div>") +
+                                        "</div></div></a></li>")
+                                }
+                            })
+                        })
+                    }, 200)
+                } else $(".search-result-box").css({
+                    opacity: 0,
+                    visibility: "hidden"
+                }).html("")
+            }), $(document).on("click", ".search-result-box li a", function(i) {
+                i.preventDefault();
+                let e = $(this).attr("href");
+                $(this).closest(".search-result-box").html(""), location.href = e
+            }), $(document).mouseup(function(i) {
+                var e = $(".search-result-box");
+                e.is(i.target) || 0 !== e.has(i.target).length || e.html("")
+            })
+        });
     </script>
     @yield('js')
 
