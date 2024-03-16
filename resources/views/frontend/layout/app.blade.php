@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="EYz-pvIEKRcdhEso6BXEckhtfjVWnaWRVJf1eKdjIJ0" />
     <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.ico') }}">
     <link
@@ -43,11 +44,6 @@
     </main>
 
     @include('frontend.blocks.footer')
-
-
-
-
-
 
 
     <script src="{{ asset('frontend/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
