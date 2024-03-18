@@ -328,7 +328,7 @@
         <div class="coppy-right-box">
             <div class="container">
                 <div class="coppy-right-item item-left">
-                    <p class="coppy-right-text">Copyright © {{ date('Y') }} Surfside Media. All rights
+                    <p class="coppy-right-text">Copyright © {{ date('Y') }} Phan Minh Hung. All rights
                         reserved</p>
                 </div>
                 <div class="coppy-right-item item-right">
