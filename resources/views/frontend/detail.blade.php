@@ -62,8 +62,7 @@
     <div class="wrap-breadcrumb">
         <ul>
             <li class="item-link"><a href="{{ route('home') }}" class="link">trang chủ</a></li>
-            <li class="item-link"><a href="{{ route('category_products', ['slug' => $product->category->slug]) }}"
-                    class="link">điện thoại
+            <li class="item-link"><a href="{{ route('category_products', ['slug' => $product->category->slug]) }}" class="link">điện thoại
                     {{ $product->category->name }}</a></li>
             <li class="item-link"><span>{{ $product->name }}</span></li>
         </ul>
@@ -107,8 +106,7 @@
                         </ul>
                     </div>
                     <div class="wrap-social">
-                        <a class="link-socail" href="#"><img src="{{ asset('frontend/images/social-list.png') }}"
-                                alt=""></a>
+                        <a class="link-socail" href="#"><img src="{{ asset('frontend/images/social-list.png') }}" alt=""></a>
                     </div>
                     <div class="wrap-price">
                         @if ($product->discount == 0)
@@ -130,8 +128,7 @@
                     <div class="quantity">
                         <span>Số lượng:</span>
                         <div class="quantity-input">
-                            <input type="text" name="product-quatity" value="1"
-                                data-max="{{ $product->quantity }}">
+                            <input type="text" name="product-quatity" value="1" data-max="{{ $product->quantity }}">
 
                             <a class="btn btn-reduce" href="#"></a>
                             <a class="btn btn-increase" href="#"></a>
@@ -139,8 +136,7 @@
                     </div>
                     <div class="wrap-butons">
                         @if ($product->quantity > 0)
-                            <a href="#" data-price="{{ $product->price }}"
-                                data-url="{{ route('add_product_to_cart') }}" data-id="{{ $product->id }}"
+                            <a href="#" data-price="{{ $product->price }}" data-url="{{ route('add_product_to_cart') }}" data-id="{{ $product->id }}"
                                 class="btn add-to-cart">thêm vào giỏ hàng</a>
                         @else
                             <button type="button" disabled class="btn out-of-stock">hết hàng</button>
@@ -221,21 +217,17 @@
                                     <h2 class="woocommerce-Reviews-title">01 review for <span>Radiant-360 R6 Chainsaw
                                             Omnidirectional [Orage]</span></h2>
                                     <ol class="commentlist">
-                                        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                            id="li-comment-20">
+                                        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
                                             <div id="comment-20" class="comment_container">
-                                                <img alt="" src="{{ asset('frontend/images/author-avata.jpg') }}"
-                                                    height="80" width="80">
+                                                <img alt="" src="{{ asset('frontend/images/author-avata.jpg') }}" height="80" width="80">
                                                 <div class="comment-text">
                                                     <div class="star-rating">
-                                                        <span class="width-80-percent">Rated <strong
-                                                                class="rating">5</strong> out of 5</span>
+                                                        <span class="width-80-percent">Rated <strong class="rating">5</strong> out of 5</span>
                                                     </div>
                                                     <p class="meta">
                                                         <strong class="woocommerce-review__author">admin</strong>
                                                         <span class="woocommerce-review__dash">–</span>
-                                                        <time class="woocommerce-review__published-date"
-                                                            datetime="2008-02-14 20:00">Tue, Aug 15, 2017</time>
+                                                        <time class="woocommerce-review__published-date" datetime="2008-02-14 20:00">Tue, Aug 15, 2017</time>
                                                     </p>
                                                     <div class="description">
                                                         <p>Pellentesque habitant morbi tristique senectus et netus et
@@ -251,8 +243,7 @@
                                     <div id="review_form">
                                         <div id="respond" class="comment-respond">
 
-                                            <form action="#" method="post" id="commentform" class="comment-form"
-                                                novalidate="">
+                                            <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
                                                 <p class="comment-notes">
                                                     <span id="email-notes">Your email address will not be published.</span>
                                                     Required fields are marked <span class="required">*</span>
@@ -262,20 +253,15 @@
                                                     <p class="stars">
 
                                                         <label for="rated-1"></label>
-                                                        <input type="radio" id="rated-1" name="rating"
-                                                            value="1">
+                                                        <input type="radio" id="rated-1" name="rating" value="1">
                                                         <label for="rated-2"></label>
-                                                        <input type="radio" id="rated-2" name="rating"
-                                                            value="2">
+                                                        <input type="radio" id="rated-2" name="rating" value="2">
                                                         <label for="rated-3"></label>
-                                                        <input type="radio" id="rated-3" name="rating"
-                                                            value="3">
+                                                        <input type="radio" id="rated-3" name="rating" value="3">
                                                         <label for="rated-4"></label>
-                                                        <input type="radio" id="rated-4" name="rating"
-                                                            value="4">
+                                                        <input type="radio" id="rated-4" name="rating" value="4">
                                                         <label for="rated-5"></label>
-                                                        <input type="radio" id="rated-5" name="rating"
-                                                            value="5" checked="checked">
+                                                        <input type="radio" id="rated-5" name="rating" value="5" checked="checked">
                                                     </p>
                                                 </div>
                                                 <p class="comment-form-author">
@@ -292,8 +278,7 @@
                                                     <textarea id="comment" name="comment" cols="45" rows="8"></textarea>
                                                 </p>
                                                 <p class="form-submit">
-                                                    <input name="submit" type="submit" id="submit" class="submit"
-                                                        value="Submit">
+                                                    <input name="submit" type="submit" id="submit" class="submit" value="Submit">
                                                 </p>
                                             </form>
 
@@ -356,10 +341,8 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                            title="{{ $item->name }}">
-                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
-                                                    loading="lazy">
+                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}" loading="lazy">
                                             </figure>
                                         </a>
                                     </div>
@@ -368,8 +351,7 @@
                                             class="product-name"><span>{{ $item->name }}</span></a>
                                         <div class="wrap-price">
                                             @if ($item->discount == 0)
-                                                <span
-                                                    class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
+                                                <span class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
                                             @else
                                                 <span>
                                                     <p class="product-price">
@@ -398,36 +380,32 @@
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">sản phẩm liên quan</h3>
                 <div class="wrap-products">
-                    <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
-                        data-loop="true" data-slideSpeed="1000" data-autoplay="true" data-autoplayTimeout="5000"
-                        data-nav="true" data-dots="false"
-                        data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
+                    <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="true" data-slideSpeed="1000"
+                        data-autoplay="true" data-autoplayTimeout="5000" data-nav="true" data-dots="false"
+                        data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                         @foreach ($relatedProducts as $item)
                             <div class="product product-style-2 equal-elem ">
                                 <div class="product-thumnail">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        title="{{ $item->name }}">
-                                        <figure><img src="{{ $item->featured_image }}" width="214" height="214"
-                                                alt="{{ $item->name }}" loading="lazy">
+                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                        <figure><img src="{{ $item->featured_image }}" width="214" height="214" alt="{{ $item->name }}"
+                                                loading="lazy">
                                         </figure>
                                     </a>
                                     <div class="group-flash">
                                         <span class="flash-item sale-label">sale</span>
                                     </div>
                                     <div class="wrap-btn">
-                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                            class="function-link">quick view</a>
+                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" class="function-link">quick
+                                            view</a>
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        class="product-name">
+                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" class="product-name">
                                         <span>{{ $item->name }}</span>
                                     </a>
                                     <div class="wrap-price">
                                         @if ($item->discount == 0)
-                                            <span
-                                                class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
+                                            <span class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
                                         @else
                                             <span>
                                                 <p class="product-price">
