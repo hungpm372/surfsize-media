@@ -1,0 +1,158 @@
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Tiki",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+            "width": 1080,
+            "height": 1080
+        },
+        "telephone": "19006035",
+        "url": "https://tiki.vn/",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "52 Ut Tich, Ward 4, Tan Binh District, Ho Chi Minh City",
+            "addressLocality": "Ho Chi Minh",
+            "postalCode": "700000",
+            "addressRegion": "Ho Chi Minh",
+            "addressCountry": "VN"
+        },
+        "priceRange": "1000 - 1000000000",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "08:00",
+                "closes": "21:00"
+            }
+        ],
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.79664498748942",
+            "longitude": "106.65856519879867"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Tiện lợi mua sắm hàng triệu mặt hàng, dịch vụ. Vô vàn ưu đãi freeship, mã giảm giá. Hoàn tiền 15% tối đa 600k/tháng với thẻ tín dụng TikiCARD.",
+        "serviceType": "Ecommerce",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+            "width": 1080,
+            "height": 1080
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://tiki.vn/#organization",
+        "name": "Tiki",
+        "url": "https://tiki.vn/",
+        "sameAs": [
+            "https://www.facebook.com/tiki.vn/",
+            "https://www.instagram.com/Tiki.vn/",
+            "https://www.linkedin.com/company/tiki-vn/",
+            "https://www.youtube.com/user/TikiVBlog",
+            "https://www.tiktok.com/@tiki.official",
+            "https://www.pinterest.com/tiki_vn/",
+            "https://vi.wikipedia.org/wiki/Tiki"
+        ],
+        "logo": {
+            "@type": "ImageObject",
+            "@id": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png/#logo",
+            "inLanguage": "vi",
+            "url": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+            "contentUrl": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+            "width": 1080,
+            "height": 1080,
+            "caption": "Tiki"
+        },
+        "image": {
+            "@id": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png/#logo"
+        }
+    },
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "@id": "https://tiki.vn/#website",
+        "url": "https://tiki.vn/",
+        "name": "Tiki",
+        "description": "Tiện lợi mua sắm hàng triệu mặt hàng, dịch vụ. Vô vàn ưu đãi freeship, mã giảm giá. Hoàn tiền 15% tối đa 600k/tháng với thẻ tín dụng TikiCARD.",
+        "potentialAction": [
+            {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://tiki.vn/search?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+            }
+        ],
+        "inLanguage": "vi"
+    },
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home"
+            }
+        ]
+    },
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "url": "https://tiki.vn/",
+        "@id": "https://tiki.vn/",
+        "logo": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+        "image": "https://salt.tikicdn.com/cache/w500/ts/upload/c0/8b/46/c3f0dc850dd93bfa7af7ada0cbd75dc0.png",
+        "slogan": "Tiện lợi mua sắm hàng triệu mặt hàng, dịch vụ. Vô vàn ưu đãi freeship, mã giảm giá. Hoàn tiền 15% tối đa 600k/tháng với thẻ tín dụng TikiCARD.",
+        "priceRange": "1000 - 1000000000",
+        "telephone": "19006035",
+        "name": "Công ty TNHH Ti Ki",
+        "brand": "Tiki",
+        "openingHours": "Mo-Su 08:00-21:00",
+        "sameAs": [
+            "https://www.facebook.com/tiki.vn/",
+            "https://www.linkedin.com/company/tiki-vn/"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "52 Ut Tich, Ward 4, Tan Binh District, Ho Chi Minh City",
+            "addressLocality": "Ho Chi Minh"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "19006035",
+            "contactType": "customer service",
+            "contactOption": "TollFree",
+            "areaServed": "VN",
+            "availableLanguage": "vi"
+        },
+        "alternateName": "tiki.vn",
+        "email": "hotro@tiki.vn",
+        "foundingDate": "01/03/2010",
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "Trần Ngọc Thái Sơn",
+                "url": "https://www.linkedin.com/in/sonnytran/",
+                "@id": "https://www.linkedin.com/in/sonnytran/"
+            }
+        ]
+    }
+]

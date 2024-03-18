@@ -1,7 +1,5 @@
 @extends('frontend.layout.app')
-@section('title')
-    {{ mb_convert_case('trang chủ', MB_CASE_TITLE, 'UTF-8') }}
-@endsection
+
 @section('content')
     {{-- {{ dd($colorLists) }} --}}
     <!--MAIN SLIDE-->
@@ -164,9 +162,8 @@
                                         <div class="product-thumnail">
                                             <a href="{{ route('product_detail', ['slug' => $product->slug, 'code' => $product->code]) }}"
                                                 title="{{ $product->name }}">
-                                                <figure><img
-                                                        src="{{ $product->featured_image }}"
-                                                        width="800" height="800" alt="{{ $product->name }}" loading="lazy">
+                                                <figure><img src="{{ $product->featured_image }}" width="800"
+                                                        height="800" alt="{{ $product->name }}" loading="lazy">
                                                 </figure>
                                             </a>
                                             <div class="group-flash">

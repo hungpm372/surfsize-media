@@ -1,7 +1,4 @@
 @extends('frontend.layout.app')
-@section('title')
-    {{ mb_convert_case('chi tiết đơn hàng ', MB_CASE_TITLE, 'UTF-8') . $order->order_code }}
-@endsection
 
 @section('css')
     <style>

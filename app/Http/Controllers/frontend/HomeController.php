@@ -17,7 +17,15 @@ class HomeController extends Controller
         $featuredProducts = Product::where('featured', 1)->inRandomOrder()->take(10)->get();
         $latestProducts = Product::latest()->take(20)->get();
         $latestProductQuantities = $latestProducts->count() % 2 == 0 ? $latestProducts->count() : $latestProducts->count() - 1;
-        return view('frontend.home', compact('featuredProducts', 'latestProducts', 'latestProductQuantities'));
+
+        $seo = [
+            'title' => 'Dẫn đầu cùng công nghệ, cảm xúc không giới hạn',
+            'description' => 'Tìm kiếm và mua sắm điện thoại di động trực tuyến với sự đa dạng và chất lượng tuyệt vời. Khám phá ngay để có trải nghiệm mua sắm tuyệt vời chỉ có ở Mobileworld!',
+            'image' => 'haha',
+            'canonical' => null,
+        ];
+
+        return view('frontend.home', compact('featuredProducts', 'latestProducts', 'latestProductQuantities', 'seo'));
     }
 
     public function aboutUs()

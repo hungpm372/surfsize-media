@@ -1,9 +1,5 @@
 @extends('frontend.layout.app')
 
-@section('title')
-    {{ mb_convert_case($title, MB_CASE_TITLE, 'UTF-8') }}
-@endsection
-
 @section('content')
     <div class="wrap-breadcrumb">
         <ul>

@@ -1,9 +1,5 @@
 @extends('frontend.layout.app')
 
-@section('title')
-    {{ mb_convert_case('đăng nhập', MB_CASE_TITLE, 'UTF-8') }}
-@endsection
-
 @section('css')
     <style>
         .my-alert {
