@@ -453,9 +453,11 @@
     <script src="{{ asset('frontend/js/zoom.js') }}"></script>
     <script>
         $(function() {
-            $('.mz-zoom').each(function() {
-                $(this).extm();
-            })
-        })
+            if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+                $('.mz-zoom').each(function() {
+                    $(this).extm();
+                })
+            }
+        });
     </script>
 @endsection
