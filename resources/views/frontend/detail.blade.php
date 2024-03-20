@@ -74,12 +74,12 @@
                 <div class="detail-media">
                     <div class="product-gallery">
                         <ul class="slides">
-                            <li data-thumb="{{ $product->featured_image }}" class="xyz">
-                                <img src="{{ $product->featured_image }}" alt="{{ $product->name }}" loading="lazy" />
+                            <li data-thumb="{{ $product->featured_image }}">
+                                <img src="{{ $product->featured_image }}" alt="{{ $product->name }}" loading="lazy" class="mz-zoom" />
                             </li>
                             @foreach ($product->productImages as $item)
                                 <li data-thumb="{{ $item->name }}">
-                                    <img src="{{ $item->name }}" alt="{{ $product->name }}" loading="lazy" />
+                                    <img src="{{ $item->name }}" alt="{{ $product->name }}" loading="lazy" class="mz-zoom" />
                                 </li>
                             @endforeach
 
@@ -451,5 +451,11 @@
     <script src="{{ asset('frontend/js/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('frontend/js/add-to-cart.js') }}"></script>
     <script src="{{ asset('frontend/js/zoom.js') }}"></script>
-    <script></script>
+    <script>
+        $(function() {
+            $('.mz-zoom').each(function() {
+                $(this).extm();
+            })
+        })
+    </script>
 @endsection

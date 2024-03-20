@@ -5,6 +5,7 @@
 <meta name="keywords" content="{{ $keywords ?? 'Từ khóa mặc định' }}" />
 <meta name="language" content="Vietnamese" />
 <meta name="author" content="Phan Minh Hung" />
+<meta name="copyright" content="Phan Minh Hung" />
 <meta name="robots" content="index, follow" />
 
 <meta property="og:type" content="website" />
@@ -16,15 +17,15 @@
 <meta property="og:site_name" content="Mobileworld" />
 <meta property="fb:app_id" content="2108579366179393" />
 
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="{{ request()->url() }}" />
-<meta property="twitter:title" content="{{ mb_convert_case('Mobileworld | ' . $seo['title'], MB_CASE_TITLE, 'UTF-8') }}" />
-<meta property="twitter:description" content="{{ $seo['description'] }}" />
-<meta property="twitter:image" content="{{ $seo['image'] ?? 'http://127.0.0.1:8000/storage/app/slider1.jpg' }}" />
-<meta property="twitter:image:alt" content="{{ $seo['alt'] ?? mb_convert_case('Mobileworld | ' . $seo['title'], MB_CASE_TITLE, 'UTF-8') }}" />
-<meta property="twitter:site:id" content="1245893597859213312" />
-<meta property="twitter:site" content="&#64;mobileworld" />
-<meta property="twitter:creator" content="&#64;hungpm372" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="{{ request()->url() }}" />
+<meta name="twitter:title" content="{{ mb_convert_case('Mobileworld | ' . $seo['title'], MB_CASE_TITLE, 'UTF-8') }}" />
+<meta name="twitter:description" content="{{ $seo['description'] }}" />
+<meta name="twitter:image" content="{{ $seo['image'] ?? 'http://127.0.0.1:8000/storage/app/slider1.jpg' }}" />
+<meta name="twitter:image:alt" content="{{ $seo['alt'] ?? mb_convert_case('Mobileworld | ' . $seo['title'], MB_CASE_TITLE, 'UTF-8') }}" />
+<meta name="twitter:site:id" content="1245893597859213312" />
+<meta name="twitter:site" content="&#64;mobileworld" />
+<meta name="twitter:creator" content="&#64;hungpm372" />
 
 <meta name="DC.title" content="{{ mb_convert_case('Mobileworld | ' . $seo['title'], MB_CASE_TITLE, 'UTF-8') }}" />
 <meta name="geo.region" content="VN" />

@@ -1,1 +1,601 @@
-!function (e) { "use strict"; if (1 == e(".mercado-google-maps").length) { var a = document.createElement("script"); a.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBpXkIHekTsMPHuS_yuG1cIK0j5TvVjFkE", a.type = "text/javascript"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(a, t) } var n = { init: function () { this.mercado_chosen(), this.mercado_clone_all_zan_menus(), this.mercado_control_mobile_menu(), this.mercado_control_panel(), this.mercado_tabs(), this.mercado_countdown(), this.mercado_better_equal_elems(), this.mercado_toggle_slide_menu(), this.mercado_price_range(), this.mercado_price_quantity(), this.mercado_remove_product_in_cart(), this.mercado_product_slider(), this.mercado_toggle_vertical_main_menu(), this.mercado_sticky_menu(), this.mercado_google_maps() }, onReady: function () { this.mercado_innit_carousel() }, onResize: function () { this.mercado_innit_carousel(), this.mercado_better_equal_elems(), this.mercado_product_slider(), this.mercado_tabs(), this.mercado_sticky_menu() }, mercado_product_slider: function () { if (e(".product-gallery").length > 0) { e(".product-gallery").flexslider({ animation: "slide", controlNav: "thumbnails" }); var a = { autoplay: !1, autoplayTimeout: 3e3, slidespeed: 3e3, margin: 10, nav: !0, dots: !1, loop: !0, navText: ['<i class="fa fa-angle-left " aria-hidden="true"></i>', '<i class="fa fa-angle-right " aria-hidden="true"></i>'] }; a.responsive = { 0: { items: "2" }, 370: { items: "3" }, 480: { items: "4" }, 768: { items: "4" }, 992: { items: "3" }, 1200: { items: "4" } }, e(".flex-control-thumbs").owlCarousel(a) } }, mercado_chosen: function () { e(".wrap-search-form .wrap-list-cate").length > 0 && (e(".wrap-search-form .wrap-list-cate").on("click", ".link-control", function (a) { a.preventDefault(), e(this).siblings("ul").slideToggle() }), e(".wrap-search-form .wrap-list-cate .list-cate").on("click", "li", function (a) { var t = e(this), n = t.attr("value"), i = t.text(), r = t.text(); i = i.slice(0, 12), t.parent().siblings("a").text(i).attr("title", r), t.parent().siblings('input[name="product-cate"]').val(n), t.parent().slideUp() })), e("select:not(.except-chosen)").length > 0 && e("select:not(.except-chosen)").each(function () { e(this).chosen() }) }, mercado_toggle_slide_menu: function () { e(".widget .has-child-cate").length > 0 && e(document).on("click", ".widget .has-child-cate .toggle-control", function (a) { a.preventDefault(); var t = e(this); t.parent().hasClass("open") ? t.parent().removeClass("open") : (t.closest(".widget-content").find(".open").removeClass("open"), t.parent().addClass("open")) }), e(".widget .list-limited .default-hiden").length > 0 && e(document).on("click", ".widget .list-limited .btn-control", function (a) { a.preventDefault(); var t = e(this), n = t.attr("data-label"), i = t.html(); t.parent().siblings(".default-hiden").slideToggle(), t.attr("data-label", i).html(n) }), e(".toggle-slide-menu").length > 0 && e(".toggle-slide-menu").on("click", ".btn-control a", function (a) { a.preventDefault(); var t = e(this); t.parent().siblings(".default-hiden").slideToggle(300), t.find("i").toggleClass("fa-rotate-180") }) }, mercado_price_range: function () { e("#slider-range").length > 0 && (e("#slider-range").slider({ range: !0, min: 0, max: 1e8, step: 1e5, values: [0, 1e8], slide: function (a, t) { e("#amount").val(t.values[0].toLocaleString("vi-VN") + "đ - " + t.values[1].toLocaleString("vi-VN") + "đ"), e(".btn.filter-submit").data("min", t.values[0]).data("max", t.values[1]) } }), e("#amount").val(e("#slider-range").slider("values", 0).toLocaleString("vi-VN") + "đ - " + e("#slider-range").slider("values", 1).toLocaleString("vi-VN") + "đ")) }, mercado_clone_all_zan_menus: function () { e(".clone-main-menu").each(function () { var a = e(this), t = a.attr("id"); if (!e("#mercado-clone-" + t).length) { var i = a.clone(!0); i.find(".menu-item").addClass("clone-menu-item"), i.find("[id]").each(function () { i.find('.vc_tta-panel-heading a[href="#' + e(this).attr("id") + '"]').attr("href", "#" + n.mercado_add_string_prefix(e(this).attr("id"), "mercado-clone-")), e(this).attr("id", n.mercado_add_string_prefix(e(this).attr("id"), "mercado-clone-")) }), i.find(".mercado-menu").addClass("mercado-menu-clone"); var r = "mercado-panel-" + a.attr("id"), o = a.data("menuname"); e(".mercado-clone-wrap .mercado-panels #mercado-main-panel").length || e(".mercado-clone-wrap .mercado-panels").append('<div id="mercado-main-panel" class="mercado-panel mercado-main-panel"><ul class="depth-01"></ul></div>'), e(".mercado-clone-wrap .mercado-panels #mercado-main-panel ul").append('<li class="menu-item"><a data-target="#' + r + '" class="mercado-next-panel" href="#' + r + '"></a><a title="' + o + '" class="mercado-item-title" href="#">' + o + "</a></li>"), e(".mercado-clone-wrap .mercado-panels #mercado-panel-" + t).length || e(".mercado-clone-wrap .mercado-panels").append('<div id="mercado-panel-' + t + '" class="mercado-panel mercado-hidden"><ul class="depth-01"></ul></div>'); var s = e(".mercado-clone-wrap .mercado-panels #mercado-panel-" + t + " ul"); s.html(i.html()), n.mercado_insert_children_panels_html_by_elem(s, 0) } }) }, mercado_insert_children_panels_html_by_elem: function (a, t) { var i = parseInt(t, 10); a.find(".menu-item-has-children").length && a.find(".menu-item-has-children").each(function () { var a = e(this); n.mercado_insert_children_panels_html_by_elem(a, i); for (var t = "mercado-panel-" + String(i); e("#" + t).length;)t = "mercado-panel-" + String(++i); a.prepend('<a class="mercado-next-panel" href="#' + t + '" data-target="#' + t + '"></a>'); var r = e("<div>").append(a.find("> .submenu,> .wrap-megamenu").clone()).html(); a.find("> .submenu,> .wrap-megamenu").remove(), e(".mercado-clone-wrap .mercado-panels").append('<div id="' + t + '" class="mercado-panel mercado-sub-panel mercado-hidden">' + r + "</div>") }) }, mercado_control_panel: function () { e(document).on("click", ".mercado-next-panel", function (a) { var t = e(this), n = (t.closest(".menu-item"), t.closest(".mercado-panel")), i = t.attr("href"); if (e(i).length) { n.addClass("mercado-sub-opened"), e(i).addClass("mercado-panel-opened").removeClass("mercado-hidden").attr("data-parent-panel", n.attr("id")); var r = "", o = ""; void 0 === (r = t.siblings(".mercado-item-title").attr("title")) && (r = "mercado menu"), e(".mercado-panels-actions-wrap .mercado-current-panel-title").length > 0 && (o = e(".mercado-panels-actions-wrap .mercado-current-panel-title").html()), e(".mercado-panels-actions-wrap").find(".mercado-current-panel-title").remove(), e(".mercado-panels-actions-wrap").prepend('<span class="mercado-current-panel-title">' + r + "</span>"), e(".mercado-panels-actions-wrap .mercado-prev-panel").remove(), e(".mercado-panels-actions-wrap").prepend('<a data-prenttitle="' + o + '" class="mercado-prev-panel" href="#' + n.attr("id") + '" data-cur-panel="' + i + '" data-target="#' + n.attr("id") + '"></a>') } a.preventDefault() }), e(document).on("click", ".mercado-prev-panel", function (a) { var t = e(this), n = t.attr("data-cur-panel"), i = t.attr("href"); e(n).removeClass("mercado-panel-opened").addClass("mercado-hidden"), e(i).addClass("mercado-panel-opened").removeClass("mercado-sub-opened"); var r = e(i).attr("data-parent-panel"); if (void 0 === r || !1 == typeof r) e(".mercado-panels-actions-wrap .mercado-prev-panel").remove(), e(".mercado-panels-actions-wrap .mercado-current-panel-title").remove(); else { e(".mercado-panels-actions-wrap .mercado-prev-panel").attr("href", "#" + r).attr("data-cur-panel", i).attr("data-target", "#" + r); var o = ""; void 0 === (o = e("#" + r).find('.mercado-next-panel[data-target="' + i + '"]').siblings(".mercado-item-title").attr("title")) && (o = "mercado menu"), e(".mercado-panels-actions-wrap").prepend('<span class="mercado-current-panel-title">' + o + "</span>") } a.preventDefault() }) }, mercado_control_mobile_menu: function () { e(document).on("click", ".mobile-navigation", function (a) { return a.preventDefault(), e(".mercado-clone-wrap").addClass("open"), !1 }), e(document).on("click", ".mercado-clone-wrap .mercado-close-panels", function () { return e(".mercado-clone-wrap").removeClass("open"), !1 }) }, mercado_innit_carousel: function () { e(".owl-carousel").each(function (a, t) { var n = e(this), i = n, r = n.data(), o = n.data("animateout"), s = n.data("animatein"), l = n.data("slidespeed"); r.navText = ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'], void 0 !== o && (r.animateOut = o), void 0 !== s && (r.animateIn = s), void 0 !== l && (r.smartSpeed = l), e("body").hasClass("rtl") && (r.rtl = !0), i.on("drag.owl.carousel", function (e) { i.addClass("owl-changed"), setTimeout(function () { i.removeClass("owl-changed") }, r.smartSpeed) }), i.owlCarousel(r) }) }, mercado_tabs: function () { e(".tab-control:not(.normal)").length > 0 && (e(".tab-contents").length && setTimeout(function () { e(".tab-contents:not(.tab-not-equal)").each(function () { var a = e(this); if (a.find(".tab-content-item").length) { a.find(".tab-content-item").css({ height: "auto" }); var t = 0; a.find(".tab-content-item").each(function () { var a = e(this).height(); parseInt(t, 10) < parseInt(a, 10) && (t = parseInt(a, 10)) }), a.find(".tab-content-item").height(t) } }) }, 1200), e(document).on("click", ".tab-control .tab-control-item", function (a) { if (a.preventDefault(), !e(this).hasClass("active")) { var t = e(this), n = t.attr("href"), i = t.closest(".wrap-product-tab").find(".tab-contents").find(n); t.siblings(".active").removeClass("active"), t.addClass("active"), t.closest(".wrap-product-tab").find(".tab-contents .active").removeClass("active"), i.addClass("active"), i.find(".wrap-products .owl-item").each(function (a) { var t = e(this), n = e(this).attr("style"), i = "zoomIn", r = 10 * parseInt(a, 10); t.attr("style", n + ";-webkit-animation-delay:" + String(r) + "ms;-moz-animation-delay:" + String(r) + "ms;-o-animation-delay:" + String(r) + "ms;animation-delay:" + String(r) + "ms;").addClass(i + " animated").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () { t.removeClass(i + " animated"), t.attr("style", n) }) }) } })), e(".tab-control.normal").length > 0 && e(document).on("click", ".tab-control.normal .tab-control-item", function (a) { a.preventDefault(); var t = e(this); t.hasClass("active") || (t.siblings(".active").removeClass("active"), t.addClass("active"), t.parents().siblings(".tab-contents").find(".active").removeClass("active"), t.parents().siblings(".tab-contents").find(t.attr("href")).addClass("active")) }) }, mercado_countdown: function () { e(".mercado-countdown").length > 0 && e(".mercado-countdown").each(function (a, t) { var n = e(this), i = n.data("expire"); n.countdown(i, function (a) { e(this).html(a.strftime("<span><b>%D</b> Days</span> <span><b>%-H</b> Hrs</span> <span><b>%M</b> Mins</span> <span><b>%S</b> Secs</span>")) }) }) }, mercado_better_equal_elems: function () { setTimeout(function () { e(".equal-container").each(function () { var a = e(this).find(".equal-elem"); if (a.length) { a.css("height", "auto"); var t = 0; a.each(function () { var a = e(this).height(); t < parseFloat(a) && (t = parseFloat(a)) }), a.height(parseInt(t, 10)) } }) }, 1e3) }, mercado_price_quantity: function () { e(".quantity-input").length > 0 && (e(".quantity-input").on("click", ".btn", function (a) { a.preventDefault(); var t = e(this), n = t.siblings("input[name=product-quatity]").first(), i = t.siblings("input[name=product-quatity]").first().val(), r = t.siblings("input[name=product-quatity]").first().attr("data-max"); t.hasClass("btn-reduce") ? parseInt(i, 10) > 1 && n.val(parseInt(i, 10) - 1) : parseInt(i, 10) < r && n.val(parseInt(i, 10) + 1) }), e(".quantity-input").on("input", "input[name=product-quatity]", function (a) { let t = e(this).data("max"), n = parseInt(e(this).val(), 10); isNaN(n) || 0 == n ? e(this).val("") : n > t && e(this).val(1) }), e(".quantity-input").on("blur", "input[name=product-quatity]", function (a) { let t = e(this).data("max"), n = parseInt(e(this).val(), 10); e(this).val(isNaN(n) || n > t || 0 == n ? 1 : n) })) }, mercado_remove_product_in_cart: function () { e(".products-cart .pr-cart-item").length > 0 && e(document).on("click", ".pr-cart-item .delete .btn-delete", function (a) { a.preventDefault(); var t = e(this); e.ajax({ url: t.data("url"), data: { _token: e('meta[name="csrf-token"]').attr("content"), id: t.data("id") }, method: "POST", dataType: "json", success: function (a) { !0 == a.status && (t.closest(".pr-cart-item").fadeOut(400, function () { e(this).remove() }), e(".left-info .product-quantity").text(a.quantity), 0 == a.quantity && e(".products-cart").append('<li class="pr-cart-item text-center">Kh\xf4ng c\xf3 sản phẩm n\xe0o trong giỏ h\xe0ng</li>')) } }) }) }, mercado_toggle_vertical_main_menu: function () { e(".header.header-toggle .vertical-menu-toggle").length && e(".header.header-toggle .vertical-menu-toggle").on("click", ".wrap-toggle-menu", function (a) { a.preventDefault(), e(this).toggleClass("close-menu") }) }, mercado_sticky_menu: function () { var a = e(window).width(); if (parseInt(a, 10) > 1024 && e(".header-sticky").length > 0) { var t = e(".header").innerHeight(), n = 0, i = 0, r = 0, o = e(".header-sticky"), s = e(".primary-nav-section.vertical-menu-toggle"); s.length > 0 && (i = s.innerHeight(), n = s.find(".nav.primary").innerHeight(), o.on("sticky-start", function () { s.find(".wrap-toggle-menu").addClass("close-menu") })), parseInt(n, 10) > 0 && (r = -1 * (parseInt(t, 10) + parseInt(n, 10) - parseInt(i, 10))), o.sticky({ topSpacing: String(r) }) } }, mercado_google_maps: function () { 1 == e(".mercado-google-maps").length && e(".mercado-google-maps").each(function () { var a, t = e(this), n = t.attr("id"), i = t.attr("data-title_maps"), r = t.attr("data-phone"), o = t.attr("data-email"), s = parseInt(t.attr("data-zoom")), l = t.attr("data-latitude"), c = t.attr("data-longitude"), d = t.attr("data-address"), m = t.attr("data-map-type"), p = t.attr("data-pin-icon"), u = (t.attr("data-modify-coloring"), t.attr("data-saturation")), h = t.attr("data-hue"), f = t.attr("data-map-height"), g = t.data("map-style"), v = new google.maps.LatLngBounds, $ = { zoom: s, panControl: !1, zoomControl: !1, mapTypeControl: !1, scaleControl: !1, draggable: !0, scrollwheel: !1, mapTypeId: google.maps.MapTypeId[m], styles: [{ stylers: [{ hue: h }, { invert_lightness: !1 }, { saturation: u }, { lightness: 1 }, { featureType: "landscape.man_made", stylers: [{ visibility: "on" }] }] }, { featureType: "water", elementType: "geometry", stylers: [{ color: "#46bcec" }] }] }; a = new google.maps.Map(document.getElementById(n), $), e("#" + n).css({ height: f }), a.setTilt(25); var b = [], y = []; "" != l && "" != c && (b[0] = [d, l, c], y[0] = [d]); var w, _, C = new google.maps.InfoWindow; for (_ = 0; _ < b.length; _++) { var x = new google.maps.LatLng(b[_][1], b[_][2]); v.extend(x), w = new google.maps.Marker({ position: x, map: a, title: b[_][0], icon: p }), "1" == g && (y[_][0].length > 1 && C.setContent('<div style="background-color:#fff; padding: 30px 30px 10px 25px; width:290px;line-height: 22px" class="mercado-map-info"><h4 class="map-title">' + i + '</h4><div class="map-field"><i class="fa fa-map-marker"></i><span>&nbsp;' + d + '</span></div><div class="map-field"><i class="fa fa-phone"></i><span>&nbsp;' + r + '</span></div><div class="map-field"><i class="fa fa-envelope"></i><span><a href="mailto:' + o + '">&nbsp;' + o + "</a></span></div> </div>"), C.open(a, w)), "2" == g && google.maps.event.addListener(w, "click", function (e, t) { return function () { y[t][0].length > 1 && C.setContent('<div style="background-color:#fff; padding: 30px 30px 10px 25px; width:290px;line-height: 22px" class="mercado-map-info"><h4 class="map-title">' + i + '</h4><div class="map-field"><i class="fa fa-map-marker"></i><span>&nbsp;' + d + '</span></div><div class="map-field"><i class="fa fa-phone"></i><span>&nbsp;' + r + '</span></div><div class="map-field"><i class="fa fa-envelope"></i><span><a href="mailto:' + o + '">&nbsp;' + o + "</a></span></div> </div>"), C.open(a, e) } }(w, _)), a.setCenter(v.getCenter()) } var k = google.maps.event.addListener(a, "bounds_changed", function (e) { this.setZoom(s), google.maps.event.removeListener(k) }) }) } }; window.onload = function () { n.init() }, e(document).ready(function () { n.onReady() }), e(window).on("resize", function () { n.onResize() }) }(window.Zepto || window.jQuery, window, document);
+(function ($) {
+    'use strict';
+    if ($('.mercado-google-maps').length == 1) {
+        var wfm = document.createElement('script');
+        wfm.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBpXkIHekTsMPHuS_yuG1cIK0j5TvVjFkE';
+        wfm.type = 'text/javascript';
+        var sm = document.getElementsByTagName('script')[0];
+        sm.parentNode.insertBefore(wfm, sm);
+    }
+    var MERCADO_JS = {
+        init: function () {
+            this.mercado_chosen();
+            this.mercado_clone_all_zan_menus();
+            this.mercado_control_mobile_menu();
+            this.mercado_control_panel();
+            this.mercado_tabs();
+            this.mercado_countdown();
+            this.mercado_better_equal_elems();
+            this.mercado_toggle_slide_menu();
+            this.mercado_price_range();
+            this.mercado_price_quantity();
+            this.mercado_remove_product_in_cart();
+            this.mercado_product_slider();
+            this.mercado_toggle_vertical_main_menu();
+            this.mercado_sticky_menu();
+            this.mercado_google_maps();
+        },
+        onReady: function () {
+            this.mercado_innit_carousel();
+        },
+        onResize: function () {
+            this.mercado_innit_carousel();
+            this.mercado_better_equal_elems();
+            this.mercado_product_slider();
+            this.mercado_tabs();
+            this.mercado_sticky_menu();
+        },
+        mercado_product_slider: function () {
+            if ($(".product-gallery").length > 0) {
+                $('.product-gallery').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails",
+                    pauseOnAction: true,
+                    pauseOnHover: true,
+                    slideshowSpeed: 5000,
+                    animationSpeed: 600,
+                });
+                var config = {
+                    autoplay: false,
+                    autoplayTimeout: 3000,
+                    slidespeed: 3000,
+                    margin: 10,
+                    nav: true,
+                    dots: false,
+                    loop: true,
+                    navText: ['<i class="fa fa-angle-left " aria-hidden="true"></i>', '<i class="fa fa-angle-right " aria-hidden="true"></i>'],
+                };
+                config.responsive = {
+                    0: {
+                        items: "2"
+                    },
+                    370: {
+                        items: "3"
+                    },
+                    480: {
+                        items: "4"
+                    },
+                    768: {
+                        items: "4"
+                    },
+                    992: {
+                        items: "3"
+                    },
+                    1200: {
+                        items: "4"
+                    }
+                };
+                $(".flex-control-thumbs").owlCarousel(config);
+            }
+        },
+        mercado_chosen: function () {
+            if ($('.wrap-search-form .wrap-list-cate').length > 0) {
+                $('.wrap-search-form .wrap-list-cate').on('click', '.link-control', function (event) {
+                    event.preventDefault();
+                    $(this).siblings('ul').slideToggle();
+                });
+                $('.wrap-search-form .wrap-list-cate .list-cate').on('click', 'li', function (event) {
+                    var _this = $(this),
+                        _value = _this.attr('value'),
+                        _content = _this.text(),
+                        _title = _this.text();
+                    _content = _content.slice(0, 12);
+                    _this.parent().siblings('a').text(_content).attr('title', _title);
+                    _this.parent().siblings('input[name="product-cate"]').val(_value);
+                    _this.parent().slideUp();
+                });
+            }
+            if ($("select:not(.except-chosen)").length > 0) {
+                $("select:not(.except-chosen)").each(function () {
+                    $(this).chosen();
+                });
+            }
+        },
+        mercado_toggle_slide_menu: function () {
+            if ($(".widget .has-child-cate").length > 0) {
+                $(document).on('click', ".widget .has-child-cate .toggle-control", function (el) {
+                    el.preventDefault();
+                    var _this = $(this);
+                    if (_this.parent().hasClass('open')) {
+                        _this.parent().removeClass('open');
+                    } else {
+                        _this.closest('.widget-content').find('.open').removeClass('open');
+                        _this.parent().addClass('open');
+                    }
+                });
+            }
+            if ($(".widget .list-limited .default-hiden").length > 0) {
+                $(document).on('click', '.widget .list-limited .btn-control', function (e) {
+                    e.preventDefault();
+                    var _this = $(this),
+                        _newlabel = _this.attr('data-label'),
+                        _currentlabel = _this.html();
+                    _this.parent().siblings('.default-hiden').slideToggle();
+                    _this.attr('data-label', _currentlabel).html(_newlabel);
+                });
+            }
+            if ($(".toggle-slide-menu").length > 0) {
+                $(".toggle-slide-menu").on('click', '.btn-control a', function (el) {
+                    el.preventDefault();
+                    var _this = $(this);
+                    _this.parent().siblings('.default-hiden').slideToggle(300);
+                    _this.find('i').toggleClass('fa-rotate-180');
+                });
+            }
+        },
+        mercado_price_range: function () {
+            if ($("#slider-range").length > 0) {
+                $("#slider-range").slider({
+                    range: true,
+                    min: 0,
+                    max: 100000000,
+                    step: 100000,
+                    values: [0, 100000000],
+                    slide: function (event, ui) {
+                        $("#amount").val(ui.values[0].toLocaleString('vi-VN') + "Ä‘ - " + ui.values[1].toLocaleString('vi-VN') + 'Ä‘');
+                        $('.btn.filter-submit').data('min', ui.values[0]).data('max', ui.values[1])
+                    }
+                });
+                $("#amount").val($("#slider-range").slider("values", 0).toLocaleString('vi-VN') +
+                    "Ä‘ - " + $("#slider-range").slider("values", 1).toLocaleString('vi-VN') + 'Ä‘');
+            }
+        },
+        mercado_clone_all_zan_menus: function () {
+            var i = 0,
+                panels_html_args = Array();
+            $('.clone-main-menu').each(function () {
+                var $this = $(this),
+                    thisMenu = $this,
+                    this_menu_id = thisMenu.attr('id'),
+                    this_menu_clone_id = 'mercado-clone-' + this_menu_id;
+                if (!$('#' + this_menu_clone_id).length) {
+                    var thisClone = $this.clone(true);
+                    thisClone.find('.menu-item').addClass('clone-menu-item');
+                    thisClone.find('[id]').each(function () {
+                        thisClone.find('.vc_tta-panel-heading a[href="#' + $(this).attr('id') + '"]').attr('href', '#' + MERCADO_JS.mercado_add_string_prefix($(this).attr('id'), 'mercado-clone-'));
+                        $(this).attr('id', MERCADO_JS.mercado_add_string_prefix($(this).attr('id'), 'mercado-clone-'));
+                    });
+                    thisClone.find('.mercado-menu').addClass('mercado-menu-clone');
+                    var thisMenuId = 'mercado-panel-' + $this.attr('id'),
+                        thisMenuname = $this.data('menuname');
+                    if (!$('.mercado-clone-wrap .mercado-panels #mercado-main-panel').length) {
+                        $('.mercado-clone-wrap .mercado-panels').append('<div id="mercado-main-panel" class="mercado-panel mercado-main-panel"><ul class="depth-01"></ul></div>');
+                    }
+                    $('.mercado-clone-wrap .mercado-panels #mercado-main-panel ul').append('<li class="menu-item"><a data-target="#' + thisMenuId + '" class="mercado-next-panel" href="#' + thisMenuId + '"></a><a title="' + thisMenuname + '" class="mercado-item-title" href="#">' + thisMenuname + '</a></li>');
+                    if (!$('.mercado-clone-wrap .mercado-panels #mercado-panel-' + this_menu_id).length) {
+                        $('.mercado-clone-wrap .mercado-panels').append('<div id="mercado-panel-' + this_menu_id + '" class="mercado-panel mercado-hidden"><ul class="depth-01"></ul></div>');
+                    }
+                    var thisMainPanel = $('.mercado-clone-wrap .mercado-panels #mercado-panel-' + this_menu_id + ' ul');
+                    thisMainPanel.html(thisClone.html());
+                    MERCADO_JS.mercado_insert_children_panels_html_by_elem(thisMainPanel, i);
+                }
+            });
+        },
+        mercado_insert_children_panels_html_by_elem: function ($elem, i) {
+            var index = parseInt(i, 10);
+            if ($elem.find('.menu-item-has-children').length) {
+                $elem.find('.menu-item-has-children').each(function () {
+                    var thisChildItem = $(this);
+                    MERCADO_JS.mercado_insert_children_panels_html_by_elem(thisChildItem, index);
+                    var next_nav_target = 'mercado-panel-' + String(index);
+                    while ($('#' + next_nav_target).length) {
+                        index++;
+                        next_nav_target = 'mercado-panel-' + String(index);
+                    }
+                    thisChildItem.prepend('<a class="mercado-next-panel" href="#' + next_nav_target + '" data-target="#' + next_nav_target + '"></a>');
+                    var submenu_html = $('<div>').append(thisChildItem.find('> .submenu,> .wrap-megamenu').clone()).html();
+                    thisChildItem.find('> .submenu,> .wrap-megamenu').remove();
+                    $('.mercado-clone-wrap .mercado-panels').append('<div id="' + next_nav_target + '" class="mercado-panel mercado-sub-panel mercado-hidden">' + submenu_html + '</div>');
+                });
+            }
+        },
+        mercado_control_panel: function () {
+            $(document).on('click', '.mercado-next-panel', function (e) {
+                var _this = $(this),
+                    thisItem = _this.closest('.menu-item'),
+                    thisPanel = _this.closest('.mercado-panel'),
+                    target_id = _this.attr('href');
+                if ($(target_id).length) {
+                    thisPanel.addClass('mercado-sub-opened');
+                    $(target_id).addClass('mercado-panel-opened').removeClass('mercado-hidden').attr('data-parent-panel', thisPanel.attr('id'));
+                    typeof item_title == 'undefined'
+                    var item_title = '',
+                        firstItemTitle = '';
+                    item_title = _this.siblings(".mercado-item-title").attr('title');
+                    if (typeof item_title == 'undefined') {
+                        item_title = 'mercado menu';
+                    }
+                    if ($('.mercado-panels-actions-wrap .mercado-current-panel-title').length > 0) {
+                        firstItemTitle = $('.mercado-panels-actions-wrap .mercado-current-panel-title').html();
+                    }
+                    $('.mercado-panels-actions-wrap').find('.mercado-current-panel-title').remove();
+                    $('.mercado-panels-actions-wrap').prepend('<span class="mercado-current-panel-title">' + item_title + '</span>');
+                    $('.mercado-panels-actions-wrap .mercado-prev-panel').remove();
+                    $('.mercado-panels-actions-wrap').prepend('<a data-prenttitle="' + firstItemTitle + '" class="mercado-prev-panel" href="#' + thisPanel.attr('id') + '" data-cur-panel="' + target_id + '" data-target="#' + thisPanel.attr('id') + '"></a>');
+                }
+                e.preventDefault();
+            });
+            $(document).on('click', '.mercado-prev-panel', function (e) {
+                var $this = $(this),
+                    cur_panel_id = $this.attr('data-cur-panel'),
+                    target_id = $this.attr('href');
+                $(cur_panel_id).removeClass('mercado-panel-opened').addClass('mercado-hidden');
+                $(target_id).addClass('mercado-panel-opened').removeClass('mercado-sub-opened');
+                var new_parent_panel_id = $(target_id).attr('data-parent-panel');
+                if (typeof new_parent_panel_id == 'undefined' || typeof new_parent_panel_id == false) {
+                    $('.mercado-panels-actions-wrap .mercado-prev-panel').remove();
+                    $('.mercado-panels-actions-wrap .mercado-current-panel-title').remove();
+                } else {
+                    $('.mercado-panels-actions-wrap .mercado-prev-panel').attr('href', '#' + new_parent_panel_id).attr('data-cur-panel', target_id).attr('data-target', '#' + new_parent_panel_id);
+                    var item_title = '';
+                    item_title = $('#' + new_parent_panel_id).find('.mercado-next-panel[data-target="' + target_id + '"]').siblings('.mercado-item-title').attr('title');
+                    if (typeof item_title == 'undefined') {
+                        item_title = 'mercado menu';
+                    }
+                    $('.mercado-panels-actions-wrap').prepend('<span class="mercado-current-panel-title">' + item_title + '</span>');
+                }
+                e.preventDefault();
+            });
+        },
+        mercado_control_mobile_menu: function () {
+            $(document).on('click', '.mobile-navigation', function (el) {
+                el.preventDefault();
+                $('.mercado-clone-wrap').addClass('open');
+                return false;
+            });
+            $(document).on('click', '.mercado-clone-wrap .mercado-close-panels', function () {
+                $('.mercado-clone-wrap').removeClass('open');
+                return false;
+            });
+        },
+        mercado_innit_carousel: function () {
+            $(".owl-carousel").each(function (index, el) {
+                var _this = $(this),
+                    _owl = _this,
+                    _config = _this.data(),
+                    _animateOut = _this.data('animateout'),
+                    _animateIn = _this.data('animatein'),
+                    _slidespeed = _this.data('slidespeed');
+                _config.navText = ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'];
+                if (typeof _animateOut != 'undefined') {
+                    _config.animateOut = _animateOut;
+                }
+                if (typeof _animateIn != 'undefined') {
+                    _config.animateIn = _animateIn;
+                }
+                if (typeof (_slidespeed) != 'undefined') {
+                    _config.smartSpeed = _slidespeed;
+                }
+                if ($('body').hasClass('rtl')) {
+                    _config.rtl = true;
+                }
+                _owl.on('drag.owl.carousel', function (event) {
+                    _owl.addClass('owl-changed');
+                    setTimeout(function () {
+                        _owl.removeClass('owl-changed');
+                    }, _config.smartSpeed);
+                });
+                _owl.owlCarousel(_config);
+            });
+        },
+        mercado_tabs: function () {
+            if ($(".tab-control:not(.normal)").length > 0) {
+                if ($(".tab-contents").length) {
+                    setTimeout(function () {
+                        $('.tab-contents:not(.tab-not-equal)').each(function () {
+                            var $this = $(this);
+                            if ($this.find('.tab-content-item').length) {
+                                $this.find('.tab-content-item').css({
+                                    'height': 'auto'
+                                });
+                                var elem_height = 0;
+                                $this.find('.tab-content-item').each(function () {
+                                    var this_elem_h = $(this).height();
+                                    if (parseInt(elem_height, 10) < parseInt(this_elem_h, 10)) {
+                                        elem_height = parseInt(this_elem_h, 10);
+                                    }
+                                });
+                                $this.find('.tab-content-item').height(elem_height);
+                            }
+                        });
+                    }, 1200);
+                }
+                $(document).on('click', '.tab-control .tab-control-item', function (ev) {
+                    ev.preventDefault();
+                    if (!$(this).hasClass('active')) {
+                        var _this = $(this),
+                            _link_content = _this.attr('href'),
+                            _tab_active = _this.closest('.wrap-product-tab').find('.tab-contents').find(_link_content);
+                        _this.siblings(".active").removeClass('active');
+                        _this.addClass('active');
+                        _this.closest('.wrap-product-tab').find('.tab-contents .active').removeClass('active');
+                        _tab_active.addClass('active');
+                        _tab_active.find('.wrap-products .owl-item').each(function (index) {
+                            var owl_item = $(this),
+                                style = $(this).attr("style"),
+                                tab_animated = 'zoomIn',
+                                delay = parseInt(index, 10) * 10;
+                            owl_item.attr("style", style +
+                                ";-webkit-animation-delay:" + String(delay) + "ms;" +
+                                "-moz-animation-delay:" + String(delay) + "ms;" +
+                                "-o-animation-delay:" + String(delay) + "ms;" +
+                                "animation-delay:" + String(delay) + "ms;").addClass(tab_animated + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                                    owl_item.removeClass(tab_animated + ' animated');
+                                    owl_item.attr("style", style);
+                                });
+                        });
+                    }
+                });
+            }
+            if ($(".tab-control.normal").length > 0) {
+                $(document).on('click', '.tab-control.normal .tab-control-item', function (ev) {
+                    ev.preventDefault();
+                    var _this = $(this);
+                    if (!_this.hasClass('active')) {
+                        _this.siblings(".active").removeClass('active');
+                        _this.addClass('active');
+                        _this.parents().siblings('.tab-contents').find('.active').removeClass('active');
+                        _this.parents().siblings('.tab-contents').find(_this.attr('href')).addClass('active');
+                    }
+                });
+            }
+        },
+        mercado_countdown: function () {
+            if ($(".mercado-countdown").length > 0) {
+                $(".mercado-countdown").each(function (index, el) {
+                    var _this = $(this),
+                        _expire = _this.data('expire');
+                    _this.countdown(_expire, function (event) {
+                        $(this).html(event.strftime('<span><b>%D</b> Days</span> <span><b>%-H</b> Hrs</span> <span><b>%M</b> Mins</span> <span><b>%S</b> Secs</span>'));
+                    });
+                });
+            }
+        },
+        mercado_better_equal_elems: function () {
+            setTimeout(function () {
+                $('.equal-container').each(function () {
+                    var _this = $(this),
+                        _children = _this.find('.equal-elem');
+                    if (_children.length) {
+                        _children.css('height', 'auto');
+                        var max_height = 0;
+                        _children.each(function () {
+                            var el_height = $(this).height();
+                            if (max_height < parseFloat(el_height)) {
+                                max_height = parseFloat(el_height);
+                            }
+                        });
+                        _children.height(parseInt(max_height, 10));
+                    }
+                });
+            }, 1000);
+        },
+        mercado_price_quantity: function () {
+            if ($(".quantity-input").length > 0) {
+                $(".quantity-input").on('click', '.btn', function (event) {
+                    event.preventDefault();
+                    var _this = $(this),
+                        _input = _this.siblings('input[name=product-quatity]').first(),
+                        _current_value = _this.siblings('input[name=product-quatity]').first().val(),
+                        _max_value = _this.siblings('input[name=product-quatity]').first().attr('data-max');
+                    if (_this.hasClass('btn-reduce')) {
+                        if (parseInt(_current_value, 10) > 1) {
+                            _input.val(parseInt(_current_value, 10) - 1);
+                        }
+                    } else {
+                        if (parseInt(_current_value, 10) < _max_value) {
+                            _input.val(parseInt(_current_value, 10) + 1)
+                        }
+                    }
+                });
+                $(".quantity-input").on('input', 'input[name=product-quatity]', function (event) {
+                    let maxValue = $(this).data('max');
+                    let value = parseInt($(this).val(), 10)
+                    if (isNaN(value) || value == 0) {
+                        $(this).val('')
+                    } else if (value > maxValue) {
+                        $(this).val(1)
+                    }
+                })
+                $(".quantity-input").on('blur', 'input[name=product-quatity]', function (event) {
+                    let maxValue = $(this).data('max');
+                    let value = parseInt($(this).val(), 10)
+                    $(this).val(isNaN(value) || value > maxValue || value == 0 ? 1 : value)
+                })
+            }
+        },
+        mercado_remove_product_in_cart: function () {
+            if ($(".products-cart .pr-cart-item").length > 0) {
+                $(document).on('click', '.pr-cart-item .delete .btn-delete', function (event) {
+                    event.preventDefault();
+                    var _this = $(this);
+                    $.ajax({
+                        url: _this.data('url'),
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            id: _this.data('id')
+                        },
+                        method: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.status == true) {
+                                _this.closest('.pr-cart-item').fadeOut(400, function () {
+                                    $(this).remove();
+                                });
+                                $('.left-info .product-quantity').text(response.quantity)
+                                if (response.quantity == 0) {
+                                    $(".products-cart").append('<li class="pr-cart-item text-center">KhĂ´ng cĂ³ sáº£n pháº©m nĂ o trong giá» hĂ ng</li>')
+                                }
+                            }
+                        },
+                    });
+                })
+            }
+        },
+        mercado_toggle_vertical_main_menu: function () {
+            if ($(".header.header-toggle .vertical-menu-toggle").length) {
+                $('.header.header-toggle .vertical-menu-toggle').on('click', '.wrap-toggle-menu', function (event) {
+                    event.preventDefault();
+                    $(this).toggleClass('close-menu');
+                });
+            }
+        },
+        mercado_sticky_menu: function () {
+            var _device_size = $(window).width();
+            if (parseInt(_device_size, 10) > 1024 && $('.header-sticky').length > 0) {
+                var header_height = $('.header').innerHeight(),
+                    vertical_menu_height = 0,
+                    vertical_menu_title_height = 0,
+                    _topSpacing = 0,
+                    header_sticky = $('.header-sticky'),
+                    vertical_menu = $('.primary-nav-section.vertical-menu-toggle');
+                if (vertical_menu.length > 0) {
+                    vertical_menu_title_height = vertical_menu.innerHeight();
+                    vertical_menu_height = vertical_menu.find('.nav.primary').innerHeight();
+                    header_sticky.on('sticky-start', function () {
+                        vertical_menu.find('.wrap-toggle-menu').addClass('close-menu');
+                    });
+                }
+                if (parseInt(vertical_menu_height, 10) > 0) {
+                    _topSpacing = -1 * ((parseInt(header_height, 10) + parseInt(vertical_menu_height, 10)) - parseInt(vertical_menu_title_height, 10));
+                }
+                header_sticky.sticky({
+                    topSpacing: String(_topSpacing)
+                });
+            }
+        },
+        mercado_google_maps: function () {
+            if ($('.mercado-google-maps').length == 1) {
+                $('.mercado-google-maps').each(function () {
+                    var $this = $(this),
+                        $id = $this.attr('id'),
+                        $title_maps = $this.attr('data-title_maps'),
+                        $phone = $this.attr('data-phone'),
+                        $email = $this.attr('data-email'),
+                        $zoom = parseInt($this.attr('data-zoom')),
+                        $latitude = $this.attr('data-latitude'),
+                        $longitude = $this.attr('data-longitude'),
+                        $address = $this.attr('data-address'),
+                        $map_type = $this.attr('data-map-type'),
+                        $pin_icon = $this.attr('data-pin-icon'),
+                        $modify_coloring = $this.attr('data-modify-coloring') === "true" ? true : false,
+                        $saturation = $this.attr('data-saturation'),
+                        $hue = $this.attr('data-hue'),
+                        $map_height = $this.attr('data-map-height'),
+                        $map_style = $this.data('map-style'),
+                        $styles;
+                    if ($modify_coloring == true) {
+                        var $styles = [{
+                            stylers: [{
+                                hue: $hue
+                            }, {
+                                invert_lightness: false
+                            }, {
+                                saturation: $saturation
+                            }, {
+                                lightness: 1
+                            }, {
+                                featureType: "landscape.man_made",
+                                stylers: [{
+                                    visibility: "on"
+                                }]
+                            }]
+                        }, {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{
+                                color: '#46bcec'
+                            }]
+                        }];
+                    }
+                    var map, bounds = new google.maps.LatLngBounds(),
+                        mapOptions = {
+                            zoom: $zoom,
+                            panControl: false,
+                            zoomControl: false,
+                            mapTypeControl: false,
+                            scaleControl: false,
+                            draggable: true,
+                            scrollwheel: false,
+                            mapTypeId: google.maps.MapTypeId[$map_type],
+                            styles: $styles
+                        };
+                    map = new google.maps.Map(document.getElementById($id), mapOptions);
+                    var map_dom = '#' + $id;
+                    $(map_dom).css({
+                        height: $map_height
+                    });
+                    map.setTilt(25);
+                    var markers = [],
+                        infoWindowContent = [];
+                    if ($latitude != '' && $longitude != '') {
+                        markers[0] = [$address, $latitude, $longitude];
+                        infoWindowContent[0] = [$address];
+                    }
+                    var infoWindow = new google.maps.InfoWindow(),
+                        marker, i;
+                    for (i = 0; i < markers.length; i++) {
+                        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                        bounds.extend(position);
+                        marker = new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            title: markers[i][0],
+                            icon: $pin_icon
+                        });
+                        if ($map_style == '1') {
+                            if (infoWindowContent[i][0].length > 1) {
+                                infoWindow.setContent('<div style="background-color:#fff; padding: 30px 30px 10px 25px; width:290px;line-height: 22px" class="mercado-map-info">' +
+                                    '<h4 class="map-title">' + $title_maps + '</h4>' +
+                                    '<div class="map-field"><i class="fa fa-map-marker"></i><span>&nbsp;' + $address + '</span></div>' +
+                                    '<div class="map-field"><i class="fa fa-phone"></i><span>&nbsp;' + $phone + '</span></div>' +
+                                    '<div class="map-field"><i class="fa fa-envelope"></i><span><a href="mailto:' + $email + '">&nbsp;' + $email + '</a></span></div> ' +
+                                    '</div>');
+                            }
+                            infoWindow.open(map, marker);
+                        }
+                        if ($map_style == '2') {
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
+                                    if (infoWindowContent[i][0].length > 1) {
+                                        infoWindow.setContent('<div style="background-color:#fff; padding: 30px 30px 10px 25px; width:290px;line-height: 22px" class="mercado-map-info">' +
+                                            '<h4 class="map-title">' + $title_maps + '</h4>' +
+                                            '<div class="map-field"><i class="fa fa-map-marker"></i><span>&nbsp;' + $address + '</span></div>' +
+                                            '<div class="map-field"><i class="fa fa-phone"></i><span>&nbsp;' + $phone + '</span></div>' +
+                                            '<div class="map-field"><i class="fa fa-envelope"></i><span><a href="mailto:' + $email + '">&nbsp;' + $email + '</a></span></div> ' +
+                                            '</div>');
+                                    }
+                                    infoWindow.open(map, marker);
+                                };
+                            })(marker, i));
+                        }
+                        map.setCenter(bounds.getCenter());
+                    }
+                    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+                        this.setZoom($zoom);
+                        google.maps.event.removeListener(boundsListener);
+                    });
+                });
+            }
+        },
+    }
+    window.onload = function () {
+        MERCADO_JS.init();
+    }
+    $(document).ready(function () {
+        MERCADO_JS.onReady();
+    });
+    $(window).on("resize", function () {
+        MERCADO_JS.onResize();
+    });
+})(window.Zepto || window.jQuery, window, document);

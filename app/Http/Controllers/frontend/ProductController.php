@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function productDetails($slug, $code)
     {
-        $product = Product::where('slug', $slug)->where('code', $code)->first();
+        $product = Product::where(compact('slug', 'code'))->first();
         $product->view_count = $product->view_count + 1;
         $product->update();
 
@@ -24,7 +24,14 @@ class ProductController extends Controller
             ->take(10)
             ->get();
 
-        return view('frontend.detail', compact('product', 'popularProducts', 'relatedProducts'));
+        $seo = [
+            'title' => $product->name,
+            'description' => 'Tìm kiếm và mua sắm điện thoại di động trực tuyến với sự đa dạng và chất lượng tuyệt vời. Khám phá ngay để có trải nghiệm mua sắm tuyệt vời chỉ có ở Mobileworld!',
+            'image' => $product->featured_image,
+            'canonical' => null,
+        ];
+        
+        return view('frontend.detail', compact('product', 'popularProducts', 'relatedProducts', 'seo'));
     }
 
 
