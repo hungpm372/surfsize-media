@@ -16,6 +16,8 @@
     <meta name="seznam-wmt" content="1ESeV05G6tDEVk4A5GENuam0vaIKGQB0" />
     <meta name="naver-site-verification" content="3d451f63ff26eb3c9211fa7cc96ef9e8" />
     <meta name='Petal-Search-site-verification' content='bb96de33a2' />
+    <meta name="norton-safeweb-site-verification"
+        content="DMBBDQ2OR-GBN7SJK46P6POAAAQUW169OMI1DPXEWNKFBDNIX1QQJ1FPC-FYJ9G12H-OVWQ9EB64RDZKEWUIVNA1JZ-A4LN-KQ8ZBBQ0RQSRIPV08W27OFJ30SG2Z844" />
     <meta name="facebook-domain-verification" content="hebidzil1jjwb77svqxtbk5583euqi" />
     <meta name="google-adsense-account" content="ca-pub-7732927685285792">
 
