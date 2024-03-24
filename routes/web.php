@@ -13,6 +13,7 @@ use App\Http\Controllers\frontend\CategoryController as FrontendCategoryControll
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\OrderController;
+use App\Http\Controllers\frontend\PaymentController;
 use App\Http\Controllers\frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\frontend\UserController;
 use App\Models\Order;
@@ -21,6 +22,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,11 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', function () {
+    echo $_SERVER['REMOTE_ADDR'];
+});
+
 # frontend routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -100,7 +107,6 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('process_checkout');
     Route::get('/get-districts', [CheckoutController::class, 'getDistricts']);
     Route::get('/get-wards', [CheckoutController::class, 'getwards']);
     Route::get('/thank-you', [CheckoutController::class, 'thankyou'])->middleware('check.order.in.progress')->name('thank_you');
@@ -108,10 +114,13 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/orders', [OrderController::class, 'index'])->name('order');
+    Route::post('/orders/process', [OrderController::class, 'processOrder'])->name('process_order');
     Route::get('/orders/{order_code}', [OrderController::class, 'orderDetail'])->name('order_detail');
     Route::get('/confirm-order/{order_code}/{token}', [OrderController::class, 'confirmOrder'])->name('confirm_order');
     Route::post('/resend-order-confirmation-email', [OrderController::class, 'resendOrderConfirmationEmail'])->name('resend_order_confirmation_email');
     Route::post('/orders/cancel-order', [OrderController::class, 'cancelOrder'])->name('cancel_order');
+
+    Route::get('/payment/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');
 
     Route::get('/user', [UserController::class, 'user'])->name('user');
 });

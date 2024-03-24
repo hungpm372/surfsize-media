@@ -8,7 +8,7 @@
         </ul>
     </div>
     <div class=" main-content-area">
-        <form method="POST" name="frm-billing">
+        <form method="POST" name="frm-billing" action="{{ route('process_order') }}">
             <div class="wrap-address-billing">
                 <h3 class="box-title">địa chỉ giao hàng</h3>
                 <p class="row-in-form">
@@ -56,25 +56,27 @@
                     <h4 class="title-box">Phương thức thanh toán</h4>
                     <div class="choose-payment-methods" style="border: none">
                         <label class="payment-method">
-                            <input name="payment-method" id="payment-method-bank" value="bank" type="radio" checked>
-                            <span>Thanh toán khi nhận hàng</span>
-                            {{-- <span class="payment-desc">But the majority have suffered alteration in some form, by injected
-                                humour, or randomised words which don't look even slightly believable</span> --}}
+                            <input name="payment-method" value="cod" type="radio" checked>
+                            <span>Thanh toán khi nhận hàng (COD)</span>
                         </label>
                         <label class="payment-method">
-                            <input name="payment-method" id="payment-method-visa" value="visa" type="radio">
-                            <span>Thanh toán bằng thẻ ATM</span>
-                            {{-- <span class="payment-desc">There are many variations of passages of Lorem Ipsum available</span> --}}
+                            <input name="payment-method" value="zalopay" type="radio">
+                            <span>Thanh toán qua ví ZaloPay</span>
                         </label>
                         <label class="payment-method">
-                            <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
-                            <span>Thanh toán bằng Momo</span>
-                            {{-- <span class="payment-desc">You can pay with your credit</span>
-                            <span class="payment-desc">card if you don't have a paypal account</span> --}}
+                            <input name="payment-method" value="momo" type="radio">
+                            <span>Thanh toán qua ví MoMo</span>
+                        </label>
+                        <label class="payment-method">
+                            <input name="payment-method" value="shopeepay" type="radio">
+                            <span>Thanh toán qua ví ShopeePay</span>
+                        </label>
+                        <label class="payment-method">
+                            <input name="payment-method" value="vnpay" type="radio">
+                            <span>Thanh toán qua ví VNPAY</span>
                         </label>
                     </div>
-                    <p class="summary-info grand-total"><span>Tổng cộng</span> <span
-                            class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
+                    <p class="summary-info grand-total"><span>Tổng cộng</span> <span class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
                     </p>
                     <button type="submit" class="btn btn-medium">đặt hàng ngay</button>
                 </div>
@@ -83,8 +85,7 @@
                     <p class="summary-info"><span class="title">Chuyển phát nhanh</span></p>
                     <h4 class="title-box" style="padding-bottom: 15px">Mã giảm giá</h4>
                     <p class="row-in-form">
-                        <input id="coupon-code" type="text" name="coupon-code" value=""
-                            placeholder="Nhập mã giảm giá của bạn">
+                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="Nhập mã giảm giá của bạn">
                     </p>
                     <a href="#" class="btn btn-small">Áp dụng</a>
                 </div>
@@ -95,30 +96,26 @@
         <div class="wrap-show-advance-info-box style-1 box-in-site">
             <h3 class="title-box">sản phẩm được xem nhiều nhất</h3>
             <div class="wrap-products">
-                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
-                    data-autoplay="true" data-autoplayTimeout="5000" data-loop="true" data-slideSpeed="1000"
-                    data-nav="true" data-dots="false"
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000"
+                    data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false"
                     data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                     @foreach ($mostViewedProducts as $item)
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                    title="{{ $item->name }}">
-                                    <figure><img src="{{ $item->featured_image }}" width="214" height="214"
-                                            alt="{{ $item->name }}" loading="lazy"></figure>
+                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                    <figure><img src="{{ $item->featured_image }}" width="214" height="214" alt="{{ $item->name }}" loading="lazy">
+                                    </figure>
                                 </a>
                                 <div class="group-flash">
                                     <span class="flash-item sale-label">sale</span>
                                 </div>
                                 <div class="wrap-btn">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        class="function-link">quick view</a>
+                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" class="function-link">quick view</a>
                                 </div>
                             </div>
                             <div class="product-info">
-                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                    class="product-name">
+                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" class="product-name">
                                     <span>{{ $item->name }}</span>
                                 </a>
                                 <div class="wrap-price">
