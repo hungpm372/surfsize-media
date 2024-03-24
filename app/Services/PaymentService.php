@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Helpers\OrderCodeHelper;
 use Illuminate\Support\Facades\Redirect;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaymentService
 {
@@ -29,12 +30,10 @@ class PaymentService
 
     public function processVNPay($order)
     {
-
         $vnp_Url = env("VNP_URL");
         $vnp_Returnurl = route("payment.vnpay.return");
         $vnp_TmnCode = env("VNP_TMN_CODE");
         $vnp_HashSecret = env("VNP_HASH_SECRET");
-
         $vnp_TxnRef = OrderCodeHelper::generateCode();
         $vnp_OrderInfo = 'Mo ta don hang';
         $vnp_OrderType = 'billpayment';
@@ -81,5 +80,37 @@ class PaymentService
         }
 
         return Redirect::away($vnp_Url);
+    }
+
+    public function processPayPal($order)
+    {
+        $provider = new PayPalClient();
+        $provider->getAccessToken();
+
+        $response = $provider->createOrder([
+            "intent" => "CAPTURE",
+            "purchase_units" => [
+                [
+                    "amount" => [
+                        "currency_code" => "USD",
+                        "value" => "100.00"
+                    ]
+                ]
+            ],
+            "application_context" => [
+                "return_url" => route('payment.paypal.return'),
+                "cancel_url" => route('payment.paypal.cancel'),
+            ],
+        ]);
+
+        if (isset($response['id']) && $response['id'] != null) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'approve') {
+                    return Redirect::away($link['href']);
+                }
+            }
+        } else {
+            return Redirect::route('payment.paypal.cancel');
+        }
     }
 }

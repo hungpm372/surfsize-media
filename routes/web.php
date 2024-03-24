@@ -122,6 +122,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/payment/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');
 
+    Route::get('/payment/paypal/return', [PaymentController::class, 'paypalReturn'])->name('payment.paypal.return');
+    Route::get('/payment/paypal/cancel', [PaymentController::class, 'cancelReturn'])->name('payment.paypal.cancel');
+
     Route::get('/user', [UserController::class, 'user'])->name('user');
 });
 

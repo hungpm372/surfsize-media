@@ -75,6 +75,10 @@
                             <input name="payment-method" value="vnpay" type="radio">
                             <span>Thanh toán qua ví VNPAY</span>
                         </label>
+                        <label class="payment-method">
+                            <input name="payment-method" value="paypal" type="radio">
+                            <span>Thanh toán qua PayPal</span>
+                        </label>
                     </div>
                     <p class="summary-info grand-total"><span>Tổng cộng</span> <span class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
                     </p>

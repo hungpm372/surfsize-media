@@ -110,6 +110,8 @@ class OrderController extends Controller
                     break;
                 case 'vnpay':
                     return $this->payment->processVNPay($data);
+                case 'paypal':
+                    return $this->payment->processPayPal($data);
                 default:
                     break;
             }
