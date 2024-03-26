@@ -188,6 +188,7 @@
     <script src="{{ asset('frontend/js/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('frontend/js/functions.js') }}"></script>
+    @yield('js')
     <script>
         $(document).ready(function() {
             var t = window.location.href.split("?")[0].replace("#", "").replace(/\/$/, ""),
@@ -258,7 +259,6 @@
             })
         });
     </script>
-    @yield('js')
 
 </body>
 

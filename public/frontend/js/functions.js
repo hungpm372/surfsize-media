@@ -312,6 +312,8 @@
                 }
                 $(document).on('click', '.tab-control .tab-control-item', function (ev) {
                     ev.preventDefault();
+
+
                     if (!$(this).hasClass('active')) {
                         var _this = $(this),
                             _link_content = _this.attr('href'),
@@ -341,6 +343,11 @@
                 $(document).on('click', '.tab-control.normal .tab-control-item', function (ev) {
                     ev.preventDefault();
                     var _this = $(this);
+                    if ($(_this).attr('href') != '#description') {
+                        var expandedElements = $('#description').find('.expanded').first()
+                        if (expandedElements)
+                            expandedElements.removeClass('expanded');
+                    }
                     if (!_this.hasClass('active')) {
                         _this.siblings(".active").removeClass('active');
                         _this.addClass('active');

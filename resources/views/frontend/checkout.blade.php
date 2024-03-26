@@ -1,5 +1,9 @@
 @extends('frontend.layout.app')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ripple.css') }}">
+@endsection
+
 @section('content')
     <div class="wrap-breadcrumb">
         <ul>
@@ -55,30 +59,60 @@
                 <div class="summary-item payment-method">
                     <h4 class="title-box">Phương thức thanh toán</h4>
                     <div class="choose-payment-methods" style="border: none">
-                        <label class="payment-method">
-                            <input name="payment-method" value="cod" type="radio" checked>
-                            <span>Thanh toán khi nhận hàng (COD)</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" value="zalopay" type="radio">
-                            <span>Thanh toán qua ví ZaloPay</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" value="momo" type="radio">
-                            <span>Thanh toán qua ví MoMo</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" value="shopeepay" type="radio">
-                            <span>Thanh toán qua ví ShopeePay</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" value="vnpay" type="radio">
-                            <span>Thanh toán qua ví VNPAY</span>
-                        </label>
-                        <label class="payment-method">
-                            <input name="payment-method" value="paypal" type="radio">
-                            <span>Thanh toán qua PayPal</span>
-                        </label>
+                        <div class="payment-method">
+                            <input name="payment-method" value="cod" id="cod" type="radio" checked>
+                            <label for="cod">
+                                <img src="{{ asset('frontend/images/payments/cod.png') }}" alt="Thanh toán khi nhận hàng (COD)">
+                                <span>
+                                    Thanh toán khi nhận hàng (COD)
+                                </span>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input name="payment-method" value="zalopay" id="zalopay" type="radio">
+                            <label for="zalopay">
+                                <img src="{{ asset('frontend/images/payments/zalopay.png') }}" alt="Thanh toán qua ví ZaloPay">
+                                <span>
+                                    Thanh toán qua ví ZaloPay
+                                </span>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input name="payment-method" value="momo" id="momo" type="radio">
+                            <label for="momo">
+                                <img src="{{ asset('frontend/images/payments/momo.png') }}" alt="Thanh toán qua ví MoMo">
+                                <span>
+                                    Thanh toán qua ví MoMo
+                                </span>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input name="payment-method" value="shopeepay" id="shopeepay" type="radio">
+                            <label for="shopeepay">
+                                <img src="{{ asset('frontend/images/payments/shopeepay.png') }}" alt="Thanh toán qua ví ShopeePay">
+                                <span>
+                                    Thanh toán qua ví ShopeePay
+                                </span>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input name="payment-method" value="vnpay" id="vnpay" type="radio">
+                            <label for="vnpay">
+                                <img src="{{ asset('frontend/images/payments/vnpay.png') }}" alt="Thanh toán qua ví VNPAY">
+                                <span>
+                                    Thanh toán qua ví VNPAY
+                                </span>
+                            </label>
+                        </div>
+                        <div class="payment-method">
+                            <input name="payment-method" value="paypal" id="paypal" type="radio">
+                            <label for="paypal">
+                                <img src="{{ asset('frontend/images/payments/paypal.png') }}" alt="Thanh toán qua PayPal">
+                                <span>
+                                    Thanh toán qua PayPal
+                                </span>
+                            </label>
+                        </div>
                     </div>
                     <p class="summary-info grand-total"><span>Tổng cộng</span> <span class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
                     </p>
@@ -89,9 +123,9 @@
                     <p class="summary-info"><span class="title">Chuyển phát nhanh</span></p>
                     <h4 class="title-box" style="padding-bottom: 15px">Mã giảm giá</h4>
                     <p class="row-in-form">
-                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="Nhập mã giảm giá của bạn">
+                        <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="Mã giảm giá">
                     </p>
-                    <a href="#" class="btn btn-small">Áp dụng</a>
+                    <button type="button" class="btn btn-small">Áp dụng</button>
                 </div>
             </div>
         </form>
@@ -146,7 +180,23 @@
     </div>
 @endsection
 
-
 @section('js')
     <script src="{{ asset('frontend/js/select-address.js') }}"></script>
+    <script src="{{ asset('frontend/js/ripple.min.js') }}"></script>
+    <script>
+        $(function() {
+            $.ripple(".btn", {
+                debug: false,
+                on: 'mousedown',
+                opacity: 0.4,
+                color: "auto",
+                multi: false,
+                duration: 0.7,
+                rate: function(pxPerSecond) {
+                    return pxPerSecond;
+                },
+                easing: 'linear'
+            });
+        })
+    </script>
 @endsection

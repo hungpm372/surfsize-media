@@ -110,12 +110,14 @@
                             offset = imageElement.offset();
                             zoomElement.css("top", offset.top);
                             zoomElement.css("left", offset.left + smallWidth + options.rightPad);
+                            zoomElement.fadeIn(400);
                             zoomElement.css("visibility", "visible");
                             overlayElement.css("top", offset.top);
                             overlayElement.css("left", offset.left);
                             innerOverlayElement.css("visibility", "visible");
                         });
                         imageElement.on('mouseleave', function () {
+                            zoomElement.fadeOut(400);
                             zoomElement.css("visibility", "hidden");
                             innerOverlayElement.css("visibility", "hidden");
                         });
@@ -129,8 +131,8 @@
                         var wDifference = 0 - (fullSizeWidth - zoomElement.width());
                         var hDifference = 0 - (fullSizeHeight - zoomElement.height());
                         var innerOverlayW = (smallWidth / fullSizeWidth) * smallWidth;
-                        innerOverlayElement.css('height', innerOverlayW);
-                        innerOverlayElement.css('width', innerOverlayW);
+                        innerOverlayElement.css('height', '215px');
+                        innerOverlayElement.css('width', '215px');
                         imageElement.on('mousemove', function (event) { //on mousemove, use ratios and heights to move appropriately
                             offset = imageElement.offset();
                             var setTop = smallHeight / 2 - (event.pageY - offset.top) * hRatio;

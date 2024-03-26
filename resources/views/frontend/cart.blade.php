@@ -39,8 +39,7 @@
                             </figure>
                         </div>
                         <div class="product-name">
-                            <a class="link-to-product"
-                                href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}">{{ $item->name }}</a>
+                            <a class="link-to-product" href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}">{{ $item->name }}</a>
                         </div>
                         <div class="price-field produtc-price">
                             <div class="wrap-price">
@@ -62,8 +61,7 @@
                         </div>
                         <div class="quantity">
                             <div class="quantity-input">
-                                <input type="text" name="product-quatity"
-                                    value="{{ $item->pivot->cart_detail_quantity }}" data-max="{{ $item->quantity }}">
+                                <input type="text" name="product-quatity" value="{{ $item->pivot->cart_detail_quantity }}" data-max="{{ $item->quantity }}">
                                 <a class="btn btn-increase" href="#"></a>
                                 <a class="btn btn-reduce" href="#"></a>
                             </div>
@@ -74,8 +72,8 @@
                             </p>
                         </div>
                         <div class="delete">
-                            <a href="#" class="btn btn-delete" title="Xóa"
-                                data-url="{{ route('remove_product_from_cart') }}" data-id="{{ $item->id }}">
+                            <a href="#" class="btn btn-delete" title="Xóa" data-url="{{ route('remove_product_from_cart') }}"
+                                data-id="{{ $item->id }}">
                                 <i class="fa fa-times-circle" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -95,19 +93,16 @@
             <div class="summary">
                 <div class="order-summary">
                     <h4 class="title-box">tổng tiền giỏ hàng</h4>
-                    <p class="summary-info"><span class="title">Số lượng sản phẩm</span><b
-                            class="index">{{ $productQuantitiesAvailable }}</b></p>
-                    <p class="summary-info"><span class="title">Tổng tiền hàng</span><b
-                            class="index">{{ number_format($total, 0, '.', '.') }}đ</b></p>
-                    <p class="summary-info"><span class="title">Giảm giá</span><b
-                            class="index">{{ number_format($totalDiscount, 0, '.', '.') }}đ</b></p>
+                    <p class="summary-info"><span class="title">Số lượng sản phẩm</span><b class="index">{{ $productQuantitiesAvailable }}</b></p>
+                    <p class="summary-info"><span class="title">Tổng tiền hàng</span><b class="index">{{ number_format($total, 0, '.', '.') }}đ</b></p>
+                    <p class="summary-info"><span class="title">Giảm giá</span><b class="index">{{ number_format($totalDiscount, 0, '.', '.') }}đ</b></p>
                     <p class="summary-info"><span class="title">Phí giao hàng</span><b class="index">0đ</b></p>
-                    <p class="summary-info total-info "><span class="title">Tổng thanh toán</span><b
-                            class="index">{{ number_format($total, 0, '.', '.') }}đ</b></p>
+                    <p class="summary-info total-info "><span class="title">Tổng thanh toán</span><b class="index">{{ number_format($total, 0, '.', '.') }}đ</b>
+                    </p>
                 </div>
                 <div class="checkout-info">
                     @if ($productQuantities > 0 && $productQuantitiesAvailable > 0)
-                        <a class="btn btn-checkout" href="{{ route('checkout') }}">Thanh toán</a>
+                        <a class="btn btn-checkout" href="{{ route('checkout') }}">Mua hàng</a>
                     @else
                         <a class="btn btn-checkout" href="{{ route('home') }}">tìm kiếm sản phẩm khác</a>
                     @endif
@@ -115,8 +110,7 @@
                         <p style="color: #ff2832">Rất tiếc, một số sản phẩm đã hết hàng và không thể được đặt hàng, vui lòng
                             kiểm tra lại giỏ hàng!</p>
                     @endif
-                    <a class="link-to-shop" href="{{ route('home') }}">Tiếp tục mua hàng<i class="fa fa-arrow-circle-right"
-                            aria-hidden="true"></i></a>
+                    <a class="link-to-shop" href="{{ route('home') }}">Tiếp tục mua hàng<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                 </div>
                 <div class="update-clear">
                     <a class="btn btn-clear" href="#">Xóa Tất Cả</a>
@@ -128,26 +122,22 @@
         <div class="wrap-show-advance-info-box style-1 box-in-site">
             <h3 class="title-box">sản phẩm được xem nhiều nhất</h3>
             <div class="wrap-products">
-                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
-                    data-autoplay="true" data-autoplayTimeout="5000" data-loop="true" data-slideSpeed="1000" data-nav="true"
-                    data-dots="false"
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000"
+                    data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false"
                     data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                     @foreach ($mostViewedProducts as $item)
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                    title="{{ $item->name }}">
-                                    <figure><img src="{{ $item->featured_image }}" width="214" height="214"
-                                            alt="{{ $item->name }}" loading="lazy">
+                                <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                    <figure><img src="{{ $item->featured_image }}" width="214" height="214" alt="{{ $item->name }}" loading="lazy">
                                     </figure>
                                 </a>
                                 <div class="group-flash">
                                     <span class="flash-item sale-label">sale</span>
                                 </div>
                                 <div class="wrap-btn">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        class="function-link">quick view</a>
+                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" class="function-link">quick view</a>
                                 </div>
                             </div>
                             <div class="product-info">
