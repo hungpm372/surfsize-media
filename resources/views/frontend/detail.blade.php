@@ -54,7 +54,14 @@
             background: none;
             box-shadow: none;
         }
+
+        #gallery-container {
+            display: none;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css">
 @endsection
 
 
@@ -68,21 +75,29 @@
         </ul>
     </div>
 
+    <div id="gallery-container">
+        @php
+            $images = collect([$product->featured_image])->merge($product->productImages->pluck('name'));
+        @endphp
+
+        @foreach ($images as $image)
+            <a class="gallery-item" data-src="{{ $image }}" data-sub-html="{{ $product->name }}">
+                <img alt="{{ $product->name }}" class="img-responsive" src="{{ $image }}" loading="lazy" />
+            </a>
+        @endforeach
+    </div>
+
     <div class="row">
         <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
             <div class="wrap-product-detail">
                 <div class="detail-media">
                     <div class="product-gallery">
                         <ul class="slides">
-                            <li data-thumb="{{ $product->featured_image }}">
-                                <img src="{{ $product->featured_image }}" alt="{{ $product->name }}" loading="lazy" class="mz-zoom" />
-                            </li>
-                            @foreach ($product->productImages as $item)
-                                <li data-thumb="{{ $item->name }}">
-                                    <img src="{{ $item->name }}" alt="{{ $product->name }}" loading="lazy" class="mz-zoom" />
+                            @foreach ($images as $key => $image)
+                                <li class="slide-item" data-thumb="{{ $image }}" data-thumb-id="{{ $key }}">
+                                    <img src="{{ $image }}" alt="{{ $product->name }}" loading="lazy" class="mz-zoom" />
                                 </li>
                             @endforeach
-
                         </ul>
                     </div>
                 </div>
@@ -451,6 +466,9 @@
     <script src="{{ asset('frontend/js/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('frontend/js/add-to-cart.js') }}"></script>
     <script src="{{ asset('frontend/js/zoom.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
     <script>
         $(function() {
             if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
@@ -459,5 +477,40 @@
                 })
             }
         });
+    </script>
+    <script>
+        $(function() {
+            if (window.lightGallery) {
+                var plugin = lightGallery(document.getElementById('gallery-container'), {
+                    plugins: [lgZoom, lgThumbnail],
+                    speed: 500,
+                    mode: 'lg-slide',
+                    thumbnail: true,
+                    autoplayFirstVideo: false,
+                    pager: false,
+                    galleryId: "nature",
+                    plugins: [lgZoom, lgThumbnail],
+                    mobileSettings: {
+                        controls: false,
+                        showCloseIcon: false,
+                        download: false,
+                        rotate: false
+                    },
+                    hideBarsDelay: 3000,
+                    closeOnTap: false,
+                    showZoomInOutIcons: true,
+                    actualSize: false,
+                    addClass: 'gallery-container'
+                });
+
+                plugin.closeGallery();
+
+                $(document).on('click', '.product-gallery .slides li.flex-active-slide', function() {
+                    var _this = $(this)
+                    var indexSelected = _this.data('thumb-id')
+                    plugin.openGallery(indexSelected)
+                })
+            }
+        })
     </script>
 @endsection

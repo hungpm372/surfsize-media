@@ -110,14 +110,14 @@
                             offset = imageElement.offset();
                             zoomElement.css("top", offset.top);
                             zoomElement.css("left", offset.left + smallWidth + options.rightPad);
-                            zoomElement.fadeIn(400);
+                            zoomElement.fadeIn(200);
                             zoomElement.css("visibility", "visible");
                             overlayElement.css("top", offset.top);
                             overlayElement.css("left", offset.left);
                             innerOverlayElement.css("visibility", "visible");
                         });
                         imageElement.on('mouseleave', function () {
-                            zoomElement.fadeOut(400);
+                            zoomElement.fadeOut(300);
                             zoomElement.css("visibility", "hidden");
                             innerOverlayElement.css("visibility", "hidden");
                         });
