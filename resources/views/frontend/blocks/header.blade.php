@@ -13,8 +13,7 @@
                     <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item">
-                                <a title="Hotline: (+123) 456 789" href="tel:(+123) 456 789"><span
-                                        class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+                                <a title="Hotline: (+123) 456 789" href="tel:(+123) 456 789"><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                             </li>
                         </ul>
                     </div>
@@ -23,8 +22,7 @@
 
                             @if (Auth::check())
                                 <li class="menu-item menu-item-has-children parent">
-                                    <a href="">{{ Auth::user()->name }}<i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <a href="">{{ Auth::user()->name }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <ul class="submenu curency">
                                         <li class="menu-item">
                                             <a title="Tài khoản của tôi" href="{{ route('user', ['id' => 1]) }}">tài
@@ -55,75 +53,57 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div class="mid-section main-info-area">
+            <div class="main-header">
+                <div class="container">
+                    <div class="mid-section main-info-area">
 
-                    <div class="wrap-logo-top left-section">
-                        <a href="{{ route('home') }}" class="link-to-home"><img
-                                src="{{ asset('frontend/images/logo-top-1.png') }}" alt="mercado"></a>
-                    </div>
-
-                    <div class="wrap-search center-section">
-                        <div class="wrap-search-form">
-                            <form action="{{ route('search') }}" id="form-search-top" name="form-search-top">
-                                <input type="text" name="q" value="{{ $keyword ?? '' }}"
-                                    placeholder="Tìm kiếm sản phẩm tại đây..." autocomplete="off">
-                                <button form="form-search-top" type="submit"><i class="fa fa-search"
-                                        aria-hidden="true"></i></button>
-
-                                {{-- search result --}}
-                                <div class="search-result-box">
-                                </div>
-
-                                <div class="wrap-list-cate">
-                                    <input type="hidden" value="0" id="product-cate">
-                                    <a href="javascript:" class="link-control">Tất cả danh mục</a>
-                                    <ul class="list-cate">
-                                        @foreach ($categories as $item)
-                                            <li class="level-1">{{ $item->name }}</li>
-                                        @endforeach
-                                        {{-- <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li> --}}
-                                    </ul>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="wrap-icon right-section">
-                        <div class="wrap-icon-section wishlist">
-                            {{-- <div class="wrap-icon-section minicart"> --}}
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    <span class="index">0</span>
-                                </div>
+                        <div class="wrap-logo-top left-section">
+                            <a href="{{ route('home') }}" class="link-to-home">
+                                <h1 class="logo">{{ Config::get('app.name') }}</h1>
                             </a>
                         </div>
-                        <div class="wrap-icon-section minicart">
-                            <a href="{{ route('cart') }}" class="link-direction">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    <span class="index product-quantity">{{ $productQuantities }}</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
 
+                        <div class="wrap-search center-section">
+                            <div class="wrap-search-form">
+                                <form action="{{ route('search') }}" id="form-search-top" name="form-search-top">
+                                    <input type="text" name="q" value="{{ $keyword ?? '' }}" placeholder="Tìm kiếm sản phẩm tại đây..." autocomplete="off">
+                                    <button form="form-search-top" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    <div class="search-result-box">
+                                    </div>
+
+                                    <div class="wrap-list-cate">
+                                        <a href="javascript:" class="link-control">Tất cả danh mục</a>
+                                        <ul class="list-cate">
+                                            @foreach ($categories as $item)
+                                                <li class="level-1">{{ $item->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="wrap-icon right-section">
+                            <div class="wrap-icon-section wishlist">
+                                {{-- <div class="wrap-icon-section minicart"> --}}
+                                <a href="#" class="link-direction">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    <div class="left-info">
+                                        <span class="index">0</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="wrap-icon-section minicart">
+                                <a href="{{ route('cart') }}" class="link-direction">
+                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                    <div class="left-info">
+                                        <span class="index product-quantity">{{ $productQuantities }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -133,13 +113,11 @@
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                             <li class="menu-item">
-                                <a href="{{ route('home') }}" class="link-term mercado-item-title"><i
-                                        class="fa fa-home" aria-hidden="true"></i></a>
+                                <a href="{{ route('home') }}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
                             @foreach ($categories as $item)
                                 <li class="menu-item">
-                                    <a href="{{ route('category_products', ['slug' => $item->slug]) }}"
-                                        class="link-term mercado-item-title">{{ $item->name }}</a>
+                                    <a href="{{ route('category_products', ['slug' => $item->slug]) }}" class="link-term mercado-item-title">{{ $item->name }}</a>
                                 </li>
                             @endforeach
                         </ul>

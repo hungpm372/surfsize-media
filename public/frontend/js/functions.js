@@ -72,16 +72,24 @@
                     event.preventDefault();
                     $(this).siblings('ul').slideToggle();
                 });
+
+                $(document).on('click', function (event) {
+                    var $target = $(event.target);
+                    if (!$target.closest('.wrap-search-form .wrap-list-cate').length) {
+                        $('.wrap-search-form .wrap-list-cate ul').slideUp();
+                    }
+                });
+
                 $('.wrap-search-form .wrap-list-cate .list-cate').on('click', 'li', function (event) {
                     var _this = $(this),
                         _value = _this.attr('value'),
                         _content = _this.text(),
                         _title = _this.text();
-                    _content = _content.slice(0, 12);
+                    _content = _content.slice(0, 15);
                     _this.parent().siblings('a').text(_content).attr('title', _title);
-                    _this.parent().siblings('input[name="product-cate"]').val(_value);
                     _this.parent().slideUp();
                 });
+
             }
             if ($("select:not(.except-chosen)").length > 0) {
                 $("select:not(.except-chosen)").each(function () {
@@ -252,8 +260,10 @@
                     _owl = _this,
                     _config = _this.data(),
                     _animateOut = _this.data('animateout'),
+                    _padding = _this.data('padding'),
                     _animateIn = _this.data('animatein'),
-                    _slidespeed = _this.data('slidespeed');
+                    _slidespeed = _this.data('slidespeed'),
+                    _dots = _this.data('dots');
                 _config.navText = ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'];
                 if (typeof _animateOut != 'undefined') {
                     _config.animateOut = _animateOut;
@@ -264,9 +274,17 @@
                 if (typeof (_slidespeed) != 'undefined') {
                     _config.smartSpeed = _slidespeed;
                 }
+                if (typeof (_padding) == 'undefined') {
+                    _config.padding = 10;
+                }
+                if (_dots == true) {
+                    _config.dots = true
+                    _config.dotsContainer = '#dots-container'
+                }
                 if ($('body').hasClass('rtl')) {
                     _config.rtl = true;
                 }
+                // console.log(index, el);
                 _owl.on('drag.owl.carousel', function (event) {
                     _owl.addClass('owl-changed');
                     setTimeout(function () {

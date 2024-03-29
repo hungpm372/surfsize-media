@@ -15,13 +15,13 @@
         }
 
         .wrap-iten-in-cart .order-wrap a:hover {
-            color: #ff2832;
+            color: var(--primary-color);
         }
 
         .wrap-iten-in-cart .order-wrap span,
         .wrap-iten-in-cart>span {
             text-transform: uppercase;
-            color: #ff2832;
+            color: var(--primary-color);
             margin-left: 15px;
         }
 
@@ -56,8 +56,7 @@
                     <h3 class="box-title">chi tiết đơn hàng <span class="order-code">{{ $order->order_code }}</span></h3>
                     @if ($order->order_status_id != 4 && $order->order_status_id != 3)
                         <div class="order-wrap">
-                            <a id="cancel-order" href="#" data-url="{{ route('cancel_order') }}"
-                                data-order-code="{{ $order->order_code }}">Hủy đơn hàng</a>
+                            <a id="cancel-order" href="#" data-url="{{ route('cancel_order') }}" data-order-code="{{ $order->order_code }}">Hủy đơn hàng</a>
                             <span><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>{{ $order->orderStatus->name }}</span>
                         </div>
                     @else
@@ -74,12 +73,10 @@
                             @foreach ($products as $item)
                                 <tr>
                                     <td scope="row">
-                                        <img src="{{ $item->featured_image }}" class="img-fluid" alt="{{ $item->name }}"
-                                            loading="lazy">
+                                        <img src="{{ $item->featured_image }}" class="img-fluid" alt="{{ $item->name }}" loading="lazy">
                                     </td>
                                     <td>
-                                        <div class="product-name"><a
-                                                href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}">{{ $item->name }}</a>
+                                        <div class="product-name"><a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}">{{ $item->name }}</a>
                                         </div>
                                     </td>
                                     <td>{{ $item->code }}</td>
@@ -110,8 +107,7 @@
                     <p class="summary-info"><span class="title">Ngày đặt hàng</span>
                         <b class="index">{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</b>
                     </p>
-                    <p class="summary-info"><span class="title">Số lượng sản phẩm</span><b
-                            class="index">{{ $order->products()->sum('order_detail_quantity') }}</b></p>
+                    <p class="summary-info"><span class="title">Số lượng sản phẩm</span><b class="index">{{ $order->products()->sum('order_detail_quantity') }}</b></p>
                     <p class="summary-info"><span class="title">Tổng tiền hàng</span>
                         <b class="index">{{ number_format($totalNotDiscount, 0, '.', '.') }}đ</b>
                     </p>
@@ -119,8 +115,7 @@
                         <b class="index">{{ number_format($totalDiscount, 0, '.', '.') }}đ</b>
                     </p>
                     <p class="summary-info"><span class="title">Phí giao hàng</span><b class="index">0đ</b></p>
-                    <p class="summary-info"><span class="title">Thành tiền</span><b
-                            class="index">{{ number_format($totalNotDiscount - $totalDiscount, 0, '.', '.') }}đ</b></p>
+                    <p class="summary-info"><span class="title">Thành tiền</span><b class="index">{{ number_format($totalNotDiscount - $totalDiscount, 0, '.', '.') }}đ</b></p>
                     <p class="summary-info total-info "></p>
                 </div>
                 <div class="order-summary">

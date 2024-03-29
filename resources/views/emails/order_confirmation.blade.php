@@ -81,7 +81,7 @@
         table.list-product th {
             font-size: 13px;
             color: white;
-            background: #ff2832;
+            background: var(--primary-color);
             padding: 5px;
             font-weight: 700;
         }
@@ -104,7 +104,7 @@
         }
 
         table.list-product a:hover {
-            color: #ff2832;
+            color: var(--primary-color);
         }
 
         a.submit {

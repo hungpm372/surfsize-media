@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://connect.facebook.net" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ff2832" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fe0000" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
     <meta name="mobile-web-app-capable" content="yes" />
 
@@ -43,14 +43,20 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.ico') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&
+    display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/flexslider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/chosen.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ripple.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/color-01.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     @yield('css')
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQPM6WVTLQ"></script>
@@ -187,6 +193,7 @@
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('frontend/js/ripple.min.js') }}"></script>
     <script src="{{ asset('frontend/js/functions.js') }}"></script>
     @yield('js')
     <script>
@@ -258,6 +265,22 @@
                 e.is(i.target) || 0 !== e.has(i.target).length || e.html("")
             })
         });
+    </script>
+    <script>
+        $(function() {
+            $.ripple(".btn", {
+                debug: false,
+                on: 'mousedown',
+                opacity: 0.4,
+                color: "auto",
+                multi: false,
+                duration: 0.7,
+                rate: function(pxPerSecond) {
+                    return pxPerSecond;
+                },
+                easing: 'linear'
+            });
+        })
     </script>
 
 </body>

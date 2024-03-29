@@ -1,7 +1,6 @@
 @extends('frontend.layout.app')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ripple.css') }}">
 @endsection
 
 @section('content')
@@ -116,7 +115,7 @@
                     </div>
                     <p class="summary-info grand-total"><span>Tổng cộng</span> <span class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
                     </p>
-                    <button type="submit" class="btn btn-medium">đặt hàng ngay</button>
+                    <button type="submit" class="btn btn-medium btn-order">đặt hàng ngay</button>
                 </div>
                 <div class="summary-item shipping-method">
                     <h4 class="title-box f-title">Phương thức giao hàng</h4>
@@ -132,10 +131,10 @@
 
         {{-- slider --}}
         <div class="wrap-show-advance-info-box style-1 box-in-site">
-            <h3 class="title-box">sản phẩm được xem nhiều nhất</h3>
+            <h2 class="title-box">sản phẩm được xem nhiều nhất</h2>
             <div class="wrap-products">
                 <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000"
-                    data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false"
+                    data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
                     data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                     @foreach ($mostViewedProducts as $item)
@@ -182,21 +181,4 @@
 
 @section('js')
     <script src="{{ asset('frontend/js/select-address.js') }}"></script>
-    <script src="{{ asset('frontend/js/ripple.min.js') }}"></script>
-    <script>
-        $(function() {
-            $.ripple(".btn", {
-                debug: false,
-                on: 'mousedown',
-                opacity: 0.4,
-                color: "auto",
-                multi: false,
-                duration: 0.7,
-                rate: function(pxPerSecond) {
-                    return pxPerSecond;
-                },
-                easing: 'linear'
-            });
-        })
-    </script>
 @endsection

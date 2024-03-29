@@ -43,7 +43,6 @@
         pullDrag: !0,
         freeDrag: !1,
         margin: 0,
-        padding: 0,
         stagePadding: 0,
         merge: !1,
         mergeFit: !0,
@@ -110,12 +109,12 @@
     }, {
         filter: ["width", "items", "settings"],
         run: function (a) {
-            var b = ((this.width() - this.settings.padding) / this.settings.items).toFixed(3) - this.settings.margin,
+            var b = ((this.width() - 10) / this.settings.items).toFixed(3) - this.settings.margin,
                 c = null,
                 d = this._items.length,
                 e = !this.settings.autoWidth,
                 f = [];
-            console.log(this.settings.padding);
+            console.log(this.width());
             for (a.items = {
                 merge: !1,
                 width: b

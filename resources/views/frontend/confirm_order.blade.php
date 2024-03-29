@@ -29,7 +29,7 @@
             margin-top: 12px;
             margin-bottom: 18px;
             text-transform: uppercase;
-            background: #ff2832;
+            background: var(--primary-color);
         }
 
         p {
@@ -48,15 +48,13 @@
                         <img src="{{ asset('storage/app/tick.jpg') }}" alt="">
                         <h3>Xác nhận đơn hàng thành công</h3>
                         <p>Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>
-                        <a href="{{ route('order_detail', ['order_code' => $order->order_code]) }}"
-                            class="btn btn-confirm-order">xem đơn hàng</a>
+                        <a href="{{ route('order_detail', ['order_code' => $order->order_code]) }}" class="btn btn-confirm-order">xem đơn hàng</a>
                     @else
                         <img src="{{ asset('storage/app/cross.jpg') }}" alt="">
                         <h3>Xác nhận đơn hàng không thành công</h3>
                         <p>Đơn hàng của bạn đã hết thời gian xác nhận hoặc mã xác nhận không chính xác.</p>
-                        <button data-order-code="{{ $order->order_code }}"
-                            data-url="{{ route('resend_order_confirmation_email') }}"
-                            class="btn btn-confirm-order resend-email" type="button">Gửi
+                        <button data-order-code="{{ $order->order_code }}" data-url="{{ route('resend_order_confirmation_email') }}" class="btn btn-confirm-order resend-email"
+                            type="button">Gửi
                             lại email xác thực</button>
                     @endif
 

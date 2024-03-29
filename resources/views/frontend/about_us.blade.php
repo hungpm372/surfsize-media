@@ -115,7 +115,7 @@
             <h4 class="title-box">Our teams</h4>
             <div class="our-staff">
                 <div class="slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true"
-                    data-autoplayTimeout="5000" data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false"
+                    data-autoplayTimeout="5000" data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
                     data-margin="30"
                     data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"4"}}'>
 

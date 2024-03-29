@@ -58,6 +58,29 @@
         #gallery-container {
             display: none;
         }
+
+        .product-gallery .slides .slide-item {
+            position: relative;
+        }
+
+        .product-gallery .slides .slide-item.flex-active-slide::before {
+            content: "\f002";
+            font-family: FontAwesome;
+            font-size: 23px;
+            color: #de1c29;
+            position: absolute;
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: all .2s ease;
+        }
+
+        .product-gallery .slides .slide-item.flex-active-slide:hover::before {
+            opacity: 1;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-thumbnail.min.css">
@@ -151,14 +174,15 @@
                     </div>
                     <div class="wrap-butons">
                         @if ($product->quantity > 0)
-                            <a href="#" data-price="{{ $product->price }}" data-url="{{ route('add_product_to_cart') }}" data-id="{{ $product->id }}"
-                                class="btn add-to-cart">thêm vào giỏ hàng</a>
+                            <button data-price="{{ $product->price }}" data-url="{{ route('add_product_to_cart') }}" data-id="{{ $product->id }}"
+                                class="btn btn-medium btn-add-cart">thêm vào
+                                giỏ hàng</button>
                         @else
                             <button type="button" disabled class="btn out-of-stock">hết hàng</button>
                         @endif
                         <div class="wrap-btn">
-                            <a href="#" class="btn btn-compare">so sánh</a>
-                            <a href="#" class="btn btn-wishlist">yêu thích</a>
+                            <button type="button" class="btn btn-compare btn-small btn-outline">so sánh</button>
+                            <button type="button" class="btn btn-wishlist btn-small btn-outline">yêu thích</button>
                         </div>
                     </div>
                 </div>
@@ -393,17 +417,16 @@
 
         <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="wrap-show-advance-info-box style-1 box-in-site">
-                <h3 class="title-box">sản phẩm liên quan</h3>
+                <h2 class="title-box">sản phẩm liên quan</h2>
                 <div class="wrap-products">
-                    <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="true" data-slideSpeed="1000"
-                        data-autoplay="true" data-autoplayTimeout="5000" data-nav="true" data-dots="false"
+                    <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="true" data-slideSpeed="1000" data-autoplay="true"
+                        data-autoplayTimeout="5000" data-nav="true" data-dots="false" data-margin="10"
                         data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
                         @foreach ($relatedProducts as $item)
                             <div class="product product-style-2 equal-elem ">
                                 <div class="product-thumnail">
                                     <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
-                                        <figure><img src="{{ $item->featured_image }}" width="214" height="214" alt="{{ $item->name }}"
-                                                loading="lazy">
+                                        <figure><img src="{{ $item->featured_image }}" width="214" height="214" alt="{{ $item->name }}" loading="lazy">
                                         </figure>
                                     </a>
                                     <div class="group-flash">
