@@ -281,6 +281,7 @@
                     _config.dots = true
                     _config.dotsContainer = '#dots-container'
                 }
+                _config.nav = true
                 if ($('body').hasClass('rtl')) {
                     _config.rtl = true;
                 }

@@ -1,4 +1,9 @@
 /*! Bootstrap v3.3.7 */
+.px-35 {
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+}
+
 .modal-open,
 .sr-only,
 svg:not(:root) {
@@ -140,8 +145,9 @@ hr {
 :before,
 input[type=checkbox],
 input[type=radio] {
-    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 code,
@@ -171,7 +177,6 @@ html {
     font-size: 14px
 }
 
-.glyphicon,
 address {
     font-style: normal
 }
@@ -181,15 +186,11 @@ button {
 }
 
 button,
-select {
-    text-transform: none
-}
-
-button,
 html input[type=button],
 input[type=reset],
 input[type=submit] {
     -webkit-appearance: button;
+    appearance: button;
     cursor: pointer
 }
 
@@ -221,6 +222,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=search] {
     -webkit-appearance: textfield;
+    appearance: textfield;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box
@@ -328,7 +330,8 @@ th {
 
 .dropdown-menu,
 .modal-content {
-    -webkit-background-clip: padding-box
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
 }
 
 .btn,
@@ -1559,7 +1562,9 @@ input[type=search] {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-appearance: none
+    -webkit-appearance: none;
+    appearance: none;
+    background-clip: padding-box
 }
 
 input[type=checkbox],
@@ -2863,7 +2868,7 @@ tbody.collapse.in {
 .pager li>a:focus,
 .pager li>a:hover {
     text-decoration: none;
-    background-color: #eee
+    background-color: unset
 }
 
 .nav>li.disabled>a:focus,
@@ -4405,7 +4410,8 @@ button.close {
     cursor: pointer;
     background: 0 0;
     border: 0;
-    -webkit-appearance: none
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .modal {

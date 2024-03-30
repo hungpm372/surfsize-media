@@ -56,16 +56,13 @@
                 <div class="wrap-login-item ">
                     <div class="login-form form-item form-stl">
                         <form name="frm-login" method="POST">
-
                             @csrf
-
                             <fieldset class="wrap-title">
-                                <h3 class="form-title">đăng nhập tài khoản của bạn</h3>
+                                <h3 class="form-title">đăng nhập</h3>
                             </fieldset>
 
                             <fieldset class="wrap-input {{ $errors->has('email') ? 'has-error' : '' }}">
-                                <label for="frm-login-uname">Email:</label>
-                                <input type="text" id="frm-login-uname" name="email" value="{{ old('email') }}">
+                                <input type="text" id="frm-login-uname" name="email" value="{{ old('email') }}" placeholder="Email/Số điện thoại">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         {{ $errors->first('email') }}</>
@@ -74,8 +71,7 @@
                             </fieldset>
 
                             <fieldset class="wrap-input {{ $errors->has('password') ? 'has-error' : '' }}">
-                                <label for="frm-login-pass">Mật khẩu:</label>
-                                <input type="password" id="frm-login-pass" name="password" value="{{ old('password') }}">
+                                <input type="password" id="frm-login-pass" name="password" value="{{ old('password') }}" placeholder="Mật khẩu">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         {{ $errors->first('password') }}</>
@@ -84,15 +80,20 @@
                             </fieldset>
 
                             <fieldset class="wrap-input">
-                                <label class="remember-field">
-                                    <input class="frm-input " name="rememberme" value="forever"
-                                        type="checkbox"><span>Remember me</span>
-                                </label>
                                 <a class="link-function left-position" href="#" title="Forgotten password?">Quên mật
                                     khẩu?</a>
                             </fieldset>
 
-                            <input type="submit" class="btn btn-submit" value="Đăng nhập">
+                            <button type="submit" class="btn btn-submit btn-medium">Đăng nhập</button>
+                            <div class="spacer">Hoặc</div>
+                            <button type="button" class="btn btn-fb btn-medium">
+                                <img src="{{ asset('frontend/images/app/facebook.svg') }}" alt="Đăng nhập bằng facebook">
+                                Đăng nhập bằng facebook
+                            </button>
+                            <button type="button" class="btn btn-gg btn-medium">
+                                <img src="{{ asset('frontend/images/app/google.svg') }}" alt="Đăng nhập bằng google">
+                                Đăng nhập bằng google
+                            </button>
                         </form>
                     </div>
                 </div>

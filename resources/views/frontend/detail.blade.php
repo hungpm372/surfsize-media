@@ -36,25 +36,6 @@
             background: none;
         }
 
-        .btn.btn-see-more {
-            background: none;
-            color: black;
-            padding: 5px 20px;
-            text-transform: uppercase;
-            font-weight: 700;
-            border: none;
-            outline: none;
-        }
-
-        .btn.btn-see-more:focus,
-        .btn.btn-see-more:active,
-        .btn.btn-see-more:focus-visible,
-        .btn.btn-see-more:focus-within {
-            outline: none;
-            background: none;
-            box-shadow: none;
-        }
-
         #gallery-container {
             display: none;
         }
@@ -198,7 +179,7 @@
                                 {!! $product->description !!}
 
                                 <div class="fade-out">
-                                    <button class="btn btn-see-more toggle-description">Xem thêm</button>
+                                    <button class="btn btn-small btn-outline toggle-description">Xem thêm</button>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +298,7 @@
                                                     <textarea id="comment" name="comment" cols="45" rows="8"></textarea>
                                                 </p>
                                                 <p class="form-submit">
-                                                    <input name="submit" type="submit" id="submit" class="submit" value="Submit">
+                                                    <button type="submit" id="submit" class="submit btn btn-small px-35">Gửi</button>
                                                 </p>
                                             </form>
 

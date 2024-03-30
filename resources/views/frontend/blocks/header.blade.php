@@ -19,7 +19,17 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-
+                            <li class="menu-item menu-item-has-children parent">
+                                <a href="">Tiếng Việt<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="submenu curency">
+                                    <li class="menu-item">
+                                        <a title="Tiếng Việt" href="{{ route('order') }}">Tiếng Việt</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a title="English" href="{{ route('logout') }}">English</a>
+                                    </li>
+                                </ul>
+                            </li>
                             @if (Auth::check())
                                 <li class="menu-item menu-item-has-children parent">
                                     <a href="">{{ Auth::user()->name }}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -108,13 +118,12 @@
             </div>
 
             <div class="nav-section header-sticky">
-
                 <div class="primary-nav-section">
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
-                            <li class="menu-item">
+                            {{-- <li class="menu-item">
                                 <a href="{{ route('home') }}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
-                            </li>
+                            </li> --}}
                             @foreach ($categories as $item)
                                 <li class="menu-item">
                                     <a href="{{ route('category_products', ['slug' => $item->slug]) }}" class="link-term mercado-item-title">{{ $item->name }}</a>

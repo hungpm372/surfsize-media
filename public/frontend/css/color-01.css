@@ -40,7 +40,6 @@
     color: var(--primary-color) !important
 }
 
-#review_form_wrapper #review_form .comment-form p.form-submit input[type=submit],
 .aboutus-info.style-small-left .list-showups label input[type=radio]:checked+span.check-box,
 .btn.filter-submit,
 .checkout-info .btn-checkout,
@@ -56,13 +55,12 @@
 .wrap-articles article .info a.btn-to-post:hover,
 .wrap-banner .banner-link,
 .wrap-contacts .contact-box input[type=submit],
-.wrap-footer-content .wrap-function-info,
+/* .wrap-footer-content .wrap-function-info, */
 .wrap-footer-item .social-network ul li a:hover,
 .wrap-icon-box .icon-box-item i,
 .wrap-login-item .form-item .btn,
 .wrap-main-slide .slide-1 .btn-link,
 .wrap-main-slide .slide-3 .btn-link,
-.wrap-newletter-footer .btn-submit,
 .wrap-pagination-info .page-numbers li .page-number-item.current,
 .wrap-product-detail .advance-info .tab-control a.active,
 .wrap-product-detail .detail-info .quantity-input .btn:hover,
@@ -96,12 +94,7 @@
 .widget.filter-widget .inline-round li a:hover,
 .widget.widget-tag-clouds ul li a:hover,
 .wrap-articles article .info a.btn-to-post:hover,
-.wrap-footer-content .wrap-function-info .fc-info-item,
 .wrap-pagination-info .page-numbers li .page-number-item.current,
 .wrap-pagination-info .page-numbers li .page-number-item:hover {
     border-color: #ff3c45 !important
-}
-
-.wrap-footer-content .wrap-function-info .fc-info-item .wrap-left-info .fc-desc {
-    color: #ffc2c4 !important
 }

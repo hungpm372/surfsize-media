@@ -101,9 +101,9 @@
                 </div>
                 <div class="checkout-info">
                     @if ($productQuantities > 0 && $productQuantitiesAvailable > 0)
-                        <a class="btn btn-checkout" href="{{ route('checkout') }}">Mua hàng</a>
+                        <a class="btn btn-checkout btn-small" href="{{ route('checkout') }}">Mua hàng</a>
                     @else
-                        <a class="btn btn-checkout" href="{{ route('home') }}">tìm kiếm sản phẩm khác</a>
+                        <a class="btn btn-checkout btn-small" href="{{ route('home') }}">tìm kiếm sản phẩm khác</a>
                     @endif
                     @if (!$cartStatus)
                         <p style="color: var(--primary-color)">Rất tiếc, một số sản phẩm đã hết hàng và không thể được đặt hàng, vui lòng
@@ -112,8 +112,8 @@
                     <a class="link-to-shop" href="{{ route('home') }}">Tiếp tục mua hàng<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                 </div>
                 <div class="update-clear">
-                    <a class="btn btn-clear" href="#">Xóa Tất Cả</a>
-                    <a class="btn btn-update" href="#">Cập nhật giỏ hàng</a>
+                    <a class="btn btn-clear btn-small btn-outline" href="#">Xóa Tất Cả</a>
+                    <a class="btn btn-update btn-small btn-outline" href="#">Cập nhật giỏ hàng</a>
                 </div>
             </div>
         </div>
@@ -122,7 +122,8 @@
             <h2 class="title-box">sản phẩm được xem nhiều nhất</h2>
             <div class="wrap-products">
                 <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000" data-loop="true"
-                    data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10" data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                    data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
+                    data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                     @foreach ($mostViewedProducts as $item)
                         <div class="product product-style-2 equal-elem ">

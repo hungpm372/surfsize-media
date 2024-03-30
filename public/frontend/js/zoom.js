@@ -12,7 +12,7 @@
                 imageSrc: $(this).attr('src'),
                 squareOverlay: true,
                 position: 'right',
-                rightPad: 15,
+                rightPad: 20,
                 lazy: true,
                 zoomLevel: 1,
                 zoomSize: false,

@@ -18,8 +18,7 @@
                                 <h3 class="form-title">Tạo tài khoản</h3>
                             </fieldset>
                             <fieldset class="wrap-input {{ $errors->has('name') ? 'has-error' : '' }}">
-                                <label for="frm-reg-lname">Tên</label>
-                                <input type="text" id="frm-reg-lname" name="name" value="{{ old('name') }}">
+                                <input type="text" id="frm-reg-lname" name="name" value="{{ old('name') }}" placeholder="Họ tên">
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         {{ $errors->first('name') }}</>
@@ -27,8 +26,7 @@
                                 @endif
                             </fieldset>
                             <fieldset class="wrap-input {{ $errors->has('email') ? 'has-error' : '' }}">
-                                <label for="frm-reg-email">Email</label>
-                                <input type="text" id="frm-reg-email" name="email" value="{{ old('email') }}">
+                                <input type="text" id="frm-reg-email" name="email" value="{{ old('email') }}" placeholder="Email">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         {{ $errors->first('email') }}</>
@@ -36,8 +34,7 @@
                                 @endif
                             </fieldset>
                             <fieldset class="wrap-input {{ $errors->has('password') ? 'has-error' : '' }}">
-                                <label for="frm-reg-pass">Mật khẩu</label>
-                                <input type="password" id="frm-reg-pass" name="password" value="{{ old('password') }}">
+                                <input type="password" id="frm-reg-pass" name="password" value="{{ old('password') }}" placeholder="Mật khẩu">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         {{ $errors->first('password') }}</>
@@ -45,16 +42,23 @@
                                 @endif
                             </fieldset>
                             <fieldset class="wrap-input {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-                                <label for="frm-reg-cfpass">Xác nhận mật khẩu</label>
-                                <input type="password" id="frm-reg-cfpass" name="password_confirmation"
-                                    value="{{ old('password_confirmation') }}">
+                                <input type="password" id="frm-reg-cfpass" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Xác nhận mật khẩu">
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         {{ $errors->first('password_confirmation') }}</>
                                     </span>
                                 @endif
                             </fieldset>
-                            <input type="submit" class="btn btn-sign" value="Đăng ký">
+                            <button type="submit" class="btn btn-submit btn-medium">Đăng ký</button>
+                            <div class="spacer">Hoặc</div>
+                            <button type="button" class="btn btn-fb btn-medium">
+                                <img src="{{ asset('frontend/images/app/facebook.svg') }}" alt="Đăng ký bằng facebook">
+                                Đăng ký bằng facebook
+                            </button>
+                            <button type="button" class="btn btn-gg btn-medium">
+                                <img src="{{ asset('frontend/images/app/google.svg') }}" alt="Đăng ký bằng google">
+                                Đăng ký bằng google
+                            </button>
                         </form>
                     </div>
                 </div>

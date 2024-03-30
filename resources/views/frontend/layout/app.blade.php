@@ -54,9 +54,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/flexslider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ripple.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/color-01.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     @yield('css')
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQPM6WVTLQ"></script>
@@ -198,11 +198,11 @@
     @yield('js')
     <script>
         $(document).ready(function() {
-            var t = window.location.href.split("?")[0].replace("#", "").replace(/\/$/, ""),
-                r = !1;
-            $(".primary .menu-item").each(function(a) {
-                $(this).children().first().attr("href") == t && ($(this).addClass("home-icon"), r = !0)
-            }), r || $(".primary .menu-item").first().addClass("home-icon");
+            // var t = window.location.href.split("?")[0].replace("#", "").replace(/\/$/, ""),
+            //     r = !1;
+            // $(".primary .menu-item").each(function(a) {
+            //     $(this).children().first().attr("href") == t && ($(this).addClass("home-icon"), r = !0)
+            // }), r || $(".primary .menu-item").first().addClass("home-icon");
             var a = $("#back-to-top-btn");
             $(window).on("scroll", function() {
                 $(this).scrollTop() > 100 ? a.css("transform", "translate3d(0px, 0, 0)") : a.css(

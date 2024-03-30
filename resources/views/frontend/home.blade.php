@@ -19,7 +19,7 @@
     <!--featured products-->
     <div class="wrap-show-advance-info-box style-1 has-countdown">
         <h2 class="title-box">sản phẩm nổi bật</h2>
-        <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000" data-loop="true"
+        <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="false" data-autoplayTimeout="5000" data-loop="true"
             data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
             data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
             @foreach ($featuredProducts as $item)
