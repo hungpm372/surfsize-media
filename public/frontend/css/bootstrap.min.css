@@ -4,6 +4,26 @@
     padding-right: 35px !important;
 }
 
+.mt-1 {
+    margin-top: 0.5rem !important;
+}
+
+.mt-2 {
+    margin-top: 1rem !important;
+}
+
+.mt-3 {
+    margin-top: 1.5rem !important;
+}
+
+.mt-4 {
+    margin-top: 2rem !important;
+}
+
+.mt-5 {
+    margin-top: 2.5rem !important;
+}
+
 .modal-open,
 .sr-only,
 svg:not(:root) {
@@ -1991,6 +2011,12 @@ select.input-lg {
     outline: none;
     background: var(--primary-color);
     display: block;
+}
+
+.btn.btn-xs {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 4px 12px;
 }
 
 .btn.btn-small {

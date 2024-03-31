@@ -32,10 +32,6 @@
 .product-list-style .advance-info .wrap-btn .btn:hover::before,
 .widget a:hover,
 .widget.filter-widget .vertical-list li a::after,
-.widget.search-post button[type=submit]:hover i,
-.wrap-articles article .info .post-attrs li a.link-commnet-post:hover::before,
-.wrap-articles article .info .post-attrs li a:hover,
-.wrap-articles article .info .post-name:hover .art-title,
 .wrap-login-item .form-item .link-function:hover {
     color: var(--primary-color) !important
 }
@@ -52,10 +48,8 @@
 .summary-item .btn,
 .widget.filter-widget .inline-round li a.active,
 .widget.filter-widget .inline-round li a:hover,
-.wrap-articles article .info a.btn-to-post:hover,
 .wrap-banner .banner-link,
 .wrap-contacts .contact-box input[type=submit],
-/* .wrap-footer-content .wrap-function-info, */
 .wrap-footer-item .social-network ul li a:hover,
 .wrap-icon-box .icon-box-item i,
 .wrap-login-item .form-item .btn,
@@ -93,7 +87,6 @@
 .widget.filter-widget .inline-round li a.active,
 .widget.filter-widget .inline-round li a:hover,
 .widget.widget-tag-clouds ul li a:hover,
-.wrap-articles article .info a.btn-to-post:hover,
 .wrap-pagination-info .page-numbers li .page-number-item.current,
 .wrap-pagination-info .page-numbers li .page-number-item:hover {
     border-color: #ff3c45 !important

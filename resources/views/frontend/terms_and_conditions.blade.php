@@ -9,80 +9,81 @@
     </div>
     <div class="main-content-area">
         <div class="row">
-            <div class="col-md-12">
-                <h3>Điều Khoản & Điều Kiện</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
-                    nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
-                    maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
-                    explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
-                    blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
-                    aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+            <div class="col-md-12 ">
+                <div class="section-divider">
+                    <h3 class="title-box">Điều Khoản & Điều Kiện</h3>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates explicabo atque. Aperiam, esse
+                        nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed blanditiis. Sequi quidem cum
+                        maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptates
+                        explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero aspernatur dicta sed
+                        blanditiis. Sequi quidem cum maiores sed architecto. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dolor voluptates explicabo atque. Aperiam, esse nemo reprehenderit nisi excepturi repudiandae vero
+                        aspernatur dicta sed blanditiis. Sequi quidem cum maiores sed architecto.</p>
+                </div>
             </div>
         </div>
     </div>
-    <!--end container-->
 @endsection

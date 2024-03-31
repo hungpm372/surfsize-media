@@ -2,15 +2,15 @@
 
 @section('css')
     <style>
-        .wrap-price {
+        .products-cart .wrap-price {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
         }
 
-        .wrap-price span p,
-        .wrap-price del p,
+        .products-cart .wrap-price span p,
+        .products-cart .wrap-price del p,
         .price-field.sub-total p {
             margin-bottom: 0;
         }
@@ -86,7 +86,7 @@
                         <div class="cart-empty">
                             <img src="{{ asset('storage/app/cart-empty.png') }}" alt="">
                             <p>Không có sản phẩm nào trong giỏ hàng</p>
-                            <a href="{{ route('home') }}">Mua sắm ngay</a>
+                            <a class="btn btn-small" href="{{ route('home') }}">Mua sắm ngay</a>
                         </div>
                     </li>
                 @endforelse
@@ -125,7 +125,7 @@
         <div class="wrap-show-advance-info-box style-1 box-in-site">
             <h2 class="title-box">sản phẩm được xem nhiều nhất</h2>
             <div class="wrap-products">
-                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000" data-loop="true"
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="false" data-autoplayTimeout="5000" data-loop="true"
                     data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
                     data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
