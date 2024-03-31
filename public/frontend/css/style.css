@@ -16,6 +16,10 @@ img {
     -webkit-box-orient: vertical;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     font-size: 13px;
@@ -29,7 +33,7 @@ img {
 }
 
 input:focus {
-    outline: 0
+    outline: 0;
 }
 
 a:active,
@@ -55,60 +59,6 @@ textarea {
     border-radius: 0;
     outline: 0;
     box-shadow: none
-}
-
-[class*=" flaticon-"]:after,
-[class*=" flaticon-"]:before,
-[class^=flaticon-]:after,
-[class^=flaticon-]:before {
-    font-family: Flaticon;
-    font-size: 20px;
-    font-style: normal;
-    margin-left: 20px
-}
-
-.flaticon-favorite:before {
-    content: "\f100"
-}
-
-.flaticon-technology:before {
-    content: "\f101"
-}
-
-.flaticon-interface:before {
-    content: "\f102"
-}
-
-.flaticon-signs:before {
-    content: "\f103"
-}
-
-.flaticon-squares-2:before {
-    content: "\f104"
-}
-
-.flaticon-menu-1:before {
-    content: "\f105"
-}
-
-.flaticon-menu:before {
-    content: "\f106"
-}
-
-.flaticon-grid:before {
-    content: "\f107"
-}
-
-.flaticon-four-grid-layout-design-interface-symbol:before {
-    content: "\f108"
-}
-
-.flaticon-squares-1:before {
-    content: "\f109"
-}
-
-.flaticon-squares:before {
-    content: "\f10a"
 }
 
 .mercado-clone-wrap {
@@ -4406,14 +4356,21 @@ article.single-post blockquote p:last-child::after {
     background-color: #333
 }
 
-.wrap-iten-in-cart .box-title {
-    font-size: 14px;
-    color: #222;
-    font-weight: 700;
+.wrap-iten-in-cart .box-title,
+.order-summary .title-box {
+    font-size: 16px;
+    color: #3f3f3f;
+    line-height: 20px;
     text-align: left;
-    display: block;
-    margin: -2px 0 18px;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 18px;
+    margin-top: 0;
+}
+
+.order-summary .title-box {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 18px;
 }
 
 .wrap-iten-in-cart .products-cart {
@@ -4434,7 +4391,8 @@ article.single-post blockquote p:last-child::after {
 }
 
 .wrap-iten-in-cart .products-cart .quantity {
-    width: 157px
+    max-width: 157px;
+    width: 157px;
 }
 
 .wrap-iten-in-cart .products-cart .price-field {
@@ -4456,114 +4414,73 @@ article.single-post blockquote p:last-child::after {
 .wrap-iten-in-cart .products-cart .product-name a {
     font-size: 14px;
     line-height: 20px;
-    font-weight: 600;
-    color: #333;
+    font-weight: 400;
+    color: #3f3f3f;
     text-align: left
 }
 
 .wrap-iten-in-cart .products-cart .price-field p {
     line-height: 18px;
     color: var(--primary-color);
-    font-weight: 600
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .wrap-iten-in-cart .products-cart .price-field del p {
-    color: #222 !important;
-    font-weight: 400
+    color: #a6a6a6;
 }
 
 .wrap-iten-in-cart .products-cart .quantity .quantity-input {
-    display: inline-block;
-    border: 1px solid #e6e6e6;
-    width: 100%;
-    max-width: 157px
+    display: flex;
+    border: 1px solid rgb(200, 200, 200);
+    width: 84px;
+    flex-wrap: nowrap;
+    border-radius: 3px;
+    margin: 0 auto;
 }
 
-.wrap-iten-in-cart .products-cart .quantity .quantity-input input[type=number],
-.wrap-iten-in-cart .products-cart .quantity .quantity-input input[type=text] {
-    max-width: 71px;
-    float: right;
-    border: none;
-    outline: 0;
-    height: 37px;
-    font-size: 16px;
-    line-height: 20px;
+.wrap-iten-in-cart .products-cart .quantity .quantity-input input {
+    line-height: 1.2;
     color: var(--primary-color);
-    text-align: right;
-    padding-right: 15px;
-    padding-left: 10px;
-    font-weight: 700
-}
-
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn {
-    display: inline-block;
-    float: right;
-    width: 28px;
-    height: 28px;
-    background-color: #ddd;
+    font-weight: 400;
+    padding: 1px 2px;
     border: none;
-    padding: 0;
-    line-height: 20px;
-    margin: 4.5px 0 0 10px;
-    border-radius: 50%;
-    position: relative
+    background: transparent;
+    width: 32px;
+    text-align: center;
+    font-size: 14px;
+    appearance: none;
+    margin: 0px;
+    outline: none;
 }
 
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn::after,
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn::before {
-    position: absolute;
-    top: 50%;
-    left: 50%
+.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn-quantity {
+    display: inline-block;
+    border-right: 1px solid rgb(200, 200, 200);
+    color: rgb(153, 153, 153);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
 
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn:hover::after,
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn:hover::before {
-    background-color: #fff !important
+.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn-quantity.btn-increase {
+    border-right: none;
+    border-left: 1px solid rgb(200, 200, 200);
 }
 
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn::before {
-    content: "";
-    width: 10px;
-    height: 2px;
-    margin-left: -5px;
-    margin-top: -1px;
-    background-color: #666;
-    display: inline-block
-}
-
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn.btn-increase {
-    background-color: #999
-}
-
-.wrap-iten-in-cart .products-cart .quantity .quantity-input .btn.btn-increase::after {
-    content: "";
-    width: 2px;
-    height: 10px;
-    margin-left: -1px;
-    margin-top: -5px;
-    background-color: #666;
-    display: block
-}
-
-.wrap-iten-in-cart .products-cart .delete a.btn,
-.wrap-iten-in-cart .products-cart .delete a:focus {
-    padding: 0;
-    margin: 0;
-    outline: 0;
-    box-shadow: none
-}
-
-.wrap-iten-in-cart .products-cart .delete a.btn i {
+.wrap-iten-in-cart .products-cart .delete a i {
     font-size: 20px;
     line-height: 24px;
-    color: #888;
+    color: #a6a6a6;
     outline: 0
 }
 
-.shopping-cart {
+.shopping-cart,
+.wrap-iten-in-cart {
     background-color: var(--bg-color);
     padding: 15px;
     border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 .shopping-cart .summary {
@@ -4585,18 +4502,7 @@ article.single-post blockquote p:last-child::after {
     vertical-align: middle
 }
 
-.order-summary .title-box {
-    font-size: 14px;
-    color: #333;
-    line-height: 20px;
-    text-align: left;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 18px;
-    padding-bottom: 26px;
-    margin-top: 0
-}
+
 
 .order-summary .summary-info {
     font-size: 14px;

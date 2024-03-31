@@ -211,8 +211,7 @@
                                             </tr>
                                             @foreach ($order->products->reverse() as $item)
                                                 <tr>
-                                                    <td><img class="img-responsive thumbnail"
-                                                            src="{{ $message->embed(asset('storage/products/' . $item->featured_image)) }}"
+                                                    <td><img class="img-responsive thumbnail" src="{{ $message->embed(asset('storage/products/' . $item->featured_image)) }}"
                                                             alt=""></td>
                                                     <td style="max-width: 300px;width: 300px;">
                                                         <a target="_blank"
@@ -262,9 +261,8 @@
             <p>Để đảm bảo tính chính xác của đơn hàng, chúng tôi yêu cầu bạn xác nhận đơn hàng bằng cách nhấn vào nút
                 "Xác nhận đơn hàng" phía dưới. Vui lòng lưu ý rằng thông báo này có hiệu lực trong vòng 24 giờ kể từ khi
                 email này được gửi.</p>
-            <div class=""><a
-                    href="{{ route('confirm_order', ['order_code' => $order->order_code, 'token' => $order->confirmation_token]) }}"
-                    class="submit">Xác nhận đơn hàng</a></div>
+            <div class=""><a href="{{ route('confirm_order', ['order_code' => $order->order_code, 'token' => $order->confirmation_token]) }}" class="submit">Xác nhận đơn
+                    hàng</a></div>
         </div>
         <div class="" style="margin-top: 30px">
             <p>Nếu Anh/chị có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua địa chỉ email <a

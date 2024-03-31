@@ -61,9 +61,13 @@
                         </div>
                         <div class="quantity">
                             <div class="quantity-input">
+                                <a class="btn-quantity btn-decrease" href="#">
+                                    <img src="{{ asset('frontend/images/app/decrease.svg') }}" alt="Decrease">
+                                </a>
                                 <input type="text" name="product-quatity" value="{{ $item->pivot->cart_detail_quantity }}" data-max="{{ $item->quantity }}">
-                                <a class="btn btn-increase" href="#"></a>
-                                <a class="btn btn-reduce" href="#"></a>
+                                <a class="btn-quantity btn-increase" href="#">
+                                    <img src="{{ asset('frontend/images/app/increase.svg') }}" alt="Increase">
+                                </a>
                             </div>
                         </div>
                         <div class="price-field sub-total">
@@ -72,7 +76,7 @@
                             </p>
                         </div>
                         <div class="delete">
-                            <a href="#" class="btn btn-delete" title="Xóa" data-url="{{ route('remove_product_from_cart') }}" data-id="{{ $item->id }}">
+                            <a href="#" class="btn-delete" title="Xóa" data-url="{{ route('remove_product_from_cart') }}" data-id="{{ $item->id }}">
                                 <i class="fa fa-times-circle" aria-hidden="true"></i>
                             </a>
                         </div>

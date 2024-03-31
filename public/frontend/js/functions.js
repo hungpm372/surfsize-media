@@ -396,13 +396,13 @@
         },
         mercado_price_quantity: function () {
             if ($(".quantity-input").length > 0) {
-                $(".quantity-input").on('click', '.btn', function (event) {
+                $(".quantity-input").on('click', '.btn-quantity', function (event) {
                     event.preventDefault();
                     var _this = $(this),
                         _input = _this.siblings('input[name=product-quatity]').first(),
                         _current_value = _this.siblings('input[name=product-quatity]').first().val(),
                         _max_value = _this.siblings('input[name=product-quatity]').first().attr('data-max');
-                    if (_this.hasClass('btn-reduce')) {
+                    if (_this.hasClass('btn-decrease')) {
                         if (parseInt(_current_value, 10) > 1) {
                             _input.val(parseInt(_current_value, 10) - 1);
                         }
