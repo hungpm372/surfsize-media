@@ -17,11 +17,13 @@ use App\Http\Controllers\frontend\PaymentController;
 use App\Http\Controllers\frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\frontend\UserController;
 use App\Models\Order;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -40,6 +42,13 @@ Route::get('/test', function () {
 });
 
 # frontend routes
+Route::get('/a', function () {
+    $exchange = Http::get('https://v6.exchangerate-api.com/v6/de9ef482cf0083e4971f7b70/latest/USD');
+    $data = json_decode($exchange, true);
+    return $data['conversion_rates']['VND'];
+});
+
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy_policy');
@@ -70,7 +79,6 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Social Login
 
-
 Route::get('/auth/google', function () {
     return Socialite::driver('google')->redirect();
 });
@@ -80,12 +88,6 @@ Route::get('/auth/google/callback', function () {
     dd($user);
     // $user->token
 });
-
-
-
-Route::get('/hung',  function () {
-});
-
 
 
 // Product
@@ -109,7 +111,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/get-districts', [CheckoutController::class, 'getDistricts']);
     Route::get('/get-wards', [CheckoutController::class, 'getwards']);
-    Route::get('/thank-you', [CheckoutController::class, 'thankyou'])->middleware('check.order.in.progress')->name('thank_you');
 
 
 
@@ -119,6 +120,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/confirm-order/{order_code}/{token}', [OrderController::class, 'confirmOrder'])->name('confirm_order');
     Route::post('/resend-order-confirmation-email', [OrderController::class, 'resendOrderConfirmationEmail'])->name('resend_order_confirmation_email');
     Route::post('/orders/cancel-order', [OrderController::class, 'cancelOrder'])->name('cancel_order');
+
+    Route::get('/payment/success', [PaymentController::class, 'paymentSuccess'])->middleware('check.order.in.progress')->name('payment.success');
 
     Route::get('/payment/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');
 

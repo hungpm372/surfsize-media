@@ -25,4 +25,9 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class, 'order_status_id', 'id');
     }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
 }

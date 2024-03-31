@@ -8,6 +8,7 @@ use App\Mail\OrderConfirmationEmail;
 use App\Models\Cart;
 use App\Models\District;
 use App\Models\Order;
+use App\Models\PaymentMethod;
 use App\Models\Province;
 use App\Models\Ward;
 use App\Services\PaymentService;
@@ -61,7 +62,6 @@ class OrderController extends Controller
                 $totalPrice += ($item->price - $item->discount) * $item->pivot->cart_detail_quantity;
             }
 
-
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->order_code = OrderCodeHelper::generateCode();
@@ -76,6 +76,12 @@ class OrderController extends Controller
             $order->confirmation_token = Str::random(50);
             $order->expiration_date = Carbon::now()->addHours(24);
             $order->order_status_id = 1;
+
+            $paymentMethod = PaymentMethod::where('code', $request->payment_method)->first();
+            if (!$paymentMethod) {
+                $paymentMethod = PaymentMethod::first();
+            }
+            $order->payment_method_id = $paymentMethod->id;
             $order->save();
             foreach ($cartItems as $item) {
                 if ($item->quantity >= $item->pivot->cart_detail_quantity) {
@@ -92,38 +98,25 @@ class OrderController extends Controller
 
             DB::commit();
 
-            Mail::to($order->email)->queue(new OrderConfirmationEmail($order));
-
-            $request->session()->put('order_submitted', true);
-
-            return redirect()->route('thank_you');
-            // $data = $request->all();
-            // $paymentMethod = $data['payment-method'];
-
-            // switch ($paymentMethod) {
-            //     case 'cod':
-            //         $this->payment->processCOD($data);
-            //         break;
-            //     case 'zalopay':
-            //         $this->payment->processZaloPay($data);
-            //         break;
-            //     case 'momo':
-            //         $this->payment->processMoMo($data);
-            //         break;
-            //     case 'shopeepay':
-            //         $this->payment->processShopeePay($data);
-            //         break;
-            //     case 'vnpay':
-            //         return $this->payment->processVNPay($data);
-            //     case 'paypal':
-            //         return $this->payment->processPayPal($data);
-            //     default:
-            //         break;
-            // }
-            // return redirect()->route('payment');
+            switch ($paymentMethod->code) {
+                case 'cod':
+                    return $this->payment->processCOD($order);
+                case 'zalopay':
+                    return $this->payment->processZaloPay($order);
+                case 'momo':
+                    return $this->payment->processMoMo($order);
+                case 'shopeepay':
+                    return $this->payment->processShopeePay($order);
+                case 'vnpay':
+                    return $this->payment->processVNPay($order);
+                case 'paypal':
+                    return $this->payment->processPayPal($order);
+                default:
+                    return abort(500);
+            }
         } catch (Exception $e) {
             DB::rollBack();
-            return 'Đặt hàng không thành công';
+            return abort(500);
         }
     }
 

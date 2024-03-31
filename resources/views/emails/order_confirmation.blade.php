@@ -187,7 +187,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Giao hàng tận nơi</td>
-                                        <td>Thanh toán khi nhận hàng (COD)</td>
+                                        <td>{{ $order->paymentMethod->method_name }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -267,13 +267,16 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="" style="margin-top: 30px">
-                <p>Để đảm bảo tính chính xác của đơn hàng, chúng tôi yêu cầu bạn xác nhận đơn hàng bằng cách nhấn vào nút
-                    "Xác nhận đơn hàng" phía dưới. Vui lòng lưu ý rằng thông báo này có hiệu lực trong vòng 24 giờ kể từ khi
-                    email này được gửi.</p>
-                <div class=""><a href="{{ route('confirm_order', ['order_code' => $order->order_code, 'token' => $order->confirmation_token]) }}" class="submit">Xác nhận đơn
-                        hàng</a></div>
-            </div>
+            @if ($order->paymentMethod->code === 'cod')
+                <div class="" style="margin-top: 30px">
+                    <p>Để đảm bảo tính chính xác của đơn hàng, chúng tôi yêu cầu bạn xác nhận đơn hàng bằng cách nhấn vào nút
+                        "Xác nhận đơn hàng" phía dưới. Vui lòng lưu ý rằng thông báo này có hiệu lực trong vòng 24 giờ kể từ khi
+                        email này được gửi.</p>
+                    <div class=""><a href="{{ route('confirm_order', ['order_code' => $order->order_code, 'token' => $order->confirmation_token]) }}" class="submit">Xác nhận
+                            đơn
+                            hàng</a></div>
+                </div>
+            @endif
             <div class="" style="margin-top: 30px">
                 <p>Nếu Anh/chị có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua địa chỉ email <a
                         href="mailto:{{ env('MAIL_FROM_ADDRESS') }}">{{ env('MAIL_FROM_ADDRESS') }}</a>. Chúng tôi rất

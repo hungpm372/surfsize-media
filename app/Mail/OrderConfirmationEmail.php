@@ -33,8 +33,9 @@ class OrderConfirmationEmail extends Mailable
      */
     public function envelope()
     {
+        $title = $this->order->paymentMethod->code == 'cod' ? 'Xác nhận đơn hàng' : 'Thông tin đơn hàng';
         return new Envelope(
-            subject: '[' . env('APP_NAME') . '] Xác nhận đơn hàng ' . $this->order->order_code,
+            subject: '[' . env('APP_NAME') . '] ' . $title . ' ' . $this->order->order_code,
         );
     }
 

@@ -130,7 +130,7 @@
                 </div>
                 <div class="order-summary">
                     <h4 class="title-box">phương thức thanh toán</h4>
-                    <p class="summary-info"><span class="title">Thanh toán khi nhận hàng</span>
+                    <p class="summary-info"><span class="title">{{ $order->paymentMethod->method_name }}</span>
                     </p>
                     <h4 class="title-box mt-2">phương thức giao hàng</h4>
                     <p class="summary-info"><span class="title">Giao hàng tận nơi</span>

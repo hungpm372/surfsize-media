@@ -49,7 +49,7 @@
                     </select>
                 </p>
                 <p class="row-in-form">
-                    <label for="city">Địa chỉ chi tiết<span> (*)</span></label>
+                    <label for="city">Địa chỉ<span> (*)</span></label>
                     <input id="city" type="text" name="address" value="">
                 </p>
                 @csrf
@@ -58,60 +58,17 @@
                 <div class="summary-item payment-method">
                     <h4 class="title-box">Phương thức thanh toán</h4>
                     <div class="choose-payment-methods" style="border: none">
-                        <div class="payment-method">
-                            <input name="payment-method" value="cod" id="cod" type="radio" checked>
-                            <label for="cod">
-                                <img src="{{ asset('frontend/images/payments/cod.png') }}" alt="Thanh toán khi nhận hàng (COD)">
-                                <span>
-                                    Thanh toán khi nhận hàng (COD)
-                                </span>
-                            </label>
-                        </div>
-                        <div class="payment-method">
-                            <input name="payment-method" value="zalopay" id="zalopay" type="radio">
-                            <label for="zalopay">
-                                <img src="{{ asset('frontend/images/payments/zalopay.png') }}" alt="Thanh toán qua ví ZaloPay">
-                                <span>
-                                    Thanh toán qua ví ZaloPay
-                                </span>
-                            </label>
-                        </div>
-                        <div class="payment-method">
-                            <input name="payment-method" value="momo" id="momo" type="radio">
-                            <label for="momo">
-                                <img src="{{ asset('frontend/images/payments/momo.png') }}" alt="Thanh toán qua ví MoMo">
-                                <span>
-                                    Thanh toán qua ví MoMo
-                                </span>
-                            </label>
-                        </div>
-                        <div class="payment-method">
-                            <input name="payment-method" value="shopeepay" id="shopeepay" type="radio">
-                            <label for="shopeepay">
-                                <img src="{{ asset('frontend/images/payments/shopeepay.png') }}" alt="Thanh toán qua ví ShopeePay">
-                                <span>
-                                    Thanh toán qua ví ShopeePay
-                                </span>
-                            </label>
-                        </div>
-                        <div class="payment-method">
-                            <input name="payment-method" value="vnpay" id="vnpay" type="radio">
-                            <label for="vnpay">
-                                <img src="{{ asset('frontend/images/payments/vnpay.png') }}" alt="Thanh toán qua ví VNPAY">
-                                <span>
-                                    Thanh toán qua ví VNPAY
-                                </span>
-                            </label>
-                        </div>
-                        <div class="payment-method">
-                            <input name="payment-method" value="paypal" id="paypal" type="radio">
-                            <label for="paypal">
-                                <img src="{{ asset('frontend/images/payments/paypal.png') }}" alt="Thanh toán qua PayPal">
-                                <span>
-                                    Thanh toán qua PayPal
-                                </span>
-                            </label>
-                        </div>
+                        @foreach ($paymentMethods as $item)
+                            <div class="payment-method">
+                                <input name="payment_method" value="{{ $item->code }}" id="{{ $item->code }}" type="radio" @checked($loop->first)>
+                                <label for="{{ $item->code }}">
+                                    <img src="{{ $item->method_logo }}" alt="{{ $item->method_name }}">
+                                    <span>
+                                        {{ $item->method_name }}
+                                    </span>
+                                </label>
+                            </div>
+                        @endforeach
                     </div>
                     <p class="summary-info grand-total"><span>Tổng cộng</span> <span class="grand-total-price">{{ number_format($total, 0, '.', '.') }}đ</span>
                     </p>
@@ -120,11 +77,11 @@
                 <div class="summary-item shipping-method">
                     <h4 class="title-box f-title">Phương thức giao hàng</h4>
                     <p class="summary-info"><span class="title">Chuyển phát nhanh</span></p>
-                    <h4 class="title-box" style="padding-bottom: 15px">Mã giảm giá</h4>
+                    <h4 class="title-box">Mã giảm giá</h4>
                     <p class="row-in-form">
                         <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="Mã giảm giá">
+                        <button type="button" class="btn btn-small">Áp dụng</button>
                     </p>
-                    <button type="button" class="btn btn-small">Áp dụng</button>
                 </div>
             </div>
         </form>
@@ -133,8 +90,8 @@
         <div class="wrap-show-advance-info-box style-1 box-in-site">
             <h2 class="title-box">sản phẩm được xem nhiều nhất</h2>
             <div class="wrap-products">
-                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000"
-                    data-loop="true" data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
+                <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-autoplay="true" data-autoplayTimeout="5000" data-loop="true"
+                    data-slideSpeed="1000" data-nav="true" data-dots="false" data-margin="10"
                     data-responsive='{"0":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                     @foreach ($mostViewedProducts as $item)

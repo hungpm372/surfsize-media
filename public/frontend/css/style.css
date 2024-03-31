@@ -4065,7 +4065,9 @@ article.single-post blockquote p:last-child::after {
 }
 
 .shopping-cart,
-.wrap-iten-in-cart {
+.wrap-address-billing,
+.wrap-iten-in-cart,
+.summary-checkout {
     background-color: var(--bg-color);
     padding: 15px;
     border-radius: 8px;
@@ -4728,6 +4730,10 @@ table.shop_attributes td {
     width: -moz-calc(50% - 15px)
 }
 
+.wrap-address-billing .row-in-form:last-of-type {
+    margin-bottom: 0;
+}
+
 .wrap-address-billing .row-in-form.fill-wife {
     width: 100%;
     margin-right: 0 !important
@@ -4736,7 +4742,7 @@ table.shop_attributes td {
 .wrap-address-billing .row-in-form label {
     font-size: 14px;
     line-height: 19px;
-    color: #555;
+    color: #777;
     display: block;
     font-weight: 400
 }
@@ -4758,46 +4764,42 @@ table.shop_attributes td {
 
 .wrap-address-billing .row-in-form input[type=email],
 .wrap-address-billing .row-in-form input[type=number],
-.wrap-address-billing .row-in-form input[type=text] {
-    font-size: 13px;
-    line-height: 19px;
-    display: inline-block;
-    height: 43px;
-    padding: 2px 20px;
+.wrap-address-billing .row-in-form input[type=text],
+#coupon-code {
+    border: 1px solid #ced4da;
+    outline: 0;
     width: 100%;
-    border: 1px solid #e6e6e6
+    height: 43px;
+    font-size: 14px;
+    line-height: 19px;
+    padding: 6px 12px;
+    color: #3f3f3f;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+#coupon-code {
+    width: 75%;
 }
 
 .wrap-address-billing .row-in-form select {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 19px;
+    border-radius: 4px;
     display: inline-block;
     height: 43px;
-    padding: 2px 20px;
+    padding: 6px 12px;
     width: 100%;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #ced4da;
     background-color: #fff;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     outline: 0;
     cursor: pointer
 }
 
-.wrap-address-billing .row-in-form input[type=email]::placeholder,
-.wrap-address-billing .row-in-form input[type=tel]::placeholder,
-.wrap-address-billing .row-in-form input[type=text]::placeholder {
-    color: #aaa
-}
-
 .summary-checkout {
-    background-color: #fdfdfd;
     width: 100%;
-    border: 1px solid #e6e6e6;
-    padding: 29px 29px 30px;
     display: table;
-    margin-top: 14px
 }
 
 .summary-checkout .summary-item {
@@ -4836,6 +4838,13 @@ table.shop_attributes td {
     color: #555;
     line-height: 24px;
     margin: 0
+}
+
+.summary-checkout .summary-item.shipping-method .row-in-form {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 .choose-payment-methods .payment-method {
@@ -4935,19 +4944,6 @@ table.shop_attributes td {
     max-width: 300px
 }
 
-.summary-item .row-in-form input[type=email],
-.summary-item .row-in-form input[type=tel],
-.summary-item .row-in-form input[type=text] {
-    font-size: 13px;
-    line-height: 19px;
-    display: inline-block;
-    height: 43px;
-    padding: 2px 20px;
-    max-width: 300px;
-    width: 100%;
-    border: 1px solid #e6e6e6
-}
-
 .header-toggle .primary .submenu li,
 .header-toggle .primary>.menu-item {
     border-left: 2px solid #e6e6e6;
@@ -4957,16 +4953,17 @@ table.shop_attributes td {
 
 .summary-item .title-box,
 .wrap-address-billing .box-title {
-    font-size: 14px;
-    color: #333;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 18px;
+    font-size: 16px;
+    padding-bottom: 18px;
+    color: #3f3f3f;
     line-height: 20px;
     text-align: left;
     text-transform: uppercase;
     font-weight: 700;
-    border-bottom: 1px solid #e6e6e6;
     margin-bottom: 18px;
-    padding-bottom: 15px;
-    margin-top: 0
+    margin-top: 0;
 }
 
 .summary-item .title-box {
@@ -4980,9 +4977,7 @@ table.shop_attributes td {
 }
 
 .shipping-method .summary-info+h4.title-box {
-    margin-top: 34px;
-    padding-bottom: 5px;
-    margin-bottom: 20px !important
+    margin-top: 35px;
 }
 
 .summary.summary-checkout+.box-in-site {
@@ -4991,10 +4986,6 @@ table.shop_attributes td {
 
 .checkout .wrap-breadcrumb ul {
     margin-bottom: 31px
-}
-
-.wrap-address-billing>.box-title {
-    margin-bottom: 25px
 }
 
 .fill-color.header-toggle .wrap-toggle-menu {
@@ -7171,22 +7162,6 @@ table.shop_attributes td {
 
 .wrap-iten-in-cart .products-cart .product-image {
     width: 70px
-}
-
-.btn-submitx {
-    font-size: 17px;
-    color: #fff;
-    line-height: 19px;
-    border: none;
-    border-radius: 0;
-    padding: 15px 30px;
-    min-width: 119px;
-    margin-top: 28px;
-    text-transform: capitalize;
-    -webkit-transition: background .3s;
-    -o-transition: background .3s;
-    -moz-transition: background .3s;
-    transition: background .3s
 }
 
 .tab-content-item h2 {

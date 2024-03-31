@@ -50,6 +50,7 @@ return array(
     'App\\Models\\District' => $baseDir . '/app/Models/District.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\OrderStatus' => $baseDir . '/app/Models/OrderStatus.php',
+    'App\\Models\\PaymentMethod' => $baseDir . '/app/Models/PaymentMethod.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\ProductComment' => $baseDir . '/app/Models/ProductComment.php',
     'App\\Models\\ProductDetail' => $baseDir . '/app/Models/ProductDetail.php',
