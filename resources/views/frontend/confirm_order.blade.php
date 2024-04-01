@@ -4,36 +4,31 @@
     <style>
         img {
             width: 80px;
+            margin-top: 30px;
         }
 
         .box {
-            padding: 100px 0;
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 50px;
+            margin-bottom: 60px;
         }
 
-        a.btn.btn-confirm-order:hover,
-        button.btn.btn-confirm-order:hover {
-            color: #ffffff;
-            background: #333333;
-            border-color: #333333;
-        }
-
-        a.btn.btn-confirm-order,
-        button.btn.btn-confirm-order {
-            border: 0;
-            border-radius: 0;
-            color: #ffffff;
-            text-align: center;
-            font-size: 14px;
-            line-height: 20px;
-            padding: 10px 25px;
+        .box a.btn,
+        .box button.btn.btn-confirm-order,
+        .box button.btn.resend-email {
             margin-top: 12px;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            background: var(--primary-color);
+            margin-bottom: 25px;
+            display: inline-block;
         }
 
-        p {
-            margin-bottom: 40px;
+        p.paragraph {
+            max-width: 65%;
+            width: 65%;
+            margin: 20px auto 30px;
+            font-size: 15px;
+            color: var(--primary-color);
         }
     </style>
 @endsection
@@ -45,15 +40,15 @@
             <div class="col-md-12 text-center">
                 <div class="box">
                     @if ($status == true)
-                        <img src="{{ asset('storage/app/tick.jpg') }}" alt="">
+                        <img src="{{ asset('frontend/images/app/checked.png') }}" alt="Checked">
                         <h3>Xác nhận đơn hàng thành công</h3>
-                        <p>Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>
-                        <a href="{{ route('order_detail', ['order_code' => $order->order_code]) }}" class="btn btn-confirm-order">xem đơn hàng</a>
+                        <p class="paragraph">Cảm ơn bạn đã đặt hàng tại cửa hàng của chúng tôi.</p>
+                        <a href="{{ route('order_detail', ['order_code' => $order->order_code]) }}" class="btn btn-small">xem đơn hàng</a>
                     @else
-                        <img src="{{ asset('storage/app/cross.jpg') }}" alt="">
+                        <img src="{{ asset('frontend/images/app/cancel.png') }}" alt="Cancel">
                         <h3>Xác nhận đơn hàng không thành công</h3>
-                        <p>Đơn hàng của bạn đã hết thời gian xác nhận hoặc mã xác nhận không chính xác.</p>
-                        <button data-order-code="{{ $order->order_code }}" data-url="{{ route('resend_order_confirmation_email') }}" class="btn btn-confirm-order resend-email"
+                        <p class="paragraph">Đơn hàng của bạn đã hết thời gian xác nhận hoặc mã xác nhận không chính xác.</p>
+                        <button data-order-code="{{ $order->order_code }}" data-url="{{ route('resend_order_confirmation_email') }}" class="btn btn-small resend-email"
                             type="button">Gửi
                             lại email xác thực</button>
                     @endif

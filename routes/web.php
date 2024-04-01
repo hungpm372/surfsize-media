@@ -43,9 +43,7 @@ Route::get('/test', function () {
 
 # frontend routes
 Route::get('/a', function () {
-    $exchange = Http::get('https://v6.exchangerate-api.com/v6/de9ef482cf0083e4971f7b70/latest/USD');
-    $data = json_decode($exchange, true);
-    return $data['conversion_rates']['VND'];
+    abort(500);
 });
 
 
@@ -92,7 +90,7 @@ Route::get('/auth/google/callback', function () {
 
 // Product
 
-Route::get('/product/{slug}-{code}', [FrontendProductController::class, 'productDetails'])
+Route::get('/product/{slug}-{code}.html', [FrontendProductController::class, 'productDetails'])
     ->where('slug', '[a-zA-Z0-9\-]+')->name('product_detail');
 
 Route::get('/search', [FrontendProductController::class, 'search'])->name('search');

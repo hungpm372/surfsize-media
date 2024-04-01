@@ -1,5 +1,21 @@
 @extends('frontend.layout.app')
 
+@section('css')
+    <style>
+        .wrap-iten-in-cart .order-container .table.order-list th,
+        .wrap-iten-in-cart .order-container .table.order-list td {
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .wrap-iten-in-cart .order-container .table.order-list td {
+            border-bottom: 1px solid #ddd;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="wrap-breadcrumb">
         <ul>
@@ -15,13 +31,12 @@
                     <h3 class="box-title">tất cả đơn hàng</h3>
                     <div class="table-responsive order-container">
                         @if ($orderLists->count() > 0)
-                            <table class="table table-bordered order-list">
+                            <table class="table order-list table-primary">
                                 <thead class="bg-red">
                                     <tr>
                                         <th>Mã đơn hàng</th>
                                         <th>Họ tên</th>
-                                        <th>Email</th>
-                                        <th>Số điện thoại</th>
+                                        <th style="min-width: 105px">Số điện thoại</th>
                                         <th class="address">Địa chỉ</th>
                                         <th>Tổng tiền</th>
                                         <th>Ngày đặt</th>
@@ -31,11 +46,10 @@
                                 <tbody>
                                     @foreach ($orderLists as $item)
                                         <tr>
-                                            <td><a
+                                            <td><a style="color: var(--primary-color)"
                                                     href="{{ route('order_detail', ['order_code' => $item->order_code]) }}">#{{ $item->order_code }}</a>
                                             </td>
                                             <td>{{ $item->fullname }}</td>
-                                            <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
                                             <td>{{ implode(', ', [$item->address, $item->shipping_ward, $item->shipping_district, $item->shipping_province]) }}
                                             <td>{{ number_format($item->total_price, 0, '.', '.') }}đ</td>

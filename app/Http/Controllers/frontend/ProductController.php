@@ -30,7 +30,7 @@ class ProductController extends Controller
             'image' => $product->featured_image,
             'canonical' => null,
         ];
-        
+
         return view('frontend.detail', compact('product', 'popularProducts', 'relatedProducts', 'seo'));
     }
 
@@ -46,6 +46,14 @@ class ProductController extends Controller
             ->orWhere('description', 'like', '%' . $keyword . '%')
             ->get();
 
+        // $category = Category::where('slug', $request->slug)->first();
+        // if ($request->sort_by == 'price' && $request->sort_order == 'asc') {
+        //     $products = $category->products()/*->whereBetween('price', [$request->min, $request->max])*/->orderBy('price', 'asc')->get();
+        // } else if ($request->sort_by == 'price' && $request->sort_order == 'desc') {
+        //     $products = $category->products()/*->whereBetween('price', [$request->min, $request->max])*/->orderBy('price', 'desc')->get();
+        // } else {
+        //     $products = $category->products;
+        // }
         return view('frontend.search', compact('title', 'products', 'keyword'));
     }
 }

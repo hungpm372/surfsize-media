@@ -6,24 +6,33 @@
 
 @section('css')
     <style>
-        img {
+        .error-page-wrap {
+            margin-top: 50px;
+            margin-bottom: 60px;
+        }
+
+        .error-page-wrap img {
             width: 220px;
             height: auto;
             max-width: 300px;
         }
 
-        h3 {
-            font-weight: 600;
+        .error-page-wrap h3 {
+            text-align: center;
+            font-size: 18px;
         }
 
-        p {
+        .error-page-wrap p {
             margin-bottom: 5px;
         }
 
-        a#error {
-            text-transform: uppercase;
-            font-size: 14px;
-            padding: 10px 20px;
+        .error-page-wrap #error {
+            margin-bottom: 50px;
+            width: 35%;
+            max-width: 35%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
         }
     </style>
 @endsection
@@ -31,12 +40,14 @@
 @section('content')
     <div class="main-content-area">
         <div class="row">
-            <div class="col-md-12 text-center pt-20 pb-50">
-                <img src="{{ asset('storage/app/bubble-gum-error-404.gif') }}" alt="">
-                <h3>Địa chỉ không hợp lệ</h3>
-                <p>Địa chỉ URL bạn yêu cầu không tìm thấy trên server.</p>
-                <p>Có thể bạn gõ sai địa chỉ hoặc dữ liệu này đã bị xóa khỏi server.</p>
-                <a href="{{ route('home') }}" id="error" class="btn btn-submit btn-submitx">quay lại trang chủ</a>
+            <div class="col-md-12 text-center">
+                <div class="error-page-wrap">
+                    <img src="{{ asset('storage/app/bubble-gum-error-404.gif') }}" alt="">
+                    <h3 class="title-box">Địa chỉ không hợp lệ</h3>
+                    <p class="paragraph">Địa chỉ URL bạn yêu cầu không tìm thấy trên server.</p>
+                    <p class="paragraph">Có thể bạn gõ sai địa chỉ hoặc dữ liệu này đã bị xóa khỏi server.</p>
+                    <a href="{{ route('home') }}" id="error" class="btn btn-small">quay lại trang chủ</a>
+                </div>
             </div>
         </div>
     </div>

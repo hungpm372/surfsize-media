@@ -57,7 +57,7 @@
                                     <ul>
                                         <li>
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="contact-txt">566 Núi Thành, Hoà Cường Nam, Hải Châu, Đà Nẵng,
+                                            <p class="contact-txt">Hoà Cường Nam, Hải Châu, Đà Nẵng,
                                                 Việt Nam</p>
                                         </li>
                                         <li>
@@ -66,7 +66,7 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="contact-txt">contact@dau.edu.vn</p>
+                                            <p class="contact-txt">mobileworldshop347@gmail.com</p>
                                         </li>
                                     </ul>
                                 </div>

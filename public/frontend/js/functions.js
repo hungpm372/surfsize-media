@@ -136,14 +136,14 @@
                     min: 0,
                     max: 100000000,
                     step: 100000,
-                    values: [0, 100000000],
+                    values: [0, 10000000],
                     slide: function (event, ui) {
-                        $("#amount").val(ui.values[0].toLocaleString('vi-VN') + "Ä‘ - " + ui.values[1].toLocaleString('vi-VN') + 'Ä‘');
+                        $("#amount").val(ui.values[0].toLocaleString('vi-VN') + "đ - " + ui.values[1].toLocaleString('vi-VN') + 'đ');
                         $('.btn.filter-submit').data('min', ui.values[0]).data('max', ui.values[1])
                     }
                 });
                 $("#amount").val($("#slider-range").slider("values", 0).toLocaleString('vi-VN') +
-                    "Ä‘ - " + $("#slider-range").slider("values", 1).toLocaleString('vi-VN') + 'Ä‘');
+                    "đ - " + $("#slider-range").slider("values", 1).toLocaleString('vi-VN') + 'đ');
             }
         },
         mercado_clone_all_zan_menus: function () {

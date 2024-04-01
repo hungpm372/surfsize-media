@@ -13,24 +13,55 @@
         <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
             <div class="wrap-shop-control">
 
-                <h1 class="shop-title">kết quả tìm kiếm cho từ khóa '<span
-                        style="text-transform: none">{{ $keyword }}</span>'
+                <h1 class="shop-title">kết quả tìm kiếm cho từ khóa '<span style="text-transform: none">{{ $keyword }}</span>'
                 </h1>
 
                 <div class="wrap-right">
 
                     <div class="sort-item orderby ">
-                        <select name="orderby" class="use-chosen">
+                        {{-- <select name="orderby" class="use-chosen">
                             <option value="menu_order" selected="selected">Mặc định</option>
                             <option value="popularity">Mới nhất</option>
                             <option value="rating">Được yêu thích nhất</option>
                             <option value="date">Được xem nhiều nhất</option>
                             <option value="price">Giá: thấp đến cao</option>
                             <option value="price-desc">Giá: cao đến thấp</option>
-                        </select>
+                        </select> --}}
+                        <div class="select-container">
+                            <a class="select-label">Sắp xếp theo<i class="fa fa-angle-down"></i></a>
+                            <div class="select-drop">
+                                <ul>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'default']) }}">Mặc
+                                            định</a>
+                                    </li>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'latest']) }}">Mới
+                                            nhất</a>
+                                    </li>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'favourite']) }}">Được
+                                            yêu
+                                            thích
+                                            nhất</a>
+                                    </li>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'view']) }}">Được
+                                            xem
+                                            nhiều
+                                            nhất</a>
+                                    </li>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'price', 'sort_order' => 'asc']) }}">Giá:
+                                            thấp
+                                            đến cao</a>
+                                    </li>
+                                    <li><a href="{{ route('category_products', ['slug' => 'apple', 'sort_by' => 'price', 'sort_order' => 'desc']) }}">Giá:
+                                            cao
+                                            đến
+                                            thấp</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="sort-item product-per-page">
+                    {{-- <div class="sort-item product-per-page">
                         <select name="post-per-page" class="use-chosen">
                             <option value="12" selected="selected">12 per page</option>
                             <option value="16">16 per page</option>
@@ -40,80 +71,82 @@
                             <option value="30">30 per page</option>
                             <option value="32">32 per page</option>
                         </select>
-                    </div>
-
-                    {{-- <div class="change-display-mode">
-                        <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
-                        <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>
                     </div> --}}
 
                 </div>
 
             </div>
             <!--end wrap shop control-->
-
-            <div class="row">
-
-                <ul class="product-list grid-products equal-container">
-                    @forelse ($products as $item)
-                        <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                            <div class="product product-style-3 equal-elem ">
-                                <div class="product-thumnail">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        title="{{ $item->name }}">
-                                        <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
-                                                loading="lazy"></figure>
-                                    </a>
-                                </div>
-                                <div class="product-info">
-                                    <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                        class="product-name"><span>{{ $item->name }}</span></a>
-                                    <div class="wrap-price">
-                                        @if ($item->discount == 0)
-                                            <span
-                                                class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
-                                        @else
-                                            <span>
-                                                <p class="product-price">
-                                                    {{ number_format($item->price - $item->discount, 0, '.', '.') }}đ</p>
-                                            </span>
-                                            <del>
-                                                <p class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ
-                                                </p>
-                                            </del>
-                                        @endif
+            <div class="product-list-container">
+                <div class="row">
+                    <ul class="product-list grid-products equal-container">
+                        @forelse ($products as $item)
+                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="product product-style-2 equal-elem ">
+                                    <div class="product-thumnail">
+                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}" loading="lazy"></figure>
+                                        </a>
                                     </div>
-                                    <a href="#" data-price="{{ $item->price }}"
-                                        data-url="{{ route('add_product_to_cart') }}" data-id="{{ $item->id }}"
-                                        class="btn add-to-cart">thêm vào giỏ hàng</a>
+                                    <div class="product-info">
+                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
+                                            class="product-name"><span>{{ $item->name }}</span></a>
+                                        <div class="wrap-price">
+                                            @if ($item->discount == 0)
+                                                <span>
+                                                    <p class="product-price">
+                                                        {{ number_format($item->price - $item->discount, 0, '.', '.') }}đ</p>
+                                                </span>
+                                                <del>
+                                                    <p class="product-price" style="visibility: hidden;">
+                                                        {{ number_format($item->price, 0, '.', '.') }}đ
+                                                    </p>
+                                                </del>
+                                            @else
+                                                <span>
+                                                    <p class="product-price">
+                                                        {{ number_format($item->price - $item->discount, 0, '.', '.') }}đ</p>
+                                                </span>
+                                                <del>
+                                                    <p class="product-price">
+                                                        {{ number_format($item->price, 0, '.', '.') }}đ
+                                                    </p>
+                                                </del>
+                                            @endif
+                                        </div>
+                                        <a href="#" data-price="{{ $item->price }}" data-url="{{ route('add_product_to_cart') }}" data-id="{{ $item->id }}"
+                                            class="btn add-to-cart btn-small">thêm vào giỏ hàng</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @empty
-                        <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="product-not-found">
-                                <div class="product-not-found-img">
-                                    <img src="{{ asset('frontend/images/app/product-not-nound.png') }}" alt="">
+                            </li>
+                        @empty
+                            <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="product-not-found">
+                                    <div class="product-not-found-img">
+                                        <img src="{{ asset('frontend/images/app/product-not-nound.png') }}" alt="">
+                                    </div>
+                                    <div class="product-not-found-message">
+                                        <p>Không tìm thấy sản phẩm phù hợp!</p>
+                                    </div>
                                 </div>
-                                <div class="product-not-found-message">
-                                    <p>Không tìm thấy sản phẩm phù hợp!</p>
-                                </div>
-                            </div>
-                        </li>
-                    @endforelse
+                            </li>
+                        @endforelse
 
-                </ul>
+                    </ul>
 
+                </div>
             </div>
+
 
             <div class="wrap-pagination-info">
                 <ul class="page-numbers">
                     <li><span class="page-number-item current">1</span></li>
                     <li><a class="page-number-item" href="#">2</a></li>
                     <li><a class="page-number-item" href="#">3</a></li>
-                    <li><a class="page-number-item next-link" href="#">Next</a></li>
+                    <li><a class="page-number-item" href="#">4</a></li>
+                    {{-- <li><a class="page-number-item next-link" href="#">4</a></li> --}}
                 </ul>
-                <p class="result-count">Showing 1-8 of 12 result</p>
+                {{-- <p class="result-count">Showing 1-8 of 12 result</p> --}}
             </div>
         </div>
 
@@ -199,10 +232,9 @@
                 <h2 class="widget-title">Price</h2>
                 <div class="widget-content">
                     <div id="slider-range"></div>
-                    <p>
-                        <label for="amount">Price:</label>
+                    <p class="wrap-filter">
                         <input type="text" id="amount" readonly>
-                        <button class="filter-submit">Filter</button>
+                        <button class="btn filter-submit btn-xs" data-min="0" data-max="100000000">Lọc</button>
                     </p>
                 </div>
             </div><!-- Price-->
@@ -229,10 +261,8 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}"
-                                            title="{{ $item->name }}">
-                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}"
-                                                    loading="lazy"></figure>
+                                        <a href="{{ route('product_detail', ['slug' => $item->slug, 'code' => $item->code]) }}" title="{{ $item->name }}">
+                                            <figure><img src="{{ $item->featured_image }}" alt="{{ $item->name }}" loading="lazy"></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -240,8 +270,7 @@
                                             class="product-name"><span>{{ $item->name }}</span></a>
                                         <div class="wrap-price">
                                             @if ($item->discount == 0)
-                                                <span
-                                                    class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
+                                                <span class="product-price">{{ number_format($item->price, 0, '.', '.') }}đ</span>
                                             @else
                                                 <span>
                                                     <p class="product-price">
@@ -270,5 +299,137 @@
 
 @section('js')
     <script src="{{ asset('frontend/js/sweetalert2@11.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('select[name="orderby"]').on('change', function() {
+                alert('Order')
+            })
+
+
+            $('.btn.filter-submit').on('click', function() {
+
+                // history.pushState(null, null, window.location.href + '?a=5');
+                var min = $(this).data('min');
+                var max = $(this).data('max');
+                // Lưu giá trị của hai tham số
+
+                // Lấy URL hiện tại
+                var url = window.location.href;
+
+                // Kiểm tra xem các tham số đã có trong URL chưa
+                if (url.indexOf('?') === -1) {
+                    // Nếu chưa có, thêm tham số vào URL
+                    url += '?min=' + min + '&max=' + max;
+                } else {
+                    // Nếu đã có, thay thế giá trị của tham số trong URL
+                    var regex = new RegExp('([?&]' + encodeURIComponent('min') + '=)[^&]+');
+                    if (regex.test(url)) {
+                        url = url.replace(regex, '$1' + encodeURIComponent(min));
+                    } else {
+                        url += '&min=' + min;
+                    }
+
+                    regex = new RegExp('([?&]' + encodeURIComponent('max') + '=)[^&]+');
+                    if (regex.test(url)) {
+                        url = url.replace(regex, '$1' + encodeURIComponent(max));
+                    } else {
+                        url += '&max=' + max;
+                    }
+                }
+                history.pushState(null, null, url);
+                // const searchParams = new URLSearchParams(window.location.search);
+                // const a = searchParams.get('a');
+                // console.log(a);
+                $.ajax({
+                    url: '/ajax/categories/filter',
+                    data: {
+                        // _token: $('meta[name="csrf-token"]').attr('content'),
+                        min: min,
+                        max: max
+                    },
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // var productList = document.querySelector('ul.product-list');
+                        // productList.innerHTML = ""
+                        // response.forEach(function(product) {
+                        //     // Tạo một phần tử li để chứa thông tin sản phẩm
+                        //     var li = document.createElement('li');
+                        //     li.classList.add('col-lg-4', 'col-md-6', 'col-sm-6',
+                        //         'col-xs-6');
+
+                        //     // Tạo HTML cho sản phẩm
+                        //     var html =
+                        //         '<div class="product product-style-3 equal-elem">';
+                        //     html += '<div class="product-thumnail">';
+                        //     html += '<a href="/product/' + product.slug + '-' + product
+                        //         .code + '" title="' + product.name + '">';
+                        //     html += '<figure><img src="/storage/products/' + product
+                        //         .featured_image + '" alt="' + product.name +
+                        //         '"></figure>';
+                        //     html += '</a>';
+                        //     html += '</div>';
+                        //     html += '<div class="product-info">';
+                        //     html += '<a href="/product/' + product.slug + '-' + product
+                        //         .code + '" class="product-name"><span>' + product.name +
+                        //         '</span></a>';
+                        //     html +=
+                        //         '<div class="wrap-price"><span class="product-price">' +
+                        //         product.price + '</span></div>';
+                        //     html += '<a href="#" data-price="' + product.price +
+                        //         '" data-url="/cart/add-product-to-cart" data-id="' +
+                        //         product.id +
+                        //         '" class="btn add-to-cart">thêm vào giỏ hàng</a>';
+                        //     html += '</div>';
+                        //     html += '</div>';
+
+                        //     // Thêm HTML của sản phẩm vào phần tử li
+                        //     li.innerHTML = html;
+
+                        //     // Thêm phần tử li vào danh sách sản phẩm
+                        //     productList.appendChild(li);
+                        // });
+                        var productList = $('ul.product-list');
+                        productList.empty();
+                        $.each(response, function(index, product) {
+                            // Tạo một phần tử li để chứa thông tin sản phẩm
+                            var li = $('<li>')
+                                .addClass('col-lg-4 col-md-6 col-sm-6 col-xs-6');
+
+                            // Tạo HTML cho sản phẩm
+                            var html =
+                                '<div class="product product-style-2 equal-elem">';
+                            html += '<div class="product-thumnail">';
+                            html += '<a href="/product/' + product.slug + '-' + product
+                                .code + '" title="' + product.name + '">';
+                            html += '<figure><img src="' + product
+                                .featured_image + '" alt="' + product.name +
+                                '"></figure>';
+                            html += '</a>';
+                            html += '</div>';
+                            html += '<div class="product-info">';
+                            html += '<a href="/product/' + product.slug + '-' + product
+                                .code + '" class="product-name"><span>' + product.name +
+                                '</span></a>';
+                            html +=
+                                '<div class="wrap-price"><span class="product-price">' +
+                                Number(product.price).toLocaleString('vi-VN') + 'đ</span></div>';
+                            html += '<a href="#" data-price="' + Number(product.price).toLocaleString('vi-VN') +
+                                '" data-url="/cart/add-product-to-cart" data-id="' +
+                                product.id +
+                                '" class="btn add-to-cart btn-small">thêm vào giỏ hàng</a>';
+                            html += '</div>';
+                            html += '</div>';
+
+                            // Thêm HTML của sản phẩm vào phần tử li
+                            li.html(html);
+                            li.hide().appendTo(productList).delay(100 * index).fadeIn();
+                        });
+                    },
+                    error: function(xhr, status, error) {}
+                });
+            })
+        });
+    </script>
     <script src="{{ asset('frontend/js/add-to-cart.js') }}"></script>
 @endsection

@@ -1369,7 +1369,7 @@ caption {
 
 .table>thead>tr>th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd
+    border-bottom: 1px solid #ddd
 }
 
 .panel-group .panel-footer,
