@@ -239,7 +239,7 @@
                                     <ol class="commentlist">
                                         <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
                                             <div id="comment-20" class="comment_container">
-                                                <img alt="" src="{{ asset('frontend/images/author-avata.jpg') }}" height="80" width="80">
+                                                <img alt="" src="{{ asset('assets/7b0f8a91e7d3ac38e85856e69b7a16c1.png') }}" height="80" width="80">
                                                 <div class="comment-text">
                                                     <div class="star-rating">
                                                         <span class="width-80-percent">Rated <strong class="rating">5</strong> out of 5</span>

@@ -53,12 +53,12 @@ class AppServiceProvider extends ServiceProvider
                     return Str::lower(explode(' ', $color)[0]);
                 })->unique();
 
-                $seo = [
-                    'title' => 'Title',
-                    'description' => 'Tìm kiếm và mua sắm điện thoại di động trực tuyến với sự đa dạng và chất lượng tuyệt vời. Khám phá ngay để có trải nghiệm mua sắm tuyệt vời chỉ có ở Mobileworld!',
-                    'image' => null,
-                    'canonical' => null,
-                ];
+                // $seo = [
+                //     'title' => 'Title',
+                //     'description' => 'Tìm kiếm và mua sắm điện thoại di động trực tuyến với sự đa dạng và chất lượng tuyệt vời. Khám phá ngay để có trải nghiệm mua sắm tuyệt vời chỉ có ở Mobileworld!',
+                //     'image' => null,
+                //     'canonical' => null,
+                // ];
 
                 $data = [
                     'productQuantities' => $productQuantities,
@@ -66,8 +66,7 @@ class AppServiceProvider extends ServiceProvider
                     'categories' => $categories,
                     'popularProducts' => $popularProducts,
                     'mostViewedProducts' => $mostViewedProducts,
-                    'colorLists' => $colorLists,
-                    'seo' => $seo
+                    'colorLists' => $colorLists
                 ];
 
                 $view->with($data);

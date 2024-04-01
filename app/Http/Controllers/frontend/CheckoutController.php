@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Helpers\OrderCodeHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CheckoutRequest;
-use App\Mail\OrderConfirmationEmail;
 use App\Models\Cart;
 use App\Models\District;
-use App\Models\Order;
 use App\Models\PaymentMethod;
 use App\Models\Province;
 use App\Models\Ward;
-use Carbon\Carbon;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
+    private $appName;
+
+    public function __construct()
+    {
+        $this->appName = config('app.name');
+    }
+
     public function index()
     {
         $cart = Cart::where('user_id', Auth::user()->id)->first();
@@ -32,10 +30,20 @@ class CheckoutController extends Controller
         foreach ($cart->products as $key => $product) {
             $total += $product->pivot->cart_detail_quantity * ($product->price - $product->discount);
         }
+
         $user = Auth::user();
         $provinces = Province::all();
         $paymentMethods = PaymentMethod::all();
-        return view('frontend.checkout', compact('user', 'provinces', 'total', 'paymentMethods'));
+
+        $seo = [
+            'title' => mb_convert_case("thông tin thanh toán | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "",
+            'keywords' => '',
+            'image' => null,
+            'canonical' => null,
+        ];
+
+        return view('frontend.checkout', compact('user', 'provinces', 'total', 'paymentMethods', 'seo'));
     }
 
     public function getDistricts(Request $request)

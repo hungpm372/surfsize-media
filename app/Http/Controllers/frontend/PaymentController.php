@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
+    private $appName;
+
+    public function __construct()
+    {
+        $this->appName = config('app.name');
+    }
+
     public function paymentSuccess(Request $request)
     {
         $request->session()->forget('order_submitted');
@@ -32,7 +39,16 @@ class PaymentController extends Controller
                 $totalDiscount += $product->pivot->order_detail_quantity * $product->discount;
             }
         }
-        return view('frontend.payment_success', compact('order', 'products', 'totalNotDiscount', 'totalDiscount'));
+
+        $seo = [
+            'title' => mb_convert_case("đặt hàng thành công | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "",
+            'keywords' => '',
+            'image' => null,
+            'canonical' => null,
+        ];
+
+        return view('frontend.payment_success', compact('order', 'products', 'totalNotDiscount', 'totalDiscount', 'seo'));
     }
 
     public function vnpayReturn(Request $request)

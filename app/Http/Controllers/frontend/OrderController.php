@@ -23,16 +23,27 @@ use Illuminate\Support\Str;
 class OrderController extends Controller
 {
     protected $payment;
+    private $appName;
 
     public function __construct(PaymentService $payment)
     {
         $this->payment = $payment;
+        $this->appName = config('app.name');
     }
 
     public function index(Request $request)
     {
         $orderLists = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.order', compact('orderLists'));
+
+        $seo = [
+            'title' => mb_convert_case("đơn hàng của tôi | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "",
+            'keywords' => '',
+            'image' => null,
+            'canonical' => null,
+        ];
+
+        return view('frontend.order', compact('orderLists', 'seo'));
     }
 
     public function orderDetail($order_code)
@@ -48,7 +59,16 @@ class OrderController extends Controller
                 $totalDiscount += $product->pivot->order_detail_quantity * $product->discount;
             }
         }
-        return view('frontend.order_detail', compact('order', 'products', 'totalNotDiscount', 'totalDiscount'));
+
+        $seo = [
+            'title' => mb_convert_case("đơn hàng $order->order_code | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "",
+            'keywords' => '',
+            'image' => null,
+            'canonical' => null,
+        ];
+
+        return view('frontend.order_detail', compact('order', 'products', 'totalNotDiscount', 'totalDiscount', 'seo'));
     }
 
     public function processOrder(Request $request)
@@ -140,7 +160,16 @@ class OrderController extends Controller
                     $status = true;
                 }
                 $order->update();
-                return view('frontend.confirm_order', compact('status', 'order'));
+
+                $seo = [
+                    'title' => mb_convert_case("xác nhận đơn hàng $order->order_code | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+                    'description' => "",
+                    'keywords' => '',
+                    'image' => null,
+                    'canonical' => null,
+                ];
+
+                return view('frontend.confirm_order', compact('status', 'order', 'seo'));
             }
         }
         return abort(404);

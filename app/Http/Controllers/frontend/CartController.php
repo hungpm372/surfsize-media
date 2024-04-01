@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    private $appName;
+
+    public function __construct()
+    {
+        $this->appName = config('app.name');
+    }
+
     public function cart()
     {
         $cart = Cart::where('user_id', Auth::user()->id)->first();
@@ -30,11 +37,17 @@ class CartController extends Controller
             }
         }
 
-
+        $seo = [
+            'title' => mb_convert_case("giỏ hàng của tôi | $this->appName", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "Thỏa sức mua sắm qua mạng hàng trăm sản phẩm điện thoại di động tại $this->appName với giá rẻ hơn và khuyến mãi hấp dẫn!",
+            'keywords' => $this->appName,
+            'image' => null,
+            'canonical' => null,
+        ];
 
         return view(
             'frontend.cart',
-            compact('products', 'total', 'totalDiscount', 'cartStatus')
+            compact('products', 'total', 'totalDiscount', 'cartStatus', 'seo')
         );
     }
 

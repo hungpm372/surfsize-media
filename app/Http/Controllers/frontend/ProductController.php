@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    private $appName;
+
+    public function __construct()
+    {
+        $this->appName = config('app.name');
+    }
+
     public function productDetails($slug, $code)
     {
         $product = Product::where(compact('slug', 'code'))->first();
@@ -24,9 +31,13 @@ class ProductController extends Controller
             ->take(10)
             ->get();
 
+        $keywordArr = $product->tags->pluck('name')->toArray();
+        $keywordArr[] = $this->appName;
+
         $seo = [
-            'title' => $product->name,
-            'description' => 'Tìm kiếm và mua sắm điện thoại di động trực tuyến với sự đa dạng và chất lượng tuyệt vời. Khám phá ngay để có trải nghiệm mua sắm tuyệt vời chỉ có ở Mobileworld!',
+            'title' => mb_convert_case("$product->name | Mobileworld", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "Mua $product->name - Hàng Chính Hãng - tại $this->appName với giá cực kỳ hấp dẫn. Chúng tôi cam kết hoàn tiền 200% nếu phát hiện hàng giả. Đừng bỏ lỡ cơ hội nhận nhiều mã giảm giá hôm nay cùng dịch vụ freeship và giao hàng nhanh trong vòng 24 giờ. Mua hàng dễ dàng và thanh toán an toàn tại $this->appName. Mua ngay để nhận ưu đãi!",
+            'keywords' => implode(', ', $keywordArr),
             'image' => $product->featured_image,
             'canonical' => null,
         ];
@@ -46,14 +57,14 @@ class ProductController extends Controller
             ->orWhere('description', 'like', '%' . $keyword . '%')
             ->get();
 
-        // $category = Category::where('slug', $request->slug)->first();
-        // if ($request->sort_by == 'price' && $request->sort_order == 'asc') {
-        //     $products = $category->products()/*->whereBetween('price', [$request->min, $request->max])*/->orderBy('price', 'asc')->get();
-        // } else if ($request->sort_by == 'price' && $request->sort_order == 'desc') {
-        //     $products = $category->products()/*->whereBetween('price', [$request->min, $request->max])*/->orderBy('price', 'desc')->get();
-        // } else {
-        //     $products = $category->products;
-        // }
-        return view('frontend.search', compact('title', 'products', 'keyword'));
+        $seo = [
+            'title' => mb_convert_case("tìm kiếm $keyword | Mobileworld", MB_CASE_TITLE, 'UTF-8'),
+            'description' => "Tìm kiếm $keyword chính hãng, giá rẻ chỉ có tại $this->appName!",
+            'keywords' => implode(', ', [$this->appName, $keyword]),
+            'image' => null,
+            'canonical' => null,
+        ];
+
+        return view('frontend.search', compact('title', 'products', 'keyword', 'seo'));
     }
 }
