@@ -77,7 +77,17 @@ class OrderController extends Controller
         try {
             $totalPrice = 0;
             $cart = Cart::where('user_id', Auth::user()->id)->first();
+
+            if (!$cart) {
+                return redirect()->route('cart');
+            }
+
             $cartItems = $cart->products;
+            if ($cartItems->count() <= 0) {
+
+                return redirect()->route('home');
+            }
+
             foreach ($cartItems as $item) {
                 $totalPrice += ($item->price - $item->discount) * $item->pivot->cart_detail_quantity;
             }

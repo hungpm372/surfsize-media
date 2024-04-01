@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /cart
+Disallow: /orders
+Disallow: /user
+Disallow /users

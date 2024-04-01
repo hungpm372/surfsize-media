@@ -22,17 +22,17 @@ class PaymentService
 
     public function processZaloPay($order)
     {
-        dd($order);
+        return abort(405, 'Phương thức thanh toán không được hỗ trợ');
     }
 
     public function processMoMo($order)
     {
-        dd($order);
+        return abort(405, 'Phương thức thanh toán không được hỗ trợ');
     }
 
     public function processShopeePay($order)
     {
-        dd($order);
+        return abort(405, 'Phương thức thanh toán không được hỗ trợ');
     }
 
     public function processVNPay($order)
