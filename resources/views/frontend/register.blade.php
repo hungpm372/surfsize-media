@@ -1,5 +1,9 @@
 @extends('frontend.layout.app')
 
+@section('js-s3')
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" defer></script>
+@endsection
+
 @section('content')
     <div class="wrap-breadcrumb">
         <ul>
@@ -49,6 +53,10 @@
                                     </span>
                                 @endif
                             </fieldset>
+                            <fieldset class="wrap-input">
+                                <div id="g-recaptcha" data-sitekey="{{ config('services.recaptcha_v2.siteKey') }}"></div>
+                            </fieldset>
+
                             <button type="submit" class="btn btn-submit btn-medium">Đăng ký</button>
                             <div class="spacer">Hoặc</div>
                             <button type="button" class="btn btn-fb btn-medium">
@@ -59,12 +67,26 @@
                                 <img src="{{ asset('frontend/images/app/google.svg') }}" alt="Đăng ký bằng google">
                                 Đăng ký bằng google
                             </button>
+                            <div class="sign-in-footer">
+                                <span>
+                                    Đã có tài khoản {{ Config::get('app.name') }}? <a href="{{ route('login', ['redirect' => Redirect::intended('')->getTargetUrl()]) }}">Đăng nhập
+                                        ngay</a>
+                                </span>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <!--end main products area-->
         </div>
     </div>
-    <!--end row-->
+@endsection
+
+@section('js')
+    <script>
+        var onloadCallback = function() {
+            grecaptcha.render('g-recaptcha', {
+                'sitekey': '{{ config('services.recaptcha_v2.siteKey') }}',
+            });
+        }
+    </script>
 @endsection

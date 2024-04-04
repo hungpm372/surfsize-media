@@ -156,7 +156,7 @@
                     <div class="wrap-butons">
                         @if ($product->quantity > 0)
                             <button data-price="{{ $product->price }}" data-url="{{ route('add_product_to_cart') }}" data-id="{{ $product->id }}"
-                                class="btn btn-medium btn-add-cart">thêm vào
+                                class="btn btn-medium add-to-cart">thêm vào
                                 giỏ hàng</button>
                         @else
                             <button type="button" disabled class="btn out-of-stock">hết hàng</button>

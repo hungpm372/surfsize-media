@@ -41,5 +41,14 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://phanminhhung.com.vn/auth/google/callback',
     ],
-
+    'cloudflare' => [
+        'turnstile' => [
+            'site_key' => env('TURNSTILE_SITE_KEY'),
+            'site_secret' => env('TURNSTILE_SITE_SECRET'),
+        ]
+    ],
+    'recaptcha_v2' => [
+        'siteKey' => env('RECAPTCHA_V2_SITE_KEY'),
+        'secretKey' => env('RECAPTCHA_V2_SECRET_KEY'),
+    ],
 ];

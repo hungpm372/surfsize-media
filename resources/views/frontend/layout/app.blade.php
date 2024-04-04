@@ -85,6 +85,7 @@
 
         gtag('config', 'G-BQPM6WVTLQ');
     </script>
+    @yield('js-s3')
 </head>
 
 <body class="home-page">

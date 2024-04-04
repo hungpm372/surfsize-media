@@ -94,6 +94,11 @@
                                 <img src="{{ asset('frontend/images/app/google.svg') }}" alt="Đăng nhập bằng google">
                                 Đăng nhập bằng google
                             </button>
+                            <div class="sign-in-footer">
+                                <span>
+                                    Chưa có tài khoản {{ Config::get('app.name') }}? <a href="{{ route('register', ['redirect' => route('login')]) }}">Đăng ký</a>
+                                </span>
+                            </div>
                         </form>
                     </div>
                 </div>

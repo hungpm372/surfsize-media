@@ -3260,6 +3260,22 @@ span.order-code {
     position: relative
 }
 
+.wrap-login-item .form-item .sign-in-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    color: #a2abb4;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.wrap-login-item .form-item .sign-in-footer a {
+    color: var(--primary-color);
+    font-size: 15px;
+    font-weight: 400;
+}
+
 .row-in-form .checkbox-field input[type=checkbox]+span::before,
 .summary .checkout-info .checkbox-field input[type=checkbox]+span::before,
 .wrap-login-item .form-item input[type=checkbox]+span::before {
@@ -3962,7 +3978,7 @@ table.shop_attributes tbody {
     margin-top: 30px
 }
 
-.wrap-product-detail .detail-info .wrap-butons .btn-add-cart {
+.wrap-product-detail .detail-info .wrap-butons .add-to-cart {
     width: 100%;
 }
 
